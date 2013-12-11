@@ -1,0 +1,6 @@
++ Return to velocity statistics from the Orion KPNO and SPM datasets
++ Coming back to it after 7 years!
++ In support of Jane & Sac's work on the 512-cube hydro simulations
+* Structure functions
++ Initial work is in [[file:~/Work/BobKPNO/]]
++ 
