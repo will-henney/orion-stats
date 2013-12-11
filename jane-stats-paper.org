@@ -1,0 +1,4 @@
+Stuff for the Sac and Jane paper on turbulence diagnostics
+
+* Slopes of VCA power spectra
+
