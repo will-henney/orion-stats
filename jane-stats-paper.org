@@ -1,11 +1,56 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
-* Conclusions
-+ Structure function has big advantage that it is relatively immune to effects of thermal broadening and poor instrumental resolution
-+ Allows successful recovery of \kappa(v_i) (to \pm0.1) for 2 out of 3 viewing angles
-  + But is sometimes affected by champagne flows => one would deduce a steeper spectrum than is really present
-+ VCA 
 
+* Conclusions
+** Intrinsic power spectra of physical quantities
++ We have good power laws over a reasonable range
++ Ionized gas velocity has slope \mu = -3.2 \pm 0.1 once the turbulence is fully developed
+  + This rather shallow compared with Kolmogorov (\mu = -3.667) or Burgers (\mu = -4.0), implying relatively more velocity structure at smaller scales than is seen in an inertial cascade
+  + One reason for this may be the injection of energy at all scales
+  + The associated autocorrelation slope of u^2 (or second-order structure function slope) is m = -3 - \mu = 0.2 \pm 0.1, where \delta{}u \sim L^{m/2}
+  + So u \sim L^{0.1 \pm 0.05}, which is remarkably shallow.  It means that with \sigma \approx 10 km/s on scale of 1 pc, we will still have \sigma = 8 km/s on scale of 0.1 pc
++ Density has slope n = -3.2, same as velocity, but more relevant are emissivity slopes: n = -2.9 \pm 0.1 for H\alpha and n = -3.4 \pm 0.1 for [O III]
+** We want to see if we can diagnose the intrinsic power spectrum from observables
++ In particular the power law index of the ionized gas velocity power spectrum, which is -3.2 \pm 0.1 in our simulations
++ Can it be deduced from the /Structure Function/ or the /Velocity Channel Analysis/?
+*** Structure function
++ has big advantage that it is relatively immune to effects of thermal broadening and poor instrumental resolution, so can be used for H\alpha
++ big disadvantage that it has the uncertainty of projection smoothing
+  + smoothing should apply at scales smaller than the characteristic line-of-sight depth of the emitting gas
+  + would give a break of magnitude \delta{}m = 1 in the spectrum (steeper at smaller scales, where the smoothing operates)
+  + except that the line-of-sight depth has a distribution, rather than a fixed value, since it varies from point to point, so that instead of a break, we should see a negative curvature to the structure function over the fitted range
+  + Just such curvature is seen (mostly)
+  + In addition, we see a clear progression from [S II] \to [N II] \to H\alpha \to [O III]
+    + m_{2D}([S II]) = 0.45 \pm 0.01
+    + m_{2D}([N II]) = 0.55 \pm 0.02
+    + m_{2D}(H\alpha) = 0.60 \pm 0.03
+    + m_{2D}([O III]) = 0.75 \pm 0.03
+  + Based on the simulation's velocity power spectrum index of \mu \approx -3.2, this should have a value between:
+    + m_{2D} = 0.2 (no smoothing), and
+    + m_{2D} = 1.2 (full smoothing)
+  + The results are obviously consistent with this, and seem to follow a consistent trend with less smoothing (shallower spectrum) where the emission is more sheet-like ([S II]), progressing to more smoothing where the emission is more diffuse ([O III])
+  + But nothing is clearly in any particular limit, so it is impossible to infer \mu from the observations
+  + PLUS added complication of the Brunt & Mac Low (2004) effect, where density (emissivity) fluctuations correlated with the velocity fluctuations can effect the velocity centroid distributions and partially or fully cancel out the projection smoothing effect
+  + PLUS AGAIN it is affected by champagne flows along line of sight, which steepen the structure function without any concommitant change in \mu
+    + This happens mainly at the larger separations in the fitting range, which gives it a positive curvature, allowing it to be potentially spotted.  Another telltale sign is a shoulder on the velocity PDF
+*** VCA
++ We use 5 km/s slices as the thin limit
+  + This is the highest resolution that can regularly be achieved with current echelle spectrographs
+  + Also, thermal broadening means that most lines would not benefit from going to higher resolution
+  + And smaller slices also run into problems with discretization noise in the simulations that produces spurious small-scale power, as discussed by Esquivel
++ The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
+  + [O III]: \gamma_{thick} = -3.38 \pm 0.04, n = -3.4 \pm 0.1 /YES/
+  + H\alpha:  \gamma_{thick} = -2.59 \pm 0.02, n = -2.95 \pm 0.15 /PCA thick slope is too shallow!/
+  + [N II]:
+  + [S II]: 
++ The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = 3 - \mu
++ There are two cases:
+  + steep emissivity, n < -3, appropriate to [O III]: \gamma_{thin} = -3 + m/2
+    + [O III]: \gamma_{thin} = -2.84 \pm 0.11 (x-axis), -3 + m/2 = -2.9 /YES/
+  + shallow emissivity, n > -3, appropriate to the other lines:  \gamma_{thin} - \gamma_{thick} = m/2
+    + H\alpha: 
+    + [N II]:
+    + [S II]:
 
  
 * Why projection smoothing may not happen
@@ -26,9 +71,29 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
 * Slopes of VCA power spectra
 
 ** Checking what bin width we should use
-+ [ ] Jane is going to save the velocity channels for me
++ [X] Jane is going to save the velocity channels for me
 + I suspect that the flat slopes for the thinnest channels are due to noise
-+ /fs/voltorb/other0/jane/results/SAC512/FITS/FITS21/VCA
++ Turns out that channels of 5 km/s are fine
+*** Velocity widths
+All the n=128 PPV cubes have 1.2667 km/s channels
+
+|   n |    dV |
+|-----+-------|
+| 128 |   1.3 |
+|  64 |   2.5 |
+|  32 |   5.1 |
+|  16 |  10.1 |
+|   8 |  20.3 |
+|   4 |  40.5 |
+|   2 |  81.1 |
+|   1 | 162.1 |
+#+TBLFM: $2=1.2667 (128/$1) ; f1
+*** Make figure of velocity slices
+#+BEGIN_SRC python :results file
+from astropy.io import fits
+
+return figfile
+#+END_SRC
 *** Halve resolution of PPV cube
 #+BEGIN_SRC python :results output
   import numpy as np
@@ -103,17 +168,37 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
       + Projection smoothing gives m_{2D} = m_{3D} + 1
       + But we can have m_{2D} = m_{3D} in certain cases:
         1. If line-of-sight depth of emitting region is smaller than separation scale
+           - this should certainly be the case for the [N II] and [S II] lines
         2. In driven turbulence, correlations \Delta\rho-\Delta{}v can undo the projection smoothing (Brunt & Mac Low 2004)
+      + In general we can put  m_{2D} = m_{3D} + \delta_{smooth}, where \delta_{smooth} = [0 \dots 1] 
     + Simulation measurements have
-      + m_{2D}(H\alpha) = 0.5-0.6
-      + m_{2D}([O III]) = 0.6-0.8
-      + Except for xy plane where it reaches 1.0
+      + m_{2D}([S II]) = 0.45 \pm 0.01
+      + m_{2D}([N II]) = 0.55 \pm 0.02
+      + m_{2D}(H\alpha) = 0.60 \pm 0.03
+      + m_{2D}([O III]) = 0.75 \pm 0.03
+        + Except for xy plane where it reaches 1.0
     + *If we believe projection smoothing* => m_{3D} \approx -0.45 (H\alpha) or -0.3 ([O III])
       + If we don't, then it could be anywhere in the range m_{3D} \approx -0.45 \rightarrow 0.55
     + Prediction from velocity power spectrum is
       + m = -3 - \mu = -1 - \kappa(v_i) = 0.3 \to 0.1 \to 0.2
+    + Average m = 0.2 \pm 0.1, so we can see that \delta_{smooth} varies from 0.25 for [S II] up to 0.55 for [O III]
+      + It increases as the emitting region geometry transitions from sheet-like to diffuse
+      + It is not zero even for [S II], presumably because there is /some/ diffuse emission, and/or we sometimes
 
 \alpha\beta\gamma\delta\epsilon\zeta\eta\theta\iota\kappa\lambda\mu\nu\omicron\pi\varpi\rho\sigma\tau\upsilon\xi\chi\omega \Alpha\Beta\Gamma\Delta\Epsilon\Zeta\Eta\Theta\Iota\Kappa\Lambda\Mu\Nu\Omicron\Pi\Rho\Sigma\sum\Tau\Upsilon\Xi\Chi\Omega
+
+
+*** Table of structure function indices
+| Time        | 150,000 |      |      | 200,000 |      |      | 250,000 |      |      | 300,000 |      |      |               |
+| Plane       |     x−y |  x−z |  y−z |     x−y |  x−z |  y−z |     x−y |  x−z |  y−z |     x−y |  x−z |  y−z | AVERAGE       |
+|-------------+---------+------+------+---------+------+------+---------+------+------+---------+------+------+---------------|
+| Hα          |    0.51 | 0.60 | 0.67 |    0.61 | 0.51 | 0.60 |    0.71 | 0.53 | 0.51 |    0.79 | 0.58 | 0.61 | 0.60 +/- 0.03 |
+| [OIII]λ5007 |    0.69 | 0.77 | 0.87 |    0.68 | 0.78 | 0.70 |    0.83 | 0.73 | 0.59 |    1.02 | 0.63 | 0.74 | 0.75 +/- 0.03 |
+| [NII]λ6584  |    0.46 | 0.54 | 0.58 |    0.54 | 0.44 | 0.56 |    0.60 | 0.48 | 0.55 |    0.66 | 0.63 | 0.53 | 0.55 +/- 0.02 |
+| [SII]λ6716  |    0.41 | 0.44 | 0.50 |    0.44 | 0.37 | 0.47 |    0.45 | 0.43 | 0.48 |    0.43 | 0.47 | 0.48 | 0.45 +/- 0.01 |
+#+TBLFM: $14=vmeane($2..$13); f2
+
+
 
 *** Relation between velocity energy spectrum \mu and structure function m
 + In three dimensions: \mu = -3 - m
@@ -127,18 +212,20 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
 **** Steep density spectrum:
 + \gamma_{thin} = -3 + m/2
 + \gamma_{thick} = -3 - m/2
-+ \gamma_{THICK}_{} = n  (THICK means basically the whole line)
++ \gamma_{THICK} = n  (THICK means basically the whole line)
 **** Our simulations
 + We have \mu = -3.2 \pm 0.1, m = 0.2 \pm 0.1, n([O III]) = -3.4 \pm 0.1, n(H\alpha) = -2.95 \pm 0.15
 ***** Predicted [O III] steep
-+ \gamma_{thin} = -2.9 \pm 0.1 - observed (NB): -2.06 \pm 0.03
-+ \gamma_{thick} = -3.2 \pm 0.1 - observed: -2.67 \pm 0.04
++ \gamma_{thin} = -2.9 \pm 0.1 - observed: -2.84 \pm 0.11 (x-axis)
++ \gamma_{thick} = -3.2 \pm 0.1 - NOT OBSERVED
   + But this is just the thinnest case with thermal broadening; we don't actually know it corresponds to the "thick" case
-+ \gamma_{THICK}_{} = -3.4 \pm 0.1 - observed: -3.34 \pm 0.03
++ \gamma_{THICK}_{} = -3.4 \pm 0.1 - observed: -3.38 \pm 0.04
++ So this works well
 ***** Predicted H\alpha shallow
-+ \gamma_{thin} = -2.85 \pm 0.15
-+ \gamma_{thick} = -2.95 \pm 0.15
-
++ \gamma_{thin} = -2.85 \pm 0.15 - observed -2.5 
++ \gamma_{thick} = -2.95 \pm 0.15 - observed -2.59 \pm 0.02 
++ So the difference between them is 0.1, which is what is expected
++ But the absolute value of the thick index is too shallow
 **** Deduction of m from VCA slopes
 
 ***** Shallow, applied to H\alpha
@@ -158,19 +245,31 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
 ******* Thin \to medium thick
 + => m = (\gamma_{thin} - \gamma_{thick})
 ******* Medium thick \to very thick
-+ AND \gamma_{thick} - \gamma_{THICK}_{} = -3 - n - m/2
-+ => m = 2 [-(n + 3) - (\gamma_{thick} - \gamma_{THICK}_{})]
-******* Thin \to very thick
-+ OR \gamma_{thin} - \gamma_{THICK}_{} = -3 - n + m/2
-+ => m = 2 [ (n + 3) + (\gamma_{thin} - \gamma_{THICK}_{}) ]
++ AND \gamma_{thick} - \gamma_{THICK} = -3 - n - m/2
++ => m = 2 [-(n + 3) - (\gamma_{thick} - \gamma_{THICK})]
++ OR \gamma_{thin} - \gamma_{THICK} = -3 - n + m/2
++ => m = 2 [ (n + 3) + (\gamma_{thin} - \gamma_{THICK}) ]
 ******* Application to [O III]
 + For [O III], n = -3.4 \pm 0.1 => n + 3 = -0.4 \pm 0.1
-+ => m_thin = 2 [-0.4 \pm 0.1  + (\gamma_{thin} - \gamma_{THICK}_{})]
-+ OR m_med = 2 [0.4 \pm 0.1 - (\gamma_{thick} - \gamma_{THICK}_{})]
-+ In the table below we take "Diff NB" = (\gamma_{thin} - \gamma_{THICK}_{})
-+ We also try assuming "Diff B" = (\gamma_{thick} - \gamma_{THICK}_{}), *although this is less certain*
++ => m_thin = 2 [-0.4 \pm 0.1  + (\gamma_{thin} - \gamma_{THICK})]
++ OR m_med = 2 [0.4 \pm 0.1 - (\gamma_{thick} - \gamma_{THICK})]
++ In the table below we take "Diff NB" = (\gamma_{thin} - \gamma_{THICK})
++ We also try assuming "Diff B" = (\gamma_{thick} - \gamma_{THICK}), *although this is less certain*
 
 ** Simulation [O III] slopes
+
+
+*** New [O III]
+| Time |          Thick |        Thin NB |         Thin B |
+|------+----------------+----------------+----------------|
+|   15 |          -3.47 |          -2.89 |          -3.13 |
+|   20 |          -3.29 |          -2.63 |          -2.85 |
+|   25 |          -3.40 |          -2.52 |          -2.74 |
+|   30 |          -3.37 |          -2.41 |          -2.64 |
+|------+----------------+----------------+----------------|
+|      | -3.38 +/- 0.04 | -2.61 +/- 0.10 | -2.84 +/- 0.11 |
+#+TBLFM: @6$2..@6$4=vmeane(@I..@II);f2
+*** Old [O III]
 Note that these all need 1 subtracting from them
 | Time |          Thick |        Thin NB |         Thin B |         m(NB) |          m(B) |
 |------+----------------+----------------+----------------+---------------+---------------|
