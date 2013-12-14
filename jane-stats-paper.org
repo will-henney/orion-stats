@@ -1,5 +1,115 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
+* Latex material for discussion
+#+BEGIN_SRC latex
+  \newcounter{ionstage}
+  \newcommand{\ion}[2]{\setcounter{ionstage}{#2}% 
+    \ensuremath{\mathrm{#1\,\scriptstyle\Roman{ionstage}}}}
+  \newcommand\nii{[\ion{N}{2}]}
+  \newcommand\sii{[\ion{S}{2}]}
+  \newcommand\oiii{[\ion{O}{3}]}
+  \newcommand\ha{\ensuremath{\mathrm{H\alpha}}}
+  \newcommand\hii{\ion{H}{1}}
+  % INTRINSIC POWER SPECTRA OF PHYSICAL QUANTITIES
+  TODO
+  
+  % DETERMINING \mu AND n FROM OBSERVATIONAL DIAGNOSTICS
+  It is interesting to study the question of whether
+  the known power law indices of the velocity and emissivity power spectra in our simulations
+  can in practice be recovered from observational diagnostics.  
+  If this is not the case for a given diagnostic,
+  then it would call into question its utility for studying real \hii{} regions.
+  In particular, we will concentrate on two commonly used diagnostics:
+  the second-order structure function of the line velocity centroids,
+  and the power spectra of the surface brightness in isovelocity channel maps
+  (Velocity Channel Analysis). 
+  
+  % STRUCTURE FUNCTION
+  The structure function of the velocity centroids is an observationally attractive diagnostic
+  because it is relatively immune to the effects of thermal broadening 
+  and poor spectral resolution,
+  so long as sufficiently high signal-to-noise spectra are used. 
+  However, it has the disadvantage that relating the observed slope 
+  to the 3-dimensional velocity statistics depends on the geometry
+  of the emitting region, see \S~\ref{sec:projection-smoothing}. 
+  For transverse separations larger than
+  the characteristic line-of-sight depth of the emitting gas,
+  the two-dimensional gradient should be equal to the three-dimensional one:
+  \[
+  m_{\mathrm{2D}} = m_{\mathrm{3D}} = -3 - \mu,
+  \]
+  whereas at smaller separations than this, 
+  projection smoothing, as described above, means that 
+  the two-dimensional gradient is steeper:
+  \[
+  m_{\mathrm{2D}} = 1 + m_{\mathrm{3D}} = -2 - \mu.
+  \]
+  Based on our simulation's velocity power spectrum index of \(\mu \approx -3.2\), 
+  the structure function slope should be \(m_{\mathrm{2D}} = 0.2\) in the large-scale limit
+  and \(m_{\mathrm{2D}} = 1.2\) in the small-scale limit. 
+  
+  In fact, all of the measured slopes lie between these two limits,
+  with a systematically increasing value from low to high-ionization lines:
+  \(m_{\mathrm{2D}}(\sii) = 0.45 \pm 0.01\), 
+  \(m_{\mathrm{2D}}(\nii) = 0.55 \pm 0.02\), 
+  \(m_{\mathrm{2D}}(\ha) = 0.60 \pm 0.03\), 
+  \(m_{\mathrm{2D}}(\oiii) = 0.75 \pm 0.03\). 
+  This is qualitatively consistent with expectations
+  because the emission from lower-ionization lines is confined to 
+  thin layers near the ionization front, whereas higher ionization emission
+  is more distributed over the volume
+  and therefore subject to greater projection smoothing.
+  
+  If the line-of-sight depth were constant over the face of the \hii{} region,
+  then the structure function would show a break at that scale,
+  but in reality the depth varies from point to point, 
+  so the break will be blurred out.
+  Instead, the structure function is expected to show negative curvature,
+  with the gradient gradually decreasing 
+  as one passes from smaller to larger scales. 
+  A small such effect is seen in the structure functions 
+  derived from our simulations (Fig.~\ref{fig:strucfunc-x} to \ref{fig:strucfunc-z}):
+  the fit to a power law is generally not so good as in the case of the power spectra,
+  with negative residuals at both ends of the fitted range,
+  indicative of a negative curvature.  
+  That the observed effect is so small is probably due to the fact that
+  the distribution of line-of-sight depths strongly overlaps with 
+  the limited dynamic range in separations available from our simulations,
+  bounded at small scales by numerical dissipation,
+  and at large scales by the size of the ionized region.
+  
+  It is disappointing that none of the measured slopes
+  reach either of the limiting cases discussed above.
+  All that can be deduced from the structure function is that 
+  \(1 + m_{\mathrm{3D}} > m_{\mathrm{2D}}(\oiii)\) 
+  and \(m_{\mathrm{3D}} < m_{\mathrm{2D}}(\sii)\), which implies \(\mu = -2.75 \to -3.45\).
+  Although this is a rather wide range of allowed velocity power spectrum slopes,
+  it does serve to rule out the Kolmogorov value of \(\mu = -3.667\). 
+  
+  A further proviso to the use of the structure function is that
+  systematic anisotropic flows can affect the measured slopes
+  when the viewing angle is along the direction of the flow.
+  Such an effect is seen at later times for our simulation
+  when viewed along the \(x\)-axis (Fig.~\ref{fig:strucfunc-x}). 
+  In this case, the structure function tends to steepen
+  at the large-scale end of our fitting range,
+  producing a positive curvature, 
+  which is opposite to the more typical case of negative curvature discussed above.
+  Such cases may also be identified by the presence of a significant skew
+  in the PDF of the line-of-sight velocity (see Fig.~\ref{fig:velocity-PDFs}).
+  
+  Note that the additional complication identified by \citet{Brunt:2004a}, 
+  whereby correlations between density and velocity fluctuations affect the 
+  translation between \(m_{\mathrm{2D}}\) and \(\mu\), 
+  is likely of minor importance in our case.  
+  \citet{Esquivel:2007b} show that this is most important
+  for high Mach number turbulence, where \(\delta\rho/\langle \rho \rangle > 1\),
+  whereas the transonic turbulence inside our simulated \hii{} regions
+  produces more modest density contrasts. 
+  
+  % VCA
+  TODO
+#+END_SRC
 
 * Conclusions
 ** Intrinsic power spectra of physical quantities
@@ -10,28 +120,34 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   + The associated autocorrelation slope of u^2 (or second-order structure function slope) is m = -3 - \mu = 0.2 \pm 0.1, where \delta{}u \sim L^{m/2}
   + So u \sim L^{0.1 \pm 0.05}, which is remarkably shallow.  It means that with \sigma \approx 10 km/s on scale of 1 pc, we will still have \sigma = 8 km/s on scale of 0.1 pc
 + Density has slope n = -3.2, same as velocity, but more relevant are emissivity slopes: n = -2.9 \pm 0.1 for H\alpha and n = -3.4 \pm 0.1 for [O III]
-** We want to see if we can diagnose the intrinsic power spectrum from observables
+** DONE We want to see if we can diagnose the intrinsic power spectrum from observables
+CLOSED: [2013-12-13 Fri 17:55]
 + In particular the power law index of the ionized gas velocity power spectrum, which is -3.2 \pm 0.1 in our simulations
 + Can it be deduced from the /Structure Function/ or the /Velocity Channel Analysis/?
 *** Structure function
-+ has big advantage that it is relatively immune to effects of thermal broadening and poor instrumental resolution, so can be used for H\alpha
++ [X] has big advantage that it is relatively immune to effects of thermal broadening and poor instrumental resolution, so can be used for H\alpha
 + big disadvantage that it has the uncertainty of projection smoothing
-  + smoothing should apply at scales smaller than the characteristic line-of-sight depth of the emitting gas
-  + would give a break of magnitude \delta{}m = 1 in the spectrum (steeper at smaller scales, where the smoothing operates)
-  + except that the line-of-sight depth has a distribution, rather than a fixed value, since it varies from point to point, so that instead of a break, we should see a negative curvature to the structure function over the fitted range
-  + Just such curvature is seen (mostly)
-  + In addition, we see a clear progression from [S II] \to [N II] \to H\alpha \to [O III]
+  + [X] smoothing should apply at scales smaller than the characteristic line-of-sight depth of the emitting gas
+  + [X] would give a break of magnitude \delta{}m = 1 in the spectrum (steeper at smaller scales, where the smoothing operates)
+  + [X] except that the line-of-sight depth has a distribution, rather than a fixed value, since it varies from point to point, so that instead of a break, we should see a negative curvature to the structure function over the fitted range
+  + [X] Just such curvature is seen (mostly)
+  + [X] In addition, we see a clear progression from [S II] \to [N II] \to H\alpha \to [O III]
     + m_{2D}([S II]) = 0.45 \pm 0.01
     + m_{2D}([N II]) = 0.55 \pm 0.02
     + m_{2D}(H\alpha) = 0.60 \pm 0.03
     + m_{2D}([O III]) = 0.75 \pm 0.03
-  + Based on the simulation's velocity power spectrum index of \mu \approx -3.2, this should have a value between:
+  + [X] Based on the simulation's velocity power spectrum index of \mu \approx -3.2, this should have a value between:
     + m_{2D} = 0.2 (no smoothing), and
     + m_{2D} = 1.2 (full smoothing)
-  + The results are obviously consistent with this, and seem to follow a consistent trend with less smoothing (shallower spectrum) where the emission is more sheet-like ([S II]), progressing to more smoothing where the emission is more diffuse ([O III])
-  + But nothing is clearly in any particular limit, so it is impossible to infer \mu from the observations
-  + PLUS added complication of the Brunt & Mac Low (2004) effect, where density (emissivity) fluctuations correlated with the velocity fluctuations can effect the velocity centroid distributions and partially or fully cancel out the projection smoothing effect
-  + PLUS AGAIN it is affected by champagne flows along line of sight, which steepen the structure function without any concommitant change in \mu
+  + [X] The results are obviously consistent with this, and seem to follow a consistent trend with less smoothing (shallower spectrum) where the emission is more sheet-like ([S II]), progressing to more smoothing where the emission is more diffuse ([O III])
+  + [X] But nothing is clearly in any particular limit, so it is hard to infer \mu from the observations
+    + The limits are 1 + m_3D > 0.75 \pm 0.03 and m_3D < 0.45 \pm 0.01
+    + => m_3D = -0.25 \to 0.45 => \mu = 2.75 \to 3.45 = 3.1 \pm 0.35
+    + Although this does rule out Kolmogorov: \mu = 3.667
+  + [X] PLUS added complication of the Brunt & Mac Low (2004) effect, where density (emissivity) fluctuations correlated with the velocity fluctuations can effect the velocity centroid distributions and partially or fully cancel out the projection smoothing effect
+    + For a compressible flow, the structure function of the velocity centroids is not solely a function of the POS variation of the LOS velocity, as it is in the incompressible case.  Instead, there will be a contribution from the interaction of the LOS variations of LOS velocity with LOS+POS variations of emissivity
+    + But Lazarian (2007) say that this depends on \delta\rho
+  + [X] PLUS AGAIN it is affected by champagne flows along line of sight, which steepen the structure function without any concommitant change in \mu
     + This happens mainly at the larger separations in the fitting range, which gives it a positive curvature, allowing it to be potentially spotted.  Another telltale sign is a shoulder on the velocity PDF
 *** VCA
 + We use 5 km/s slices as the thin limit
@@ -39,18 +155,19 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   + Also, thermal broadening means that most lines would not benefit from going to higher resolution
   + And smaller slices also run into problems with discretization noise in the simulations that produces spurious small-scale power, as discussed by Esquivel
 + The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
-  + [O III]: \gamma_{thick} = -3.38 \pm 0.04, n = -3.4 \pm 0.1 /YES/
+  + [O III]: \gamma_{thick} = -3.33 \pm 0.03, n = -3.4 \pm 0.1 /YES/
   + H\alpha:  \gamma_{thick} = -2.59 \pm 0.02, n = -2.95 \pm 0.15 /PCA thick slope is too shallow!/
-  + [N II]:
-  + [S II]: 
+  + [N II]: \gamma_{thick} = -2.51 \pm 0.03, n = -2.7
+  + [S II]: \gamma_{thick} = -1.99 \pm 0.03, n = -2.6
 + The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = 3 - \mu
 + There are two cases:
   + steep emissivity, n < -3, appropriate to [O III]: \gamma_{thin} = -3 + m/2
     + [O III]: \gamma_{thin} = -2.84 \pm 0.11 (x-axis), -3 + m/2 = -2.9 /YES/
   + shallow emissivity, n > -3, appropriate to the other lines:  \gamma_{thin} - \gamma_{thick} = m/2
-    + H\alpha: 
-    + [N II]:
-    + [S II]:
+    + H\alpha: \gamma_{thin} - \gamma_{thick} = 0.08 +/- 0.04
+    + [N II]: \gamma_{thin} - \gamma_{thick} = 0.18 \pm 0.04
+    + [S II]: \gamma_{thin} - \gamma_{thick} = 0.18 \pm 0.04
+    + Should all be compared with m/2 = 0.1 \pm 0.05
 
  
 * Why projection smoothing may not happen
@@ -110,7 +227,8 @@ return figfile
           hdu.data = double_down(hdu.data)
           hdu.writeto("bigdata/{}-{:03d}.fits".format(suffix, hdu.data.shape[0]), clobber=True)
 
-  cubes = ["y-Halpha", "n-Halpha", "y-O35007", "n-O35007"]
+  cubes = ["y-Halpha", "n-Halpha", "y-O35007", "n-O35007", 
+           "y-Halpha", "n-Halpha", "y-O35007", "n-O35007", ]
   for cube in cubes:
       all_the_way(cube)
 #+END_SRC
@@ -147,6 +265,9 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-002.fits'. [astropy.io.fits
 WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits.hdu.hdulist]
 #+end_example
 
+** Problems with the thick velocity slices
+
++ 
 ** From Esquivel, Lazarian, Pogosyan, & Cho (2003)
 + n is 3D density spectral index (negative)
   + We have \kappa = n + 2, but we also use m for same thing
@@ -258,8 +379,6 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
 
 ** Simulation [O III] slopes
 
-
-*** New [O III]
 | Time |          Thick |        Thin NB |         Thin B |
 |------+----------------+----------------+----------------|
 |   15 |          -3.47 |          -2.89 |          -3.13 |
@@ -267,210 +386,248 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
 |   25 |          -3.40 |          -2.52 |          -2.74 |
 |   30 |          -3.37 |          -2.41 |          -2.64 |
 |------+----------------+----------------+----------------|
-|      | -3.38 +/- 0.04 | -2.61 +/- 0.10 | -2.84 +/- 0.11 |
-#+TBLFM: @6$2..@6$4=vmeane(@I..@II);f2
-*** Old [O III]
-Note that these all need 1 subtracting from them
-| Time |          Thick |        Thin NB |         Thin B |         m(NB) |          m(B) |
-|------+----------------+----------------+----------------+---------------+---------------|
-|   15 |          -2.58 |          -1.32 |          -2.01 |          1.36 |         -0.02 |
-|   20 |          -2.32 |          -1.13 |          -1.74 |          1.74 |          0.52 |
-|   25 |          -2.37 |          -1.07 |          -1.66 |          1.86 |          0.68 |
-|   30 |          -2.38 |          -0.98 |          -1.57 |          2.04 |          0.86 |
-|------+----------------+----------------+----------------+---------------+---------------|
-|   15 |          -2.14 |          -1.07 |          -1.85 |          1.86 |          0.30 |
-|   20 |          -2.18 |          -1.04 |          -1.64 |          1.92 |          0.72 |
-|   25 |          -2.31 |          -1.03 |          -1.59 |          1.94 |          0.82 |
-|   30 |          -2.39 |          -0.97 |          -1.56 |          2.06 |          0.88 |
-|------+----------------+----------------+----------------+---------------+---------------|
-|   15 |          -2.42 |          -0.98 |          -1.60 |          2.04 |          0.80 |
-|   20 |          -2.26 |          -1.01 |          -1.58 |          1.98 |          0.84 |
-|   25 |          -2.34 |          -0.99 |          -1.59 |          2.02 |          0.82 |
-|   30 |          -2.43 |          -1.10 |          -1.68 |          1.80 |          0.64 |
-|------+----------------+----------------+----------------+---------------+---------------|
-|      | -2.34 +/- 0.03 | -1.06 +/- 0.03 | -1.67 +/- 0.04 | 1.88 +/- 0.06 | 0.66 +/- 0.08 |
-#+TBLFM: $5=2 (2 + $3);f2::$6=2 (2 + $4);f2::@14$2..@14$4=vmeane(@I..@IIII); f2
+|   15 |          -3.14 |          -2.73 |          -3.01 |
+|   20 |          -3.18 |          -2.55 |          -2.76 |
+|   25 |          -3.31 |          -2.48 |          -2.69 |
+|   30 |          -3.39 |          -2.46 |          -2.68 |
+|------+----------------+----------------+----------------|
+|   15 |          -3.42 |          -2.51 |          -2.71 |
+|   20 |          -3.26 |          -2.51 |          -2.69 |
+|   25 |          -3.34 |          -2.45 |          -2.69 |
+|   30 |          -3.43 |          -2.58 |          -2.79 |
+|------+----------------+----------------+----------------|
+|      | -3.33 +/- 0.03 | -2.56 +/- 0.04 | -2.78 +/- 0.04 |
+#+TBLFM: @14$2..@14$4=vmeane(@I..@IIII);f2
 
 
-* Simulation H\alpha slopes
-| Time |          Thick |        Thin NB |         Thin B | (Thin - Thick) NB | (Thin - Thick) B |         m(NB) |          m(B) |
-|------+----------------+----------------+----------------+-------------------+------------------+---------------+---------------|
-|   15 |          -1.65 |          -1.11 |          -1.65 |              0.54 |             0.00 |          1.08 |          0.00 |
-|   20 |          -1.63 |          -1.00 |          -1.56 |              0.63 |             0.07 |          1.26 |          0.14 |
-|   25 |          -1.61 |          -0.88 |          -1.42 |              0.73 |             0.19 |          1.46 |          0.38 |
-|   30 |          -1.56 |          -0.85 |          -1.30 |              0.71 |             0.26 |          1.42 |          0.52 |
-|------+----------------+----------------+----------------+-------------------+------------------+---------------+---------------|
-|   15 |          -1.52 |          -0.96 |          -1.61 |              0.56 |            -0.09 |          1.12 |         -0.18 |
-|   20 |          -1.55 |          -0.93 |          -1.48 |              0.62 |             0.07 |          1.24 |          0.14 |
-|   25 |          -1.60 |          -0.92 |          -1.38 |              0.68 |             0.22 |          1.36 |          0.44 |
-|   30 |          -1.53 |          -0.86 |          -1.33 |              0.67 |             0.20 |          1.34 |          0.40 |
-|------+----------------+----------------+----------------+-------------------+------------------+---------------+---------------|
-|   15 |          -1.66 |          -0.92 |          -1.62 |              0.74 |             0.04 |          1.48 |          0.08 |
-|   20 |          -1.49 |          -0.91 |          -1.40 |              0.58 |             0.09 |          1.16 |          0.18 |
-|   25 |          -1.62 |          -0.90 |          -1.45 |              0.72 |             0.17 |          1.44 |          0.34 |
-|   30 |          -1.66 |          -0.94 |          -1.42 |              0.72 |             0.24 |          1.44 |          0.48 |
-|------+----------------+----------------+----------------+-------------------+------------------+---------------+---------------|
-|      | -1.59 +/- 0.02 | -0.93 +/- 0.02 | -1.47 +/- 0.03 |     0.66 +/- 0.03 |    0.12 +/- 0.04 | 1.32 +/- 0.06 | 0.24 +/- 0.08 |
-#+TBLFM: $5=$3 - $2;f2::$6=$4 - $2;f2::$7=2 $5;f2::$8=2 $6;f2::@14$2..@14$4=vmeane(@I..@IIII); f2
+** Simulation [N II] slopes
 
-** Original data tables from Jane
+| Time |          Thick |        Thin NB |         Thin B |  Thin - Thick |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.41 |          -2.13 |          -2.28 |          0.13 |
+|   20 |          -2.61 |          -2.18 |          -2.36 |          0.25 |
+|   25 |          -2.42 |          -2.13 |          -2.28 |          0.14 |
+|   30 |          -2.58 |          -2.20 |          -2.35 |          0.23 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.38 |          -2.05 |          -2.20 |          0.18 |
+|   20 |          -2.48 |          -2.17 |          -2.31 |          0.17 |
+|   25 |          -2.61 |          -2.22 |          -2.39 |          0.22 |
+|   30 |          -2.52 |          -2.17 |          -2.33 |          0.19 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.42 |          -2.16 |          -2.30 |          0.12 |
+|   20 |          -2.44 |          -2.14 |          -2.29 |          0.15 |
+|   25 |          -2.63 |          -2.22 |          -2.38 |          0.25 |
+|   30 |          -2.66 |          -2.28 |          -2.45 |          0.21 |
+|------+----------------+----------------+----------------+---------------|
+|      | -2.51 +/- 0.03 | -2.17 +/- 0.02 | -2.33 +/- 0.02 | 0.18 +/- 0.04 |
+#+TBLFM: $5=$4 - $2;f2::@14$2..@14$4=vmeane(@I..@IIII);f2
+
+** Simulation [S II] slopes
+| Time |          Thick |        Thin NB |         Thin B |  Thin - Thick |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.13 |          -1.76 |          -1.87 |          0.26 |
+|   20 |          -2.03 |          -1.82 |          -1.89 |          0.14 |
+|   25 |          -1.84 |          -1.69 |          -1.76 |          0.08 |
+|   30 |          -1.85 |          -1.59 |          -1.66 |          0.19 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -1.96 |          -1.61 |          -1.69 |          0.27 |
+|   20 |          -1.82 |          -1.69 |          -1.74 |          0.08 |
+|   25 |          -2.19 |          -1.96 |          -2.02 |          0.17 |
+|   30 |          -1.92 |          -1.64 |          -1.71 |          0.21 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.11 |          -1.90 |          -1.96 |          0.15 |
+|   20 |          -2.04 |          -1.75 |          -1.86 |          0.18 |
+|   25 |          -1.97 |          -1.76 |          -1.80 |          0.17 |
+|   30 |          -1.96 |          -1.73 |          -1.78 |          0.18 |
+|------+----------------+----------------+----------------+---------------|
+|      | -1.99 +/- 0.03 | -1.74 +/- 0.03 | -1.81 +/- 0.03 | 0.18 +/- 0.04 |
+#+TBLFM: $5=$4 - $2;f2::@14$2..@14$4=vmeane(@I..@IIII);f2
 
 
 
-*** vca-11-tab.dat - z-axis
+** Simulation H\alpha slopes
+
+| Time |          Thick |        Thin NB |         Thin B |  Thin - Thick |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.65 |          -2.54 |          -2.67 |         -0.02 |
+|   20 |          -2.63 |          -2.41 |          -2.58 |          0.05 |
+|   25 |          -2.61 |          -2.31 |          -2.48 |          0.13 |
+|   30 |          -2.56 |          -2.23 |          -2.37 |          0.19 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.52 |          -2.49 |          -2.63 |         -0.11 |
+|   20 |          -2.55 |          -2.35 |          -2.51 |          0.04 |
+|   25 |          -2.60 |          -2.29 |          -2.45 |          0.15 |
+|   30 |          -2.53 |          -2.23 |          -2.39 |          0.14 |
+|------+----------------+----------------+----------------+---------------|
+|   15 |          -2.66 |          -2.40 |          -2.64 |          0.02 |
+|   20 |          -2.49 |          -2.26 |          -2.42 |          0.07 |
+|   25 |          -2.62 |          -2.29 |          -2.50 |          0.12 |
+|   30 |          -2.66 |          -2.35 |          -2.48 |          0.18 |
+|------+----------------+----------------+----------------+---------------|
+|      | -2.59 +/- 0.02 | -2.35 +/- 0.03 | -2.51 +/- 0.03 | 0.08 +/- 0.04 |
+#+TBLFM: $5=$4 - $2;f2::@14$2..@14$4=vmeane(@I..@IIII);f2
+
+** Original data tables from Jane                                  :noexport:
+
+
+
+*** New vca-11-tab.dat - z-axis
+:LOGBOOK:
+- Note taken on [2013-12-13 Fri 08:45] \\
+  Updated
+:END:
           Thick            Thin
 
 Halpha
 No broadening
-15        -1.65           -1.11		
-20        -1.63           -1.00
-25        -1.61           -0.88
-30        -1.56           -0.85
+15        -2.65           -2.54		
+20        -2.63           -2.41
+25        -2.61           -2.31
+30        -2.56           -2.23
 Broadening
-15        -1.65           -1.65
-20        -1.63           -1.56
-25        -1.61           -1.42
-30        -1.56           -1.30
+15        -2.65           -2.67
+20        -2.63           -2.58
+25        -2.61           -2.48
+30        -2.56           -2.37
 
 O35007
 No broadening
-15        -2.58           -1.32
-20        -2.32           -1.13
-25        -2.37           -1.07
-30        -2.38           -0.98
+15        -3.58           -2.90
+20        -3.32           -2.62
+25        -3.37           -2.57
+30        -3.38           -2.46
 Broadening
-15        -2.58           -2.01
-20        -2.32           -1.74
-25        -2.37           -1.66
-30        -2.38           -1.57
+15        -3.58           -3.15
+20        -3.32           -2.84
+25        -3.37           -2.78
+30        -3.38           -2.69
 
 N26584
 No broadening
-15        -1.41           -0.80
-20        -1.61           -0.83
-25        -1.42           -0.81
-30        -1.58           -0.89
+15        -2.41           -2.13
+20        -2.61           -2.18
+25        -2.42           -2.13
+30        -2.58           -2.20
 Broadening
-15        -1.41           -1.24
-20        -1.61           -1.31
-25        -1.42           -1.23
-30        -1.58           -1.30
+15        -2.41           -2.28
+20        -2.61           -2.36
+25        -2.42           -2.28
+30        -2.58           -2.35
 
 S26716
 No broadening
-15        -1.13           -0.46
-20        -1.03           -0.41
-25        -0.84           -0.28
-30        -0.85           -0.24
+15        -2.13           -1.76
+20        -2.03           -1.82
+25        -1.84           -1.69
+30        -1.85           -1.59
 Broadening
-15        -1.13           -0.85
-20        -1.03           -0.84
-25        -0.84           -0.65
-30        -0.85           -0.58
+15        -2.13           -1.87
+20        -2.03           -1.89
+25        -1.84           -1.76
+30        -1.85           -1.66
 
-*** vca-21-tab.dat - y-axis
+*** New vca-21-tab.dat - y-axis
           Thick            Thin
 
 Halpha
 No broadening
-15        -1.52           -0.96                    		
-20        -1.55           -0.93
-25        -1.60           -0.92
-30        -1.53           -0.86
+15        -2.52           -2.49                    		
+20        -2.55           -2.35
+25        -2.60           -2.29
+30        -2.53           -2.23
 Broadening
-15        -1.52           -1.61
-20        -1.55           -1.48
-25        -1.60           -1.38
-30        -1.53           -1.33
+15        -2.52           -2.63
+20        -2.55           -2.51
+25        -2.60           -2.45
+30        -2.53           -2.39
 
 O35007
 No broadening
-15        -2.14           -1.07        
-20        -2.18           -1.04
-25        -2.31           -1.03
-30        -2.39           -0.97
+15        -3.14           -2.73        
+20        -3.18           -2.55
+25        -3.31           -2.48
+30        -3.39           -2.46
 Broadening
-15        -2.14           -1.85
-20        -2.18           -1.64
-25        -2.31           -1.59
-30        -2.39           -1.56
+15        -3.14           -3.01
+20        -3.18           -2.76
+25        -3.31           -2.69
+30        -3.39           -2.68
 
 N26584
 No broadening
-15        -1.38           -0.70
-20        -1.48           -0.84
-25        -1.61           -0.89
-30        -1.52           -0.86
+15        -2.38           -2.05
+20        -2.48           -2.17
+25        -2.61           -2.22
+30        -2.52           -2.17
 Broadening
-15        -1.38           -1.16
-20        -1.48           -1.26
-25        -1.61           -1.33
-30        -1.52           -1.29
+15        -2.38           -2.20
+20        -2.48           -2.31
+25        -2.61           -2.39
+30        -2.52           -2.33
 
 S26716
 No broadening
-15        -0.96           -0.29
-20        -0.82           -0.34
-25        -1.19           -0.51
-30        -0.92           -0.24
+15        -1.96           -1.61
+20        -1.82           -1.69
+25        -2.19           -1.96
+30        -1.92           -1.64
 Broadening
-15        -0.96           -0.64
-20        -0.82           -0.65
-25        -1.19           -0.91
-30        -0.92           -0.61
+15        -1.96           -1.69
+20        -1.82           -1.74
+25        -2.19           -2.02
+30        -1.92           -1.71
 
-*** vca-31-tab.dat - x-axis
+
+
+*** New vca-31-tab.dat - x-axis
           Thick            Thin
 
 Halpha
 No broadening
-15        -1.66           -0.92                            		
-20        -1.49           -0.91
-25        -1.62           -0.90
-30        -1.66           -0.94
+15        -2.66           -2.40                            		
+20        -2.49           -2.26
+25        -2.62           -2.29
+30        -2.66           -2.35
 Broadening
-15        -1.66           -1.62
-20        -1.49           -1.40
-25        -1.62           -1.45
-30        -1.66           -1.42
+15        -2.66           -2.64
+20        -2.49           -2.42
+25        -2.62           -2.50
+30        -2.66           -2.48
 
 O35007
 No broadening
-15        -2.42           -0.98        
-20        -2.26           -1.01
-25        -2.34           -0.99
-30        -2.43           -1.10
+15        -3.42           -2.51        
+20        -3.26           -2.51
+25        -3.34           -2.45
+30        -3.43           -2.58
 Broadening
-15        -2.42           -1.60
-20        -2.26           -1.58
-25        -2.34           -1.59
-30        -2.43           -1.68
+15        -3.42           -2.71
+20        -3.26           -2.69
+25        -3.34           -2.69
+30        -3.43           -2.79
 
 N26584
 No broadening
-15        -1.42           -0.80
-20        -1.44           -0.82
-25        -1.63           -0.88
-30        -1.66           -0.91
+15        -2.42           -2.16
+20        -2.44           -2.14
+25        -2.63           -2.22
+30        -2.66           -2.28
 Broadening
-15        -1.42           -1.25
-20        -1.44           -1.25
-25        -1.63           -1.34
-30        -1.66           -1.39
+15        -2.42           -2.30
+20        -2.44           -2.29
+25        -2.63           -2.38
+30        -2.66           -2.45
 
 S26716
 No broadening
-15        -1.21           -0.57
-20        -1.09           -0.44
-25        -0.96           -0.29
-30        xxx             xxx
+15        -2.11           -1.90
+20        -2.04           -1.75
+25        -1.97           -1.76
+30        -1.96           -1.73
 Broadening
-15        -1.21           -0.93
-20        -1.09           -0.80
-25        -0.96           -0.75
-30        xxx             xxx
-
-
-
+15        -2.11           -1.96
+20        -2.04           -1.86
+25        -1.97           -1.80
+30        -1.96           -1.78
 
 
