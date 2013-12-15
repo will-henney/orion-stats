@@ -10,8 +10,39 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   \newcommand\oiii{[\ion{O}{3}]}
   \newcommand\ha{\ensuremath{\mathrm{H\alpha}}}
   \newcommand\hii{\ion{H}{1}}
+  
   % INTRINSIC POWER SPECTRA OF PHYSICAL QUANTITIES
-  TODO
+  Figure~\ref{fig:intrinsic-power-spectra} shows that
+  the power spectra of physical quantities are very well approximated
+  by power laws over the range from \(k = 4 \to 32\)
+  (scales of 1~pc to 0.125~pc).
+  In particular, the ionized gas velocity shows
+  a power law slope of \(\mu = -3.2 \pm 0.1\)
+  once the turbulence is fully developed. 
+  This is significantly shallower than the Kolmogorov (\(\mu = -3.667\))
+  or Burgers (\(\mu = -4\)) value,
+  indicating more velocity structure at small scales than would be seen
+  in a simple turbulent cascade of energy injected at the largest scale.
+  One reason for this may be that energy is injected over a variety of scales.
+  As a consequence,
+  the turbulent velocity dispersion is relatively insensitive to scale,
+  varying as \(\sigma \sim L^{0.5 (-3 - \mu)} \sim L^{0.01}\). 
+  
+  The density has a very similar slope to the velocity: \(n = -3.2 \pm 0.1\),
+  but of greater relevance
+  are the slopes of the emissivities of the different emission lines,
+  which are \(n = -3.4 \pm 0.1\) for \oiii{}, 
+  \(n = -2.9 \pm 0.1\) for \ha,
+  \(n = -2.7 \pm 0.1\) for \nii, and
+  \(n = -2.6 \pm 0.1\) for \sii.
+  These span the critical value of \(n = -3\)
+  that divides ``steep'' from ``shallow'' power spectra.
+  \oiii{} has a steep slope,
+  indicating that large-scale fluctuations dominate,
+  while \nii{} and \sii{} have shallow slopes,
+  indicating that small-scale fluctuations dominate. 
+  The \ha{} slope is very close to the critical value,
+  indicating roughly equal contributions from fluctuations on all size-scales.
   
   % DETERMINING \mu AND n FROM OBSERVATIONAL DIAGNOSTICS
   It is interesting to study the question of whether
@@ -108,23 +139,50 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   produces more modest density contrasts. 
   
   % VCA
-  TODO
+  The velocity channel analysis consists of calculating the
+  two-dimensional power spectrum of the brightness distribution
+  in isovelocity channels of varying thickness.  
+  We consider two cases: thick slices,
+  which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+  to include all the emission in the line,
+  and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+  Because the velocity spectrum in our simulations is rather shallow (see above),
+  the line-of-sight turbulent velocity dispersion \(\delta v\)
+  exceeds the width of these thin slices
+  over the full range of length scales that we can usefully study,
+  from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^-1}\))
+  to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\ s^-1}\)). 
+  
+  To use thinner slices would not be useful for a variety of reasons.
+  First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+  that can be achieved with optical spectrographs
+  that are optimised for studying extended sources. 
+  Second, thinner slices are increasingly subject to ``shot noise'' 
+  due to the finite resolution of the numerical simulations,
+  which produces spurious small-scale power, as discussed by 
+  \citet{Esquivel:2003a} and \citet{Miville-Deschenes:2003a}.
+  Third, thermal broadening would smoothe out any structure on 
+  scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+  
+  
 #+END_SRC
 
 * Conclusions
-** Intrinsic power spectra of physical quantities
-+ We have good power laws over a reasonable range
-+ Ionized gas velocity has slope \mu = -3.2 \pm 0.1 once the turbulence is fully developed
+** DONE Intrinsic power spectra of physical quantities
+CLOSED: [2013-12-14 Sat 17:40]
++ [X] We have good power laws over a reasonable range
++ [X] Ionized gas velocity has slope \mu = -3.2 \pm 0.1 once the turbulence is fully developed
   + This rather shallow compared with Kolmogorov (\mu = -3.667) or Burgers (\mu = -4.0), implying relatively more velocity structure at smaller scales than is seen in an inertial cascade
   + One reason for this may be the injection of energy at all scales
   + The associated autocorrelation slope of u^2 (or second-order structure function slope) is m = -3 - \mu = 0.2 \pm 0.1, where \delta{}u \sim L^{m/2}
   + So u \sim L^{0.1 \pm 0.05}, which is remarkably shallow.  It means that with \sigma \approx 10 km/s on scale of 1 pc, we will still have \sigma = 8 km/s on scale of 0.1 pc
-+ Density has slope n = -3.2, same as velocity, but more relevant are emissivity slopes: n = -2.9 \pm 0.1 for H\alpha and n = -3.4 \pm 0.1 for [O III]
++ [X] Density has slope n = -3.2, same as velocity, but more relevant are emissivity slopes: n = -2.9 \pm 0.1 for H\alpha and n = -3.4 \pm 0.1 for [O III]
 ** DONE We want to see if we can diagnose the intrinsic power spectrum from observables
 CLOSED: [2013-12-13 Fri 17:55]
 + In particular the power law index of the ionized gas velocity power spectrum, which is -3.2 \pm 0.1 in our simulations
 + Can it be deduced from the /Structure Function/ or the /Velocity Channel Analysis/?
-*** Structure function
+*** DONE Structure function
+CLOSED: [2013-12-14 Sat 16:28]
 + [X] has big advantage that it is relatively immune to effects of thermal broadening and poor instrumental resolution, so can be used for H\alpha
 + big disadvantage that it has the uncertainty of projection smoothing
   + [X] smoothing should apply at scales smaller than the characteristic line-of-sight depth of the emitting gas
@@ -149,18 +207,18 @@ CLOSED: [2013-12-13 Fri 17:55]
     + But Lazarian (2007) say that this depends on \delta\rho
   + [X] PLUS AGAIN it is affected by champagne flows along line of sight, which steepen the structure function without any concommitant change in \mu
     + This happens mainly at the larger separations in the fitting range, which gives it a positive curvature, allowing it to be potentially spotted.  Another telltale sign is a shoulder on the velocity PDF
-*** VCA
-+ We use 5 km/s slices as the thin limit
+*** TODO VCA
++ [X] We use 5 km/s slices as the thin limit
   + This is the highest resolution that can regularly be achieved with current echelle spectrographs
   + Also, thermal broadening means that most lines would not benefit from going to higher resolution
   + And smaller slices also run into problems with discretization noise in the simulations that produces spurious small-scale power, as discussed by Esquivel
-+ The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
++ [ ] The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
   + [O III]: \gamma_{thick} = -3.33 \pm 0.03, n = -3.4 \pm 0.1 /YES/
   + H\alpha:  \gamma_{thick} = -2.59 \pm 0.02, n = -2.95 \pm 0.15 /PCA thick slope is too shallow!/
   + [N II]: \gamma_{thick} = -2.51 \pm 0.03, n = -2.7
   + [S II]: \gamma_{thick} = -1.99 \pm 0.03, n = -2.6
-+ The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = 3 - \mu
-+ There are two cases:
++ [ ] The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = 3 - \mu
++ [ ] There are two cases:
   + steep emissivity, n < -3, appropriate to [O III]: \gamma_{thin} = -3 + m/2
     + [O III]: \gamma_{thin} = -2.84 \pm 0.11 (x-axis), -3 + m/2 = -2.9 /YES/
   + shallow emissivity, n > -3, appropriate to the other lines:  \gamma_{thin} - \gamma_{thick} = m/2
