@@ -150,13 +150,14 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   the line-of-sight turbulent velocity dispersion \(\delta v\)
   exceeds the width of these thin slices
   over the full range of length scales that we can usefully study,
-  from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^-1}\))
-  to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\ s^-1}\)). 
+  from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+  to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\ s^{-1}}\)). 
   
   To use thinner slices would not be useful for a variety of reasons.
   First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
   that can be achieved with optical spectrographs
-  that are optimised for studying extended sources. 
+  that are optimised for studying extended sources,
+  such as Keck HIRES or VLT UVES. 
   Second, thinner slices are increasingly subject to ``shot noise'' 
   due to the finite resolution of the numerical simulations,
   which produces spurious small-scale power, as discussed by 
@@ -164,6 +165,45 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   Third, thermal broadening would smoothe out any structure on 
   scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
   
+  The procedure for deriving the power law index
+  of the velocity fluctuations from the velocity channels is
+  slightly different, depending on whether the power spectrum 
+  of the emissivity fluctuations is ``steep'' or ``shallow'' (see above). 
+  In the steep case, which applies to \oiii{} in our simulation, 
+  the slope of the average power spectrum of the brightness maps
+  in the thin isovelocity channels is given by 
+  \(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+  where \(m_{\mathrm{3D}} = -3 - \mu = 0.2 \pm 0.1\) for our simulation.
+  The derived value from the \oiii{} thin channel maps is 
+  \(\gamma_{\mathrm{thin}} = -2.84 \pm 0.11 \),
+  which compares very well with the value \(-2.9 \pm 0.05\)
+  that is implied by the simulation's value of \(\mu\). 
+  
+  In the shallow case, it is the difference in slope
+  between the thin and thick slices
+  that is predicted to depend on the velocity fluctuations:
+  \(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{thick}} = \frac12 m_{\mathrm{3D}}\). 
+  The derived values are 
+  \(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{thick}} = 0.08 \pm 0.04\), 
+  \(0.18 \pm 0.04\), and \(0.18 \pm 0.04\)
+  for \ha, \nii, and \sii, respectively. 
+  These also compare well with the value of \(0.1 \pm 0.05\)
+  that is implied by the simulation's value of \(\mu\). 
+  
+  The slopes of the power spectra of the thick slices themselves, 
+  which are simply the velocity-integrated surface brightness images\footnote{
+    Although for simplicity, extinction is not included.}
+  are predicted \citep{Lazarian:2000a}
+  to be equal to the slopes of the 3D power spectra of their respective emissivities. 
+  However, only in the case of \oiii{} do we find this to be the case.
+  In the case of the other lines, \(\gamma_{\mathrm{thick}}\) is shallower than
+  the emissivity's \(n\) by 0.36, 0.19, 0.61 or \ha, \nii, and \sii, respectively. 
+  The reason for this discrepancy may be the increasingly ``sheet-like'' morphology
+  of the emission in the lower ionization lines. 
+  As shown in \S~4.1 of \citet{Miville-Deschenes:2003a}, 
+  one should see a transition from \(\gamma_{\mathrm{thick}} = n\) to the 
+  shallower slope \(\gamma_{\mathrm{thick}} = n + 1\) at transverse scales larger
+  than the line-of-sight depth of the emitting region.
   
 #+END_SRC
 
@@ -212,16 +252,16 @@ CLOSED: [2013-12-14 Sat 16:28]
   + This is the highest resolution that can regularly be achieved with current echelle spectrographs
   + Also, thermal broadening means that most lines would not benefit from going to higher resolution
   + And smaller slices also run into problems with discretization noise in the simulations that produces spurious small-scale power, as discussed by Esquivel
-+ [ ] The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
++ [X] The thick slices should have an index \gamma_{thick} equal to the power law index n of the 3D power spectrum of the line emissivity in all cases (/but are we really sure of this/):
   + [O III]: \gamma_{thick} = -3.33 \pm 0.03, n = -3.4 \pm 0.1 /YES/
   + H\alpha:  \gamma_{thick} = -2.59 \pm 0.02, n = -2.95 \pm 0.15 /PCA thick slope is too shallow!/
   + [N II]: \gamma_{thick} = -2.51 \pm 0.03, n = -2.7
   + [S II]: \gamma_{thick} = -1.99 \pm 0.03, n = -2.6
-+ [ ] The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = 3 - \mu
-+ [ ] There are two cases:
-  + steep emissivity, n < -3, appropriate to [O III]: \gamma_{thin} = -3 + m/2
-    + [O III]: \gamma_{thin} = -2.84 \pm 0.11 (x-axis), -3 + m/2 = -2.9 /YES/
-  + shallow emissivity, n > -3, appropriate to the other lines:  \gamma_{thin} - \gamma_{thick} = m/2
++ [X] The thin slices, with width < \delta{}v(k), should have a shallower slope \gamma_{thin}, which depends on the velocity fluctuations \mu, or equivalently m = -3 - \mu
++ [X] There are two cases:
+  + [X] steep emissivity, n < -3, appropriate to [O III]: \gamma_{thin} = -3 + m/2
+    + [O III]: \gamma_{thin} = -2.84 \pm 0.11, -3 + m/2 = -2.9 /YES/
+  + [X] shallow emissivity, n > -3, appropriate to the other lines:  \gamma_{thin} - \gamma_{thick} = m/2
     + H\alpha: \gamma_{thin} - \gamma_{thick} = 0.08 +/- 0.04
     + [N II]: \gamma_{thin} - \gamma_{thick} = 0.18 \pm 0.04
     + [S II]: \gamma_{thin} - \gamma_{thick} = 0.18 \pm 0.04
