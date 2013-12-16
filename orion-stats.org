@@ -4,3 +4,14 @@
 * Structure functions
 + Initial work is in [[file:~/Work/BobKPNO/]]
 + 
++ 
+
+
+* Velocity channel analysis
++ [ ] Maybe add together the [N II] and [O III] cubes
++ [ ] Thin versus thin slices from the Orion data
+  + Not so clear that there is shallower power spectrum in the thin slices than in the thin slices
+  + But there is definitely a higher amplitude of fluctuations
+  + Anyway, we need to measure it
+
+* 
