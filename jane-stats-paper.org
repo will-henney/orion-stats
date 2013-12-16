@@ -1,5 +1,28 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
+* FIgure caption
+#+BEGIN_SRC latex
+  \begin{figure}
+    \centering
+    \includegraphics{o3-thick-thin}
+    \caption{Surface brightness maps in thick (left) versus thin (right) 
+      velocity slices for the \oiii{} line from our simulation
+      at an age of 300,000~years.  
+      The thick slice covers the full velocity range of the emission line,
+      while the thin slice has a width of 5~\kms{},
+      which is smaller than the turbulent velocity fluctuations,
+      but slightly larger than the thermal broadening for this line.
+      It is apparent that the thin slice shows considerably greater
+      small-scale structure than the thick slice,
+      which is reflected in its shallower power spectrum.
+      The brightness structure in the thick slice is due entirely to
+      the emissivity fluctuations within the \hii{} region, 
+      whereas the additional structure in the thin slice is caused by
+      velocity fluctuations.
+    }
+    \label{fig:o3-thick-thin}
+  \end{figure}
+#+END_SRC
 * Latex material for discussion
 #+BEGIN_SRC latex
   \newcounter{ionstage}
