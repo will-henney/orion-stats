@@ -207,6 +207,7 @@ Stuff for the Sac and Jane paper on turbulence diagnostics
   
 #+END_SRC
 
+
 * Conclusions
 ** DONE Intrinsic power spectra of physical quantities
 CLOSED: [2013-12-14 Sat 17:40]
@@ -305,10 +306,39 @@ All the n=128 PPV cubes have 1.2667 km/s channels
 #+TBLFM: $2=1.2667 (128/$1) ; f1
 *** Make figure of velocity slices
 #+BEGIN_SRC python :results file
-from astropy.io import fits
-
-return figfile
+  import matplotlib
+  matplotlib.use('Agg')
+  import aplpy
+  import matplotlib.pyplot as plt
+  fig = plt.figure(figsize=(8, 4))
+  f1 = aplpy.FITSFigure("bigdata/y-O35007-032.fits",
+                        figure=fig, subplot=[0.5,0.0,0.5,1.0],
+                        slices=[13])
+  f1.tick_labels.hide()
+  f1.axis_labels.hide()
+  f1.frame.set_linewidth(0)
+  f1.show_grayscale(vmin=0.0, vmax=1.5e6, invert=True)
+  
+  f2 = aplpy.FITSFigure("bigdata/y-O35007-001.fits",
+                        figure=fig, subplot=[0.0,0.0,0.5,1.0],
+                        )
+  f2.tick_labels.hide()
+  f2.axis_labels.hide()
+  f2.frame.set_linewidth(0)
+  f2.add_scalebar(128)
+  f2.scalebar.set_label("1.0 pc")
+  f2.show_grayscale(vmin=0.0, vmax=4.5e6, invert=True)
+  
+  fig.text(0.05, 0.9, "Thick slice")
+  fig.text(0.55, 0.9, "Thin slice")
+  figfile = "o3-thick-thin.pdf"
+  fig.savefig(figfile)
+  return figfile
 #+END_SRC
+
+#+RESULTS:
+[[file:o3-thick-thin.pdf]]
+
 *** Halve resolution of PPV cube
 #+BEGIN_SRC python :results output
   import numpy as np
@@ -326,7 +356,7 @@ return figfile
           hdu.writeto("bigdata/{}-{:03d}.fits".format(suffix, hdu.data.shape[0]), clobber=True)
 
   cubes = ["y-Halpha", "n-Halpha", "y-O35007", "n-O35007", 
-           "y-Halpha", "n-Halpha", "y-O35007", "n-O35007", ]
+           "y-N26584", "n-N26584", "y-S26716", "n-S26716", ]
   for cube in cubes:
       all_the_way(cube)
 #+END_SRC
