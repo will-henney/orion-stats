@@ -1,6 +1,130 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
-* FIgure caption
+* Observational turbulence studies
++ GENERAL
+  + Disparate results
+  + Varying methodology
+    + whether or not to use separate velocity components
+    + whether or not to subtract out large-scale systematic velocity gradients
++ Miville-Deschenes (1995ApJ...454..316M)
+  + Do the autocorrelation function and the structure function
+    + But they fit and remove a fourth order polynomial first!
+    + This should only affect the largest scales (> 1 pc in their case)
+    + They find a completely flat strucfunc for scales > 0.07 pc
+    + And and about L^{0.6} for smaller scales (by eye from the graph)
+  + They also calculate a \sigma-size relation
+    + This shows \sigma \sim L^{0.3} over 0.1 \to 10 pc, which is strangely inconsistent with the strucfunc
+    + They do say that the dispersion-size relation does not necessarily indicate turbulence
++ Lagrois & Joncas (2011MNRAS.413..721L)
+  + Study a giant extragalactic HII region
+  + Find a steepish structure function up to 50 pc
+  + But actually the slopes are somewhat like ours
+  + \sigma_c = 6, 8, 5 km/s for H\alpha, [O III], [S II]
+  + => \sigma_c^2 = 36, 64, 25
+  + cf. our values of 10, 16, 13 
+
++ O'Dell & Wen (1992ApJ...387..229O)
+  + [O I] line
+    + They do not remove any gradients
+    + They do correct for instrumental width
+      + B(r) = B_0(r) - 2 v_ins^2, where v_ins = 0.516 km/s
+      + Their smallest B(r) is 1 km^2/s^2 so this hardly affects the results
+  + Structure function has slope of 0.68 from 6.25 to 85 arcsec
+    + 0.013 to 0.177 parsec
+  + Also measure linewidth-size relation, finding slope of 0.41
+  + These are more-or-less consistent with a Kolmogorov-type slope of
+    + 0.667 for struc func
+    + 0.333 for linewidth-size (less good agreement here)
+  + Since the [O I] layer is so thin, there should be no projection smoothing to speak of
++ O'Dell & Castañeda (1987ApJ...317..686O)
+  + Summarise many HII regions
++ Most comprehensive study
+  + Curves are all over the place
+  + But find that structure functions are much flatter than Kolmogorov
+  + Best fit is with v independent of L
++ Castañeda 1988 (1988ApJS...67...93C)
+  + [O III] from Orion
+  + Fits 3 velocity systems A, B, C (C is scattered)
+  + Finds turnover in the struc func around 10 \to 20 arcsec, 0.02 parsec
++ Wen & O'Dell (1993ApJ...409..262W)
+  + [S III] from Orion
+  + Fits multiple systems but only analyses brightest
+  + Turnover in struc func is at 30 arcsec, 0.04 parsec
+
+
+
+** Text for Jane
+#+BEGIN_SRC latex
+  \textit{First paragraph as is, but mention the Orion [\ion{S}{3}] and
+    [\ion{O}{1}] studies.}
+  
+  Observational studies of the spatial scales of velocity fluctuations 
+  have mostly focused on the structure function of velocity centroids.  
+  The results are rather disparate, partly because the methodology varies
+  considerably between different studies. 
+  For instance, some authors attempt to filter out ``ordered'' large scale motions
+  before analysing the fluctuations \citep{1995ApJ...454..316M, 2011MNRAS.413..721L},
+  whereas others analyse the unfiltered observations \citep{1992ApJ...387..229O, 1997ApJ...487..163M}.
+  Also, in some cases multiple Gaussian velocity components are fitted to the line profiles
+  \citep{1988ApJS...67...93C, 1993ApJ...409..262W},
+  which are then assigned to a small number of velocity ``systems'' that are each analysed separately,
+  whereas in most studies the mean velocity of the entire line profile is used. 
+  
+  Despite these differences, there are interesting commonalities in the results:
+  a rising structure function with \(m_{\mathrm{2d}} = 0.5\)--\(1.0\) 
+  is nearly always found at the smallest scales,
+  which transitions to a flat structure function with \(m_{\mathrm{2d}} \sim 0\) at larger scales. 
+  However, the scale at which the transition occurs varies enormously from object to object,   
+  from \(0.02\)--\(0.2\)~pc in compact (\(R = 1 \to 5\)~pc) Galactic \hii{} regions
+  \citep{1987ApJ...317..676O, 1988ApJS...67...93C, 1993ApJ...409..262W, 1995ApJ...454..316M},
+  up to 50~pc in giant (\(R \sim 400\)~pc) extragalactic regions \citp{2011MNRAS.413..721L}.\footnote{
+    Such giant \hii{} regions show velocity centroid dispersions of
+    \(\sigma_{\mathrm{c}} > 10~\mathrm{km\ s^{-1}}\) on the largest scales,
+    which is several times larger than is seen in compact single-star regions
+    or in our simulations.  We will therefore not consider them further since they are 
+    governed by additional physical processes, such as powerful stellar winds and the 
+    cluster gravitational potential, which are beyond the scope of the current paper.
+  }
+  
+  The explanations that have been offered for the break in the structure function slope are also varied.
+  In the case of compact \hii{} regions, it is often taken to indicate the
+  characteristic line-of-sight depth of the emission zone \citep{1951ZA.....30...17V, 1987ApJ...317..686O},
+  with projection smoothing steepening the slope at the smaller separations
+  (see \S~{sec:projection-smoothing} above). 
+  If that were the case, then the correct three-dimensional structure function slope is the flat one:
+  \(m_{\mathrm{3d}} \sim 0\), corresponding to a velocity power spectrum slope of \(n = -3\). 
+  This interpretation would be broadly consistent with our simulation results, 
+  which show a very similar velocity power spectrum (Fig.~\ref{fig:power-spectra}).
+  However, our simulated structure functions rarely show a clear break in the same way as the observations do,
+  although they do show a slight negative curvature in many cases.
+  This is probably because of the very limited useful dynamic range, roughly a factor of 10, 
+  that the simulations allow between the small scales that are affected by numerical diffusion
+  and the large scales, that are affecetd by systematic flows, anisotropies, and edge-effects. 
+  
+  An alternative explanation for the observed break in the structure function is that
+  it represents the scale of the largest turbulent eddies
+  \citep{1988ApJS...67...93C, 1995ApJ...454..316M}
+  and that the fluctuations at larger scales are simply uncorrelated.  
+  In such a picture it would still be necessary to postulate a velocity spectrum
+  considerably shallower than Kolmogorov in order to explain the small-scale slope. 
+  
+  Based on the discussion of our simulation results above (\S~\ref{sec:will-discuss}),
+  it seems that Velocity Channel Analysis would be a very useful complement to the structure function,
+  since it is less affected by uncertainties in projection smoothing
+  and gives a more consistent result between different emission lines 
+  (at least, for our simulations).
+  
+  In a forthcoming paper, we will present such an analysis of recent
+  high-resolution echelle spectroscopy of multiple emission lines in the Orion Nebula
+  \citep{2008RMxAA..44..181G, 2008AJ....136.1566O}
+  
+  
+#+END_SRC
+** The "problem of the line widths"
++ What do they mean by this?
+  + Supposedly the structure function implies a smaller FWHM than is observed
+
+* Figure caption
 #+BEGIN_SRC latex
   \begin{figure}
     \centering
@@ -469,6 +593,18 @@ WARNING: Overwriting existing file 'bigdata/n-O35007-001.fits'. [astropy.io.fits
 | [NII]λ6584  |    0.46 | 0.54 | 0.58 |    0.54 | 0.44 | 0.56 |    0.60 | 0.48 | 0.55 |    0.66 | 0.63 | 0.53 | 0.55 +/- 0.02 |
 | [SII]λ6716  |    0.41 | 0.44 | 0.50 |    0.44 | 0.37 | 0.47 |    0.45 | 0.43 | 0.48 |    0.43 | 0.47 | 0.48 | 0.45 +/- 0.01 |
 #+TBLFM: $14=vmeane($2..$13); f2
+
+
+Same, but without the 150,000 years 
+| Time        | 200,000 |      |      | 250,000 |      |      | 300,000 |      |      |               |
+| Plane       |     x−y |  x−z |  y−z |     x−y |  x−z |  y−z |     x−y |  x−z |  y−z | AVERAGE       |
+|-------------+---------+------+------+---------+------+------+---------+------+------+---------------|
+| Hα          |    0.61 | 0.51 | 0.60 |    0.71 | 0.53 | 0.51 |    0.79 | 0.58 | 0.61 | 0.61 +/- 0.03 |
+| [OIII]λ5007 |    0.68 | 0.78 | 0.70 |    0.83 | 0.73 | 0.59 |    1.02 | 0.63 | 0.74 | 0.74 +/- 0.04 |
+| [NII]λ6584  |    0.54 | 0.44 | 0.56 |    0.60 | 0.48 | 0.55 |    0.66 | 0.63 | 0.53 | 0.55 +/- 0.02 |
+| [SII]λ6716  |    0.44 | 0.37 | 0.47 |    0.45 | 0.43 | 0.48 |    0.43 | 0.47 | 0.48 | 0.45 +/- 0.01 |
+#+TBLFM: $11=vmeane($2..$10); f2
+
 
 
 
