@@ -1,5 +1,25 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
+* Abstract
+#+BEGIN_SRC latex
+  We investigate the scale dependence of fluctuations inside a realistic
+  model of an evolving turbulent \hii{} region and to what extent these
+  may be studied observationally.  We find that the multiple scales of
+  energy injection from champagne flows and the photoionization of
+  clumps and filaments leads to a flatter spectrum of fluctuations than
+  would be expected from top-down turbulence driven at the largest
+  scales.  The traditional structure function approach to the
+  observational study of velocity fluctuations is shown to be
+  incapable of reliably determining the velocity power spectrum of our
+  simulation.  We find that a more promising approach is the Velocity
+  Channel Analysis technique of Lazarian \& Pogosyan (2000), which,
+  despite being intrinsically limited by thermal broadening, can
+  successfuly recover the logarithmic slope of the velocity power
+  spectrum to a precision of \(\pm 0.1\) from high resolution optical
+  emission line spectroscopy.
+  
+#+END_SRC
+
 * Summary and Conclusions
 #+BEGIN_SRC latex
   \begin{enumerate}
