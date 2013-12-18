@@ -1,5 +1,50 @@
 Stuff for the Sac and Jane paper on turbulence diagnostics
 
+* Summary and Conclusions
+#+BEGIN_SRC latex
+  \begin{enumerate}
+  \item We have investigated the statistics of fluctuations in physical
+    conditions within a radiation hydrodynamic simulation of the
+    evolution of an \hii{} region inside a highly inhomogeneous
+    molecular cloud.  We find that steady-state turbulence,
+    corresponding to time-independent profiles of the 3D power-spectra, is
+    only established after about 1.5 sound-crossing times of the \hii{}
+    region. In these simulations, this corresponds to about 200,000
+    years.
+  \item We find a power law behavior for the 3D power spectra in the
+    range from about 1 pc down to 0.125 pc, equivalent to 16
+    computational cells. The larger scale can be interpreted as the size
+    of the largest photoevaporated flows, while the smaller scale is
+    about twice the numerical dissipation scale.  The power spectrum
+    slopes of the velocity and density fluctuations are very similar and
+    always lie in the range \(-3.1 \pm 0.1\).  This is significantly
+    shallower than the slope predicted for the inertial range of either
+    incompressible or compressible turbulence (\(-3.667 \to -4.1\)).
+    This suggests that turbulent driving is occuring over all scales in
+    our simulation, unlike the case of classical turbulence where energy is
+    injected only at the largest scales.  The power spectrum slopes of
+    the emissivities of optical lines are even shallower, increasingly so
+    for lower ionization lines, indicating that the smallest scale
+    fluctuations are dominant.
+  \item We investigate in detail the utility of observational
+    diagnostics for inferring the power spectra of emissivity and
+    velocity fluctuations in our simulation.  We find that the
+    traditional velocity centroid structure function technique gives
+    ambivalent results because of the effects of projection smoothing,
+    combined with the fact that the effective line of sight depth of the
+    emitting gas does not have a single well-defined value.  In
+    addition, the presence of anisotropic motions such as champagne
+    flows can yield misleading structure function slopes when the
+    simulation is viewed from certain directions.
+  \item The more recently developed technique of Velocity Channel
+    Analysis is found to offer a more robust diagnostic of the
+    three-dimensional velocity statistics of our simulation.  The slope
+    of the velocity power spectrum can be correctly recovered to a precision
+    of \(\pm 0.1\) from either high or low ionization lines, and with no
+    significant dependence on viewing direction.
+  \end{enumerate}
+#+END_SRC
+
 * Observational turbulence studies
 + GENERAL
   + Disparate results
