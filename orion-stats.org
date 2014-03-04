@@ -1,9 +1,42 @@
 + Return to velocity statistics from the Orion KPNO and SPM datasets
 + Coming back to it after 7 years!
 + In support of Jane & Sac's work on the 512-cube hydro simulations
+
+16 Jan 2014
+
+
+* Data for Sac
+
+** Velocity moment maps from Tere 2008 paper
+:PROPERTIES:
+:EXPORT_FILE_NAME: Moment-Maps/README
+:END:
++ Data is in =OrionStats/Moment-Maps=
++ Filename pattern is =LINE_-040+070.wisomom-VAR-SMOOTH.fits=
+  + =LINE= emission line:
+    + =DOHha= H\alpha
+    + =DOHnii= [N II] 6583
+    + =DOHoiii= [O III] 5007
+    + =oi= [O I] 6300
+    + =siii= [S III] 6312
+    + =siil= [S II] 6731
+    + =siis= [S II] 6716
+  + =-040+070= velocity range of window for calculating moments: \minus{}40 \to +70 km/s heliocentric.
+  + =VAR= the quantity represented in the FITS file:
+    + =sum=: 0-th moment, total intensity
+    + =mean=: mean velocity (km/s)
+    + =sigma=: RMS line width (km/s)
+    + =peak=: velocity of peak emission (IGNORE)
+    + =fwhm=: full-width-half-maximum line width (IGNORE)
+  + =SMOOTH=: the interpolation method used (IGNORE)
++ The lines beginning =DOH= come from the dataset of Doi, O'Dell & Hartigan (2004AJ....127.3456D) and have a pixel scale of 0.534 arcsec
++ The other data (from SPM) have a pixel scale of 0.62 arcsec
+
+
+
 * Structure functions
 + Initial work is in [[file:~/Work/BobKPNO/]]
-+ 
++ Sac is now going to work on this [2014-01-16 Thu]
 + 
 
 
@@ -14,4 +47,15 @@
   + But there is definitely a higher amplitude of fluctuations
   + Anyway, we need to measure it
 
-* 
+* Export options 
+
+#+TITLE: orion-stats
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
