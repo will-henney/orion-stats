@@ -1,4 +1,215 @@
+#+OPTIONS: ^:{}
+
 Stuff for the Sac and Jane paper on turbulence diagnostics
+
+* Answering the referee report
+Points for Will to look at: 8, 11, 12
+
+** Point 8
+#+BEGIN_QUOTE
+8. The crucial section 3.2.3 on the superiority of the VCA needs work.  It refers to data not presented on the intermediate velocity slices; it uses a pagelong table rather than a figure to present the information needed (as I noted above); and as a result doesn't clearly make the correct that thermal broadening destroys the value of the thin slices. (Is this indeed still true for the heavier, narrower, ions?)
+#+END_QUOTE
+
+*** Changes:
+
+**** Fig 8 caption
+#+BEGIN_SRC latex
+Evolution of velocity channel power-law index as a function of time for thick channels (crosses) and thin channels (filled circles). 
+#+END_SRC
+
+** Point 11
+#+BEGIN_QUOTE
+11. In section 4.1.2, what is the implication of ruling out the Kolmogorov value of the turbulence power law?  That is dropped into the discussion without a conclusion being drawn.
+#+END_QUOTE
+** Point 12
+#+BEGIN_QUOTE
+12. The crucial section 4.1.3 is where the VCA is demonstrated to work better than other methods. However, it is curiously anecdotal.  Given that the abstract and conclusion present this as the central point of the paper, use should be made of the vast amount of data presented for the VCA in Figure 9 and Table 3, to make a much more systematic comparison with the actual power spectra known from the 3D model.
+#+END_QUOTE
+*** Plan of action
++ [-] Do a figure plotting the VCA-derived indices versus the real 3D index.
+  + [X] Got the VCA index files from Jane
+  + [X] Get the 3D index files
+  + [ ] Munge the data
+  + [ ] Make some plots
++ [ ] Should do the same for the structure functions
+**** Structure of the data
++ =Power-Indices/3D/${model}-${ion}-allfit.dat=
+  + model :: '04052012_4_sp'
+  + ion :: ['halp', 'oiii', 'niix', 'siix']
+  + Columns to plot
+    + Time :: $1
+    + Index :: $5 - 2 
++ =Power-Indices/${view}/${model}-${bins}${thermal}-${line}kfit-tab.dat=
+  + model :: '04052012_4_-sp'
+  + view :: ['xy', 'xz', 'yz']
+  + bins :: ['n032', 'n001'] - thin or thick
+  + thermal :: ['y', 'n'] - yes or no
+  + line :: ['Halpha', 'O35007', 'N26584', 'S26716'] 
+  + Columns to plot
+    + Time :: $1
+    + Index :: $3
++ 
+  + Columns to plot
+    + Time :: $1
+    + Index :: $3
+
+#+name: extract-table
+#+BEGIN_SRC python :return tab :results verbatim
+  import json
+  import numpy as np
+  from astropy.table import Table
+
+  views = ['xy', 'xz', 'yz']
+  ions = ['halp', 'oiii', 'niix', 'siix', 'vion']
+  lines = ['Halpha', 'O35007', 'N26584', 'S26716']
+
+  binids = {'t': 'n032', 'T': 'n001'}
+
+  results = {}
+  columns = []
+  for ion in ions:
+      datafile = 'Power-Indices/3D/04052012_4_sp-{}-allfit.dat'.format(ion)
+      times, k3d = np.loadtxt(datafile, usecols=(0, 4), unpack=True)
+      if 't' in results:
+          assert np.alltrue(times == results['t'])
+      else:
+          results['t'] = times
+          columns.append('t')
+      klabel = "_".join(['k3', ion[0]])
+      results[klabel] = k3d - 2.0
+      columns.append(klabel)
+
+  for ion, line in zip(ions[:-1], lines):
+      for view in views:
+          for tT, binid in binids.items():
+              datafile = 'Power-Indices/{}/04052012_4_-sp-{}y-{}kfit-tab.dat'.format(
+                  view, binid, line)
+              times, kvca = np.loadtxt(datafile, usecols=(0, 2), unpack=True)
+              assert np.alltrue(times == results['t'])
+              klabel = "".join(['kv', ion[0], tT, view])
+              results[klabel] = kvca
+              columns.append(klabel)
+
+  tab = Table(data=results, names=columns)
+  tab.write('power-indices-vs-time.tab', format='ascii.tab')
+
+#+END_SRC
+
+#+RESULTS: extract-table
+#+begin_example
+ t     k3_h    k3_o    k3_n    k3_s  ...   kvsTxz    kvstxz    kvsTyz    kvstyz 
+---- ------- ------- ------- ------- ... --------- --------- --------- ---------
+10.0 -3.5542 -3.8993 -2.4411 -2.3671 ... -1.856833 -1.742191 -1.993975  -1.90324
+11.0 -3.6413 -4.1279 -2.5538 -2.4154 ... -1.843487 -1.703335 -2.025668 -1.898838
+12.0 -3.3278 -3.8197 -2.5536 -2.4609 ... -1.866964 -1.749637 -2.120802 -1.954415
+13.0 -3.2569 -3.7877 -2.6925   -2.57 ... -1.809739 -1.722589  -1.96001 -1.810293
+14.0 -3.1404  -3.681 -2.7998 -2.6637 ... -1.717014  -1.66365 -1.923827 -1.737539
+15.0 -3.0544 -3.5216 -2.7767 -2.6313 ... -1.726869  -1.62501 -1.849246 -1.690619
+16.0 -3.0108 -3.4642 -2.7482 -2.6072 ... -1.851891 -1.716612 -1.939087  -1.72312
+17.0 -3.0198  -3.483 -2.7795  -2.626 ... -1.844374 -1.680651  -1.85228 -1.692221
+18.0 -2.9295 -3.4211 -2.7144 -2.5929 ... -1.817031 -1.673626 -1.841816 -1.666025
+19.0 -2.8438 -3.3775 -2.6606 -2.5758 ... -1.830895 -1.690607 -1.806665  -1.67981
+20.0 -2.8162 -3.3462 -2.6547 -2.5706 ... -1.914905 -1.748881 -1.847767 -1.702789
+21.0 -2.8399 -3.3769 -2.6508 -2.5658 ... -2.004436  -1.81201 -1.844396 -1.704195
+22.0 -2.8374 -3.3242 -2.6624 -2.5775 ... -2.006867 -1.819403 -1.925681  -1.76931
+23.0 -2.8771 -3.3222 -2.6754 -2.5863 ...   -2.0272 -1.860418 -1.933978  -1.76314
+24.0 -2.8784 -3.3163 -2.6901 -2.5963 ... -2.037391 -1.871739 -1.956009 -1.806039
+25.0 -2.8875  -3.294 -2.6855 -2.5741 ... -2.069277 -1.908344  -1.97014 -1.810989
+26.0 -2.9189 -3.3506 -2.7039 -2.5979 ... -2.040773 -1.895178 -2.020894 -1.845024
+27.0 -2.9292 -3.3588 -2.7179 -2.6187 ... -2.007761 -1.857716 -1.991121 -1.839533
+28.0 -2.9401 -3.3405 -2.7153 -2.6051 ... -2.050645 -1.900096 -2.000542 -1.851696
+29.0 -2.9365 -3.3574  -2.727 -2.6234 ... -2.027128 -1.892238 -1.995638 -1.841143
+30.0 -2.9371 -3.2956 -2.7483 -2.6488 ... -2.053916 -1.900709 -1.980373 -1.816146
+#+end_example
+
+**** some emoji
+😦☹🙍👒👊✊👎👍👌👭🙋👬👫🙏🙌
+
+** Other suggestions
+*** Figure 4
+Plot from an earlier time (50,000 years)
+*** Figure 5
+Caption: R is the radius of an equivalent sphere with volume equal to that of the H II region
+
+** QUOTE Entire report 
+Date: Mon, 3 Mar 2014 05:17:30 -0500 (EST)
+From: ae@ras.org.uk
+To: j.arthur@crya.unam.mx
+Cc: s.serrano@crya.unam.mx, j.arthur@crya.unam.mx, w.henney@crya.unam.mx,
+    garrelt@astro.su.se, a.gazol@crya.unam.mx
+Subject: OutSRV MNRAS: MN-13-3354-MJ
+
+Dear Dr Arthur
+
+Copied below are the reviewer's comments on your manuscript entitled "Turbulence in simulated HII regions", ref. MN-13-3354-MJ, which you submitted to Monthly Notices of the Royal Astronomical Society.
+
+Moderate revision of your manuscript is requested before it is reconsidered for publication.
+
+You should submit your revised version, together with your response to the reviewer's comments via the Monthly Notices ScholarOne Manuscripts site http://mc.manuscriptcentral.com/mnras.
+Enter your Author Centre, where you will find your manuscript title listed under "Manuscripts with Decisions."  Under "Actions," click on "Create a Revision."  Your manuscript reference will be appended to denote a revision.
+
+IMPORTANT: do not submit your revised manuscript as a new paper!
+
+You will not be able to make your revisions to the originally submitted files of the manuscript held on ScholarOne Manuscripts.  Instead, you must delete the original files and abstract and replace them with your revised files.  Check that any requests for colour publication or online-only publication are correct.  Proof read the resulting PDF and HTML files that are generated carefully. If you have used a .bib file to generate your bibliography in Latex, please include this in your .tar archive along with the .bbl and .tex files; this will aid the editing and typesetting process.
+
+When submitting your revised manuscript, you will be able to respond to the comments made by the reviewer in the space provided.  You should also use this space to document any changes you make to the original manuscript.  In order to expedite the processing of the revised manuscript, please be as specific as possible in your response to the reviewer.  It would also be very helpful if you could highlight the changed sections, e.g. by the use of colour, colour highlighting or bold typeface - this will not delay in any way the subsequent processing of your paper.
+
+Because we are trying to facilitate timely publication of manuscripts submitted to MNRAS, your revised manuscript should be uploaded promptly. If you do not submit your revision within six months, we may consider it withdrawn and request it be resubmitted as a new submission.
+
+Please note that, due to the tight schedule, any post-acceptance changes notified after the paper has gone into production (i.e. the day after the acceptance email is sent) cannot be incorporated into the paper before it is typeset. Such changes will therefore need to be made as part of the proof corrections. To avoid excessive proof corrections and the delay that these can cause, you are strongly encouraged to ensure that each version of your paper submitted to MNRAS is completely ready for publication!
+
+I look forward to receiving your revised manuscript.
+
+Regards,
+
+Anna
+
+Anna Evripidou
+Assistant Editor
+"Monthly Notices" and "Geophysical Journal International"
+Royal Astronomical Society
+Email: ae@ras.org.uk
+Tel: (+44) 01483 427 583
+Tel (Wednesdays): (+44) 020 7734 3307
+Fax: (+44) 020 7287 2167
+
+========================================================
+
+Reviewer's Comments:
+
+Comments to the Author
+
+Review of Serrano-Medina et al.
+
+This paper examines how different diagnostics of turbulent flows in H II regions respond to application to a simulated H II region. It concludes that velocity channel analysis provides a more reliable way of recovering the actual velocity structure than traditional velocity centroid structure functions.  This seems like an interesting and useful result that is worth publishing.
+
+The paper suffers, however, from minor problems that need to be cleaned up before publication. The general theme is that the presentation needs to be tightened up and made more transparent and consistent. I now describe specific issues, generally in the order that they appear in the paper.  The last of these is arguably the most important.
+
+1. It should be made clear at the beginning of section 2 (Numerical Models) that the initial conditions are unstable to gravitational collapse (free-fall time of 0.6 Myr), but that self-gravity is neglected for these relatively short time runs.
+
+2. In the discussion of power spectra (3.2), the time behavior of the power law is compared to that of the velocity dispersion.  A time delay of 50,000 yrs is noted, with no further discussion.  The time delay would seem to suggest that the two quantities are unrelated; either that conclusion should be made explicit, or the time delay should be more explicitly discussed as related (perhaps in relation to the following paragraph?)
+
+3. In Figure 3 and following, I think quoting the slopes on the figure rather than in a separate table would make the information more accessible.
+
+4. Presenting the time behavior of the slopes in a Figure rather than a table, as was done in Figure 4, also vastly improves the comprehensibility of the result.  I would suggest replacing the tables generally with figures, as the actual values are less important than the trends seen.
+
+5. The infinitesimal "inertial ranges" seen in some of the panels of Figure 6 & 7, particularly for [S II], need further consideration.  Is the criterion being used for the upper bound robust for these rather filamentary, intermittent, emission sources?
+
+6. Similarly, further thought and discussion as to the meaning of the entire box being correlated to itself (structure function < 2 everywhere) might well yield a deeper understanding.
+
+7. At the end of 3.2.2, what is the meaning of a break at 0.3 pc?  Does it have observational or physical correlates?
+
+8. The crucial section 3.2.3 on the superiority of the VCA needs work.  It refers to data not presented on the intermediate velocity slices; it uses a pagelong table rather than a figure to present the information needed (as I noted above); and as a result doesn't clearly make the correct that thermal broadening destroys the value of the thin slices. (Is this indeed still true for the heavier, narrower, ions?)
+
+9. The caption of the accompanying Figure 9 does not agree with the figure: it refers to non-existent open squares; the dashed line fits to the crosses, not the non-existent squares; and the thickness of the slice doesn't seem to agree with the number of channels.  It also doesn't specify which of the three axes is presented, though the accompanying table presents all three axes.
+
+10. In section 4.1.1, an opposition is presumed between numerical dissipation and vortex center dissipation as proposed by She & Leveque.  However, a well-resolved numerical model will have numerical dissipation occurring in the centers of the vortexes, and should reproduce She & Leveque's results.  So to make the argument, you need to argue that your models are particularly poorly resolved...
+
+11. In section 4.1.2, what is the implication of ruling out the Kolmogorov value of the turbulence power law?  That is dropped into the discussion without a conclusion being drawn.
+
+12. The crucial section 4.1.3 is where the VCA is demonstrated to work better than other methods. However, it is curiously anecdotal.  Given that the abstract and conclusion present this as the central point of the paper, use should be made of the vast amount of data presented for the VCA in Figure 9 and Table 3, to make a much more systematic comparison with the actual power spectra known from the 3D model.
+
+I do apologize to the authors for the delay in completing this report.
 
 * Abstract
 #+BEGIN_SRC latex

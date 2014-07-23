@@ -1,0 +1,43 @@
+Estimating the size of the emission regions
+
+* Surface brightness maps
+
+** Grab them from voltorb
+#+BEGIN_SRC sh
+rsync -avzP voltorb:/fs/voltorb/other0/jane/results/SAC512/FITS/FITS11/*m0-*.fits .
+#+END_SRC
+
+** Look at them in ds9
+#+name: show-map
+#+BEGIN_SRC sh :var T=26 LINE="O35007" MAX="3e6" :results silent
+xpaset -p ds9 fits 04052012_4_00${T}m0-${LINE}.fits
+xpaset -p ds9 zoom to fit
+xpaset -p ds9 scale limits 0 $MAX
+#+END_SRC
+
+
+[O III] line
+#+call: show-map() :results silent
+
+[S II] line at an earlier time
+#+call: show-map(T=10, LINE="S26716", MAX="2e7") :results silent
+
+H alpha at the same time
+#+call: show-map(T=10, LINE="Halpha", MAX="3e8") :results silent
+
+
+** Read in and take the ratio
+#+BEGIN_SRC python :var T=10 
+from astropy.io import fits
+prefix = "04052012_4_{:04d}m0".format(T)
+hdu1 = fits.open(prefix + "-S26716.fits")[0]
+hdu2 = fits.open(prefix + "-Halpha.fits")[0]
+hdu1.data /= hdu2.data
+hdu1.data[hdu2.data < 0.0] = 0.0
+hdu1.writeto(prefix + "-S2_Ha.fits", clobber=True)
+#+END_SRC
+
+#+RESULTS:
+: None
+
+#+call: show-map(T=10, LINE="S2_Ha", MAX="1.0") :results silent
