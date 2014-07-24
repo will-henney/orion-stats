@@ -171,12 +171,19 @@ Try and split them up again says Jane - use 4 panels
   tcut = 20.0
 
   fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+  plt.setp(axes.flat, aspect=1.0, adjustable='box-forced')
   kmin, kmax = -4.3, -1.5
 
   for ion, ax in zip('OHNS', axes.ravel()):
       k3 = tab['k3_' + ion]
       m = tab['t'] >= tcut
       mm = tab['t'] <= tcut
+      ax.plot([kmin, kmax], [kmin, kmax], '-k')
+      ax.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
+      ax.set_xlim(kmin, kmax)
+      ax.set_ylim(kmin, kmax)
+      # ax.vlines(-11./3., -100, 100, alpha=0.2, lw=3)
+      ax.grid()
       for view in ['xy', 'xz', 'yz']:
           kthick = tab['kv' + ion + 'T' + view]
           kthin = tab['kv' + ion + 't' + view]
@@ -184,18 +191,15 @@ Try and split them up again says Jane - use 4 panels
           ax.plot(k3[mm], kthick[mm], alpha=0.2, label=None, **plt_kwds)
           ax.plot(k3[m], kthick[m], alpha=0.6,
                    label=linedict[ion] + ' ' + view,  **plt_kwds)
-          ax.plot([kmin, kmax], [kmin, kmax], '-k')
-          ax.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
-          ax.legend(loc='lower right', fontsize='small', ncol=1)
-          ax.set_xlim(kmin, kmax)
-          ax.set_ylim(kmin, kmax)
+      ax.legend(loc='lower right', fontsize='small', ncol=1)
+
   for ax in axes[-1, :]:
       ax.set_xlabel(r'Power law index of 3D emissivity, $n$')
   for ax in axes[:, 0]:
       ax.set_ylabel(r'VCA power law index for thick slice: $\gamma_\mathrm{T}$')
 
   pltfile = 'vca-thick-vs-3d-panels.pdf'
-  fig.set_size_inches((8, 8))
+  fig.set_size_inches((8.5, 8))
   fig.tight_layout()
   plt.savefig(pltfile)
 
