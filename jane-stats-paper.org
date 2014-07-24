@@ -29,8 +29,10 @@ Evolution of velocity channel power-law index as a function of time for thick ch
 + [-] Do a figure plotting the VCA-derived indices versus the real 3D index.
   + [X] Got the VCA index files from Jane
   + [X] Get the 3D index files
-  + [ ] Munge the data
-  + [ ] Make some plots
+  + [X] Munge the data
+  + [-] Make some plots
+    + [X] Thick slices
+    + [ ] Thin slices
 + [ ] Should do the same for the structure functions
 **** Structure of the data
 + =Power-Indices/3D/${model}-${ion}-allfit.dat=
@@ -52,6 +54,8 @@ Evolution of velocity channel power-law index as a function of time for thick ch
   + Columns to plot
     + Time :: $1
     + Index :: $3
+**** DONE Mung all data into a big table
+CLOSED: [2014-07-23 Wed 17:28]
 
 #+name: extract-table
 #+BEGIN_SRC python :return tab :results verbatim
@@ -75,20 +79,27 @@ Evolution of velocity channel power-law index as a function of time for thick ch
       else:
           results['t'] = times
           columns.append('t')
-      klabel = "_".join(['k3', ion[0]])
+      klabel = "_".join(['k3', ion[0].upper()])
       results[klabel] = k3d - 2.0
       columns.append(klabel)
 
   for ion, line in zip(ions[:-1], lines):
       for view in views:
           for tT, binid in binids.items():
-              datafile = 'Power-Indices/{}/04052012_4_-sp-{}y-{}kfit-tab.dat'.format(
-                  view, binid, line)
+              datafile = 'Power-Indices/' \
+                         '{}/04052012_4_-sp-{}y-{}' \
+                         'kfit-tab.dat'.format(view, binid, line)
               times, kvca = np.loadtxt(datafile, usecols=(0, 2), unpack=True)
               assert np.alltrue(times == results['t'])
-              klabel = "".join(['kv', ion[0], tT, view])
+              klabel = "".join(['kv', ion[0].upper(), tT, view])
               results[klabel] = kvca
               columns.append(klabel)
+
+          datafile = 'Power-Indices/{}/04052012_4_{}-sfallfit.dat'.format(view, line)
+          times, ksf = np.loadtxt(datafile, usecols=(0, 2), unpack=True)
+          klabel = "".join(['ks', ion[0].upper(), view])
+          results[klabel] = ksf
+          columns.append(klabel)
 
   tab = Table(data=results, names=columns)
   tab.write('power-indices-vs-time.tab', format='ascii.tab')
@@ -97,30 +108,446 @@ Evolution of velocity channel power-law index as a function of time for thick ch
 
 #+RESULTS: extract-table
 #+begin_example
- t     k3_h    k3_o    k3_n    k3_s  ...   kvsTxz    kvstxz    kvsTyz    kvstyz 
----- ------- ------- ------- ------- ... --------- --------- --------- ---------
-10.0 -3.5542 -3.8993 -2.4411 -2.3671 ... -1.856833 -1.742191 -1.993975  -1.90324
-11.0 -3.6413 -4.1279 -2.5538 -2.4154 ... -1.843487 -1.703335 -2.025668 -1.898838
-12.0 -3.3278 -3.8197 -2.5536 -2.4609 ... -1.866964 -1.749637 -2.120802 -1.954415
-13.0 -3.2569 -3.7877 -2.6925   -2.57 ... -1.809739 -1.722589  -1.96001 -1.810293
-14.0 -3.1404  -3.681 -2.7998 -2.6637 ... -1.717014  -1.66365 -1.923827 -1.737539
-15.0 -3.0544 -3.5216 -2.7767 -2.6313 ... -1.726869  -1.62501 -1.849246 -1.690619
-16.0 -3.0108 -3.4642 -2.7482 -2.6072 ... -1.851891 -1.716612 -1.939087  -1.72312
-17.0 -3.0198  -3.483 -2.7795  -2.626 ... -1.844374 -1.680651  -1.85228 -1.692221
-18.0 -2.9295 -3.4211 -2.7144 -2.5929 ... -1.817031 -1.673626 -1.841816 -1.666025
-19.0 -2.8438 -3.3775 -2.6606 -2.5758 ... -1.830895 -1.690607 -1.806665  -1.67981
-20.0 -2.8162 -3.3462 -2.6547 -2.5706 ... -1.914905 -1.748881 -1.847767 -1.702789
-21.0 -2.8399 -3.3769 -2.6508 -2.5658 ... -2.004436  -1.81201 -1.844396 -1.704195
-22.0 -2.8374 -3.3242 -2.6624 -2.5775 ... -2.006867 -1.819403 -1.925681  -1.76931
-23.0 -2.8771 -3.3222 -2.6754 -2.5863 ...   -2.0272 -1.860418 -1.933978  -1.76314
-24.0 -2.8784 -3.3163 -2.6901 -2.5963 ... -2.037391 -1.871739 -1.956009 -1.806039
-25.0 -2.8875  -3.294 -2.6855 -2.5741 ... -2.069277 -1.908344  -1.97014 -1.810989
-26.0 -2.9189 -3.3506 -2.7039 -2.5979 ... -2.040773 -1.895178 -2.020894 -1.845024
-27.0 -2.9292 -3.3588 -2.7179 -2.6187 ... -2.007761 -1.857716 -1.991121 -1.839533
-28.0 -2.9401 -3.3405 -2.7153 -2.6051 ... -2.050645 -1.900096 -2.000542 -1.851696
-29.0 -2.9365 -3.3574  -2.727 -2.6234 ... -2.027128 -1.892238 -1.995638 -1.841143
-30.0 -2.9371 -3.2956 -2.7483 -2.6488 ... -2.053916 -1.900709 -1.980373 -1.816146
+ t     k3_H    k3_O    k3_N    k3_S  ... ksSxz    kvStyz    kvSTyz  ksSyz 
+---- ------- ------- ------- ------- ... ------ --------- --------- ------
+10.0 -3.5542 -3.8993 -2.4411 -2.3671 ... 0.4012  -1.90324 -1.993975 0.4523
+11.0 -3.6413 -4.1279 -2.5538 -2.4154 ... 0.3447 -1.898838 -2.025668 0.4785
+12.0 -3.3278 -3.8197 -2.5536 -2.4609 ... 0.3583 -1.954415 -2.120802 0.4667
+13.0 -3.2569 -3.7877 -2.6925   -2.57 ... 0.3003 -1.810293  -1.96001 0.5195
+14.0 -3.1404  -3.681 -2.7998 -2.6637 ... 0.2453 -1.737539 -1.923827 0.4134
+15.0 -3.0544 -3.5216 -2.7767 -2.6313 ... 0.2633 -1.690619 -1.849246 0.4497
+16.0 -3.0108 -3.4642 -2.7482 -2.6072 ...  0.255  -1.72312 -1.939087 0.4121
+17.0 -3.0198  -3.483 -2.7795  -2.626 ... 0.2803 -1.692221  -1.85228 0.3539
+18.0 -2.9295 -3.4211 -2.7144 -2.5929 ... 0.2899 -1.666025 -1.841816 0.3447
+19.0 -2.8438 -3.3775 -2.6606 -2.5758 ... 0.2955  -1.67981 -1.806665 0.3359
+20.0 -2.8162 -3.3462 -2.6547 -2.5706 ... 0.2774 -1.702789 -1.847767 0.3186
+21.0 -2.8399 -3.3769 -2.6508 -2.5658 ... 0.2666 -1.704195 -1.844396 0.3056
+22.0 -2.8374 -3.3242 -2.6624 -2.5775 ... 0.2224  -1.76931 -1.925681 0.2929
+23.0 -2.8771 -3.3222 -2.6754 -2.5863 ... 0.2362  -1.76314 -1.933978 0.2755
+24.0 -2.8784 -3.3163 -2.6901 -2.5963 ... 0.2657 -1.806039 -1.956009 0.2766
+25.0 -2.8875  -3.294 -2.6855 -2.5741 ... 0.2781 -1.810989  -1.97014 0.2629
+26.0 -2.9189 -3.3506 -2.7039 -2.5979 ...  0.292 -1.845024 -2.020894 0.2473
+27.0 -2.9292 -3.3588 -2.7179 -2.6187 ... 0.2992 -1.839533 -1.991121 0.2482
+28.0 -2.9401 -3.3405 -2.7153 -2.6051 ... 0.3253 -1.851696 -2.000542 0.2457
+29.0 -2.9365 -3.3574  -2.727 -2.6234 ... 0.3763 -1.841143 -1.995638 0.2413
+30.0 -2.9371 -3.2956 -2.7483 -2.6488 ...  0.409 -1.816146 -1.980373 0.2581
 #+end_example
+
+**** Plots for the thick VCAs
+#+name: plot-vca-vs-3d
+#+header: :var ion="O"
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  k3 = tab['k3_' + ion]
+  for view in ['xy', 'xz', 'yz']:
+      kthick = tab['kv' + ion + 'T' + view]
+      kthin = tab['kv' + ion + 't' + view]
+      plt.plot(k3, kthick, 'o', alpha=0.5)
+  kmin, kmax = -4.3, -2.0
+  plt.plot([kmin, kmax], [kmin, kmax], '-k')
+  plt.xlabel('Power law index of 3D emissivity')
+  plt.ylabel('Power law index of thick VCA')
+  plt.xlim(kmin, kmax)
+  plt.ylim(kmin, kmax)
+  plt.title(linedict[ion])
+  pltfile = 'vca-thick-vs-3d-{}.pdf'.format(ion)
+  plt.gcf().set_size_inches((6, 6))
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS: plot-vca-vs-3d
+[[file:vca-thick-vs-3d-O.pdf]]
+
+#+call: plot-vca-vs-3d(ion="H") :results file
+
+#+RESULTS:
+[[file:vca-thick-vs-3d-H.pdf]]
+
+#+call: plot-vca-vs-3d(ion="N") :results file
+
+#+RESULTS:
+[[file:vca-thick-vs-3d-N.pdf]]
+
+#+call: plot-vca-vs-3d(ion="S") :results file
+
+#+RESULTS:
+[[file:vca-thick-vs-3d-S.pdf]]
+
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 20.0
+
+  for ion in 'OHNS':
+      k3 = tab['k3_' + ion]
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          kthick = tab['kv' + ion + 'T' + view]
+          kthin = tab['kv' + ion + 't' + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          plt.plot(k3[mm], kthick[mm], alpha=0.2, label=None, **plt_kwds)
+          plt.plot(k3[m], kthick[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+  kmin, kmax = -4.3, -1.5
+  plt.plot([kmin, kmax], [kmin, kmax], '-k')
+  plt.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
+  plt.xlabel(r'Power law index of 3D emissivity, $n$')
+  plt.ylabel(r'VCA power law index for thick slice: $\gamma_\mathrm{T}$')
+  plt.xlim(kmin, kmax)
+  plt.ylim(kmin, kmax)
+  plt.title('All ions')
+  plt.legend(loc='lower right', fontsize='x-small', ncol=2)
+  pltfile = 'vca-thick-vs-3d-all.pdf'
+  plt.gcf().set_size_inches((6, 6))
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:vca-thick-vs-3d-all.pdf]]
+
+Try and split them up again says Jane - use 4 panels
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 20.0
+
+  fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+  kmin, kmax = -4.3, -1.5
+
+  for ion, ax in zip('OHNS', axes.ravel()):
+      k3 = tab['k3_' + ion]
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          kthick = tab['kv' + ion + 'T' + view]
+          kthin = tab['kv' + ion + 't' + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          ax.plot(k3[mm], kthick[mm], alpha=0.2, label=None, **plt_kwds)
+          ax.plot(k3[m], kthick[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+          ax.plot([kmin, kmax], [kmin, kmax], '-k')
+          ax.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
+          ax.legend(loc='lower right', fontsize='small', ncol=1)
+          ax.set_xlim(kmin, kmax)
+          ax.set_ylim(kmin, kmax)
+  for ax in axes[-1, :]:
+      ax.set_xlabel(r'Power law index of 3D emissivity, $n$')
+  for ax in axes[:, 0]:
+      ax.set_ylabel(r'VCA power law index for thick slice: $\gamma_\mathrm{T}$')
+
+  pltfile = 'vca-thick-vs-3d-panels.pdf'
+  fig.set_size_inches((8, 8))
+  fig.tight_layout()
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:vca-thick-vs-3d-panels.pdf]]
+
+**** Plot for the thin VCA
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 17.0
+
+  for ion in 'O':
+      k3 = tab['k3_V']
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          kthick = tab['kv' + ion + 'T' + view]
+          kthin = tab['kv' + ion + 't' + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  * markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          plt.plot(k3[mm], kthin[mm], alpha=0.2, label=None, **plt_kwds)
+          plt.plot(k3[m], kthin[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+  kmin, kmax = -4.3, -1.5
+  plt.plot([kmin, kmax], [-4.5 - 0.5*kmin, -4.5 - 0.5*kmax], '-k')
+  plt.xlabel(r'Power law index of 3D velocity, $n$')
+  plt.ylabel(r'VCA power law index for thin slice: $\gamma_\mathrm{t}$')
+  plt.xlim(kmin, kmax)
+  plt.ylim(kmin, kmax)
+  plt.title('[O III]')
+  plt.legend(loc='lower right', fontsize='x-small', ncol=1)
+  pltfile = 'vca-thin-vs-3d-oiii.pdf'
+  plt.gcf().set_size_inches((6, 6))
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:vca-thin-vs-3d-oiii.pdf]]
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 17.0
+
+  for ion in 'NS':
+      k3 = tab['k3_V']
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          kthick = tab['kv' + ion + 'T' + view]
+          kthin = tab['kv' + ion + 't' + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          plt.plot(k3[mm], kthin[mm]-kthick[mm],
+                   alpha=0.2, label=None, **plt_kwds)
+          plt.plot(k3[m], kthin[m]-kthick[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+  kmin, kmax = -4.3, -1.5
+  plt.plot([kmin, kmax], [-1.5 - 0.5*kmin, -1.5 - 0.5*kmax], '-k')
+  plt.xlabel(r'Power law index of 3D velocity, $n$')
+  plt.ylabel(r'VCA power law index difference between thin and thick slices: $\gamma_\mathrm{t} - \gamma_\mathrm{T}$')
+  plt.xlim(kmin, kmax)
+  plt.ylim(kmin+3, kmax+3)
+  plt.title('[N II], [S II]')
+  plt.legend(loc='lower right', fontsize='x-small', ncol=1)
+  pltfile = 'vca-thin-vs-3d-nii-sii.pdf'
+  plt.gcf().set_size_inches((6, 6))
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:vca-thin-vs-3d-nii-sii.pdf]]
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 20.0
+
+  fig, axes = plt.subplots(2, 2, sharex=True, sharey='row')
+  kmin, kmax = -3.8, -2.8
+
+  for ion, ax in zip('OHNS', axes.ravel()):
+      # if ion == 'H':
+      #     continue
+      k3 = tab['k3_V']
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          kthick = tab['kv' + ion + 'T' + view]
+          kthin = tab['kv' + ion + 't' + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          ax.set_xlim(kmin, kmax)
+          if ion in 'HO':
+              kplot = kthin
+              ax.plot([kmin, kmax], [-4.5 - 0.5*kmin, -4.5 - 0.5*kmax], '-k')
+              ax.set_ylim(kmin+0.5, kmax+0.5)
+          else:
+              kplot = kthin - kthick
+              ax.plot([kmin, kmax], [-1.5 - 0.5*kmin, -1.5 - 0.5*kmax], '-k')
+              ax.set_ylim(kmin+3.5, kmax+3.5)
+
+          ax.plot(k3[mm], kplot[mm], alpha=0.2, label=None, **plt_kwds)
+          ax.plot(k3[m], kplot[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+          ax.legend(loc='lower right', fontsize='small', ncol=1)
+  for ax in axes[-1, :]:
+      ax.set_xlabel(r'Power law index of 3D velocity, $n$', fontsize='small')
+
+  axes[0, 0].set_ylabel(r'VCA power law index for thin slice: $\gamma_\mathrm{t}$', fontsize='small') 
+  axes[1, 0].set_ylabel(r'Difference between thin and thick slices: $\gamma_\mathrm{t} - \gamma_\mathrm{T}$', fontsize='small')
+
+  pltfile = 'vca-thin-vs-3d-panels.pdf'
+  fig.set_size_inches((8, 8))
+  fig.tight_layout()
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:vca-thin-vs-3d-panels.pdf]]
+
+**** Plots for the structure function
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 20.0
+
+  for ion in reversed('OHNS'):
+      k3 = tab['k3_V']
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          ksf = tab['ks' + ion + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          plt.plot(k3[mm], ksf[mm],
+                   alpha=0.2, label=None, **plt_kwds)
+          plt.plot(k3[m], ksf[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+  kmin, kmax = -4.3, -1.5
+  plt.plot([kmin, kmax], [-3 - kmin, -3 - kmax], '--k')
+  plt.plot([kmin, kmax], [-2 - kmin, -2 - kmax], '-k')
+  plt.xlabel(r'Power law index of 3D velocity, $n$')
+  plt.ylabel(r'Structure function power law index: $m_\mathrm{2D}$')
+  plt.xlim(kmin, kmax)
+  plt.ylim(kmin+3.5, kmax+3.5)
+  plt.legend(loc='upper right', fontsize='x-small', ncol=2)
+  pltfile = 'sf-vs-3d-all.pdf'
+  plt.gcf().set_size_inches((6, 6))
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:sf-vs-3d-all.pdf]]
+
+#+BEGIN_SRC python :return pltfile :results file 
+  from astropy.table import Table
+  from matplotlib import pyplot as plt
+  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+
+  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+              'S': '[S II] 6716', 'N': '[N II] 6583'}
+  color_from_view = {'xy': 'magenta', 'xz': 'green', 'yz': 'cyan'}
+  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+
+  tcut = 20.0
+
+  fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+  kmin, kmax = -3.8, -2.8
+
+  for ion, ax in zip('OHNS', axes.ravel()):
+      k3 = tab['k3_V']
+      m = tab['t'] >= tcut
+      mm = tab['t'] <= tcut
+      for view in ['xy', 'xz', 'yz']:
+          ksf = tab['ks' + ion + view]
+          plt_kwds = {
+              "color": color_from_view[view],
+              "marker": symbol_from_ion[ion],
+              "linestyle": '-',
+              "markersize": 4.0*markerscale_from_view[view] \
+                  ,* markerscale_from_symbol[symbol_from_ion[ion]] 
+          }
+          ax.plot(k3[mm], ksf[mm], alpha=0.2, label=None, **plt_kwds)
+          ax.plot(k3[m], ksf[m], alpha=0.6,
+                   label=linedict[ion] + ' ' + view,  **plt_kwds)
+          ax.plot([kmin, kmax], [-3 - kmin, -3 - kmax], '--k')
+          ax.plot([kmin, kmax], [-2 - kmin, -2 - kmax], '-k')
+          ax.legend(loc='lower left', fontsize='small', ncol=1)
+          ax.set_xlim(kmin, kmax)
+          ax.set_ylim(kmin+3.85, kmax+3.85)
+  for ax in axes[-1, :]:
+      ax.set_xlabel(r'Power law index of 3D velocity, $n$', fontsize='small')
+  for ax in axes[:, 0]:
+      ax.set_ylabel(r'Structure function power law index: $m_\mathrm{2D}$', fontsize='small')
+
+  pltfile = 'sf-vs-3d-panels.pdf'
+  fig.set_size_inches((8, 8))
+  fig.tight_layout()
+  plt.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:sf-vs-3d-panels.pdf]]
 
 **** some emoji
 😦☹🙍👒👊✊👎👍👌👭🙋👬👫🙏🙌
