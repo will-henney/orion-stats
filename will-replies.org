@@ -1,0 +1,6 @@
+
+: 8. The crucial section 3.2.3 on the superiority of the VCA needs work.  It refers to data not presented on the intermediate velocity slices; it uses a pagelong table rather than a figure to present the information needed (as I noted above); and as a result doesn't clearly make the correct that thermal broadening destroys the value of the thin slices. (Is this indeed still true for the heavier, narrower, ions?)
+
+We have followed the referee's suggestion and replaced the table with a new figure that shows the time evolution of the VCA power law indices.  The detailed graphs of the VCAs have been moved to an appendix.  Also, we have rewritten the text to make clearer that it is only for H alpha that thermal broadening destroys the value of the thin slices. 
+We have made parallel changes to the previous section on the velocity centroid structure functions, moving the numerous graphs of the actual structure functions to an appendix and replacing the table with a graph that shows how the power law indices evolve with time.
+We have made several changes to this section

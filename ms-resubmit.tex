@@ -1,0 +1,1676 @@
+\documentclass[useAMS,usenatbib]{mn2e}
+\pdfminorversion=4
+\usepackage{bm}
+\usepackage{graphicx}
+% If your system does not have the AMS fonts version 2.0 installed, then
+% remove the useAMS option.
+%
+% useAMS allows you to obtain upright Greek characters.
+% e.g. \umu, \upi etc.  See the section on "Upright Greek characters" in
+% this guide for further information.
+%
+% If you are using AMS 2.0 fonts, bold math letters/symbols are available
+% at a larger range of sizes for NFSS release 1 and 2 (using \boldmath or
+% preferably \bmath).
+%
+% The usenatbib command allows the use of Patrick Daly's natbib.sty for
+% cross-referencing.
+%
+% If you wish to typeset the paper in Times font (if you do not have the
+% PostScript Type 1 Computer Modern fonts you will need to do this to get
+% smoother fonts in a PDF file) then uncomment the next line
+% \usepackage{Times}
+
+%%%%% AUTHORS - PLACE YOUR OWN MACROS HERE %%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Turbulence in Simulated HII regions]{Turbulence in simulated HII regions}
+\author[S.-N. X. Serrano-Medina et al.]{S.-N. X. Serrano-Medina$^{1,2}$, S. J. Arthur$^{2,4}$\thanks{E-mail:
+j.arthur@crya.unam.mx}, W. J. Henney$^{2,4}$, G. Mellema$^{3,4}$, A. Gazol$^{2}$\\
+$^{1}$Departamento de Astronom\'{\i}a, Universidad de Guanajuato,
+Guanajuato, M\'exico.\\
+$^{2}$Centro de Radioastronom\'{\i}a y Astrof\'{\i}sica, Universidad
+Nacional Aut\'onoma de M\'exico, Campus Morelia, 58090 Morelia,
+Michoac\'an, M\'exico.\\
+$^3$Dept.\ of Astronomy and Oskar Klein Centre, AlbaNova, Stockholm
+University, SE-106 91 Stockholm, Sweden.\\
+$^4$Nordita, KTH Royal Institute of Technology and Stockholm
+University, Roslagstullsbacken 23, SE-106 91 Stockholm, Sweden.}
+\begin{document}
+
+\date{}
+
+\pagerange{\pageref{firstpage}--\pageref{lastpage}} \pubyear{2013}
+
+\maketitle
+
+\label{firstpage}
+
+\begin{abstract}
+We investigate the scale dependence of fluctuations inside a realistic
+model of an evolving turbulent HII region and to what extent these
+may be studied observationally.  We find that the multiple scales of
+energy injection from champagne flows and the photoionization of
+clumps and filaments leads to a flatter spectrum of fluctuations than
+would be expected from top-down turbulence driven at the largest
+scales.  The traditional structure function approach to the
+observational study of velocity fluctuations is shown to be
+incapable of reliably determining the velocity power spectrum of our
+simulation.  We find that a more promising approach is the Velocity
+Channel Analysis technique of Lazarian \& Pogosyan (2000), which,
+despite being intrinsically limited by thermal broadening, can
+successfully recover the logarithmic slope of the velocity power
+spectrum to a precision of \(\pm 0.1\) from high resolution optical
+emission line spectroscopy.
+\end{abstract}
+
+\begin{keywords}
+hydrodynamics --- HII regions --- ISM: kinematics and dynamics --- turbulence
+\end{keywords}
+
+\section{Introduction}
+\newcounter{ionstage}
+\newcommand{\ion}[2]{\setcounter{ionstage}{#2}% 
+  \ensuremath{\mathrm{#1\,\scriptstyle\Roman{ionstage}}}}
+\newcommand\nii{[\ion{N}{2}]}
+\newcommand\sii{[\ion{S}{2}]}
+\newcommand\oiii{[\ion{O}{3}]}
+\newcommand\ha{\ensuremath{\mathrm{H\alpha}}}
+\newcommand\hii{\ion{H}{2}}
+
+%Observations of turbulence in HII regions, galactic and extragalactic.
+The line broadening in excess of thermal broadening seen in optical
+spectroscopic studies of \hii{} regions has been attributed to
+turbulence in the photoionized gas. There are many examples in the
+literature of attempts to identify the presence and characterize this
+turbulence, for example \citet{1958RvMP...30.1035M}, \citet
+{1985ApJ...288..142R}, \citet
+{1987ApJ...317..686O}, \citet{1995ApJ...454..316M}, \citet{1997ApJ...487..163M}, 
+ \citet{2011MNRAS.413..721L} and references cited by these papers. In
+these studies, the variation of the point-to-point radial velocities
+with scale was investigated using structure functions following  \citet{{1951ZA.....30...17V}}.
+
+A general finding of these studies is that the structure function
+derived from these observations does not follow that predicted by
+Kolmogorov's law \citep {1941DoSSR..30..301K} . The interpretation of this result is that
+Kolmogorov's law for incompressible and subsonic turbulent flows
+cannot be strictly applied to the photoionized gas in \hii{}
+regions, which will be compressible and possibly mildly supersonic
+\citep{1985ApJ...288..142R}, or that energy does not cascade from
+larger to smaller scales but is input at many scales
+\citep{{1988ApJS...67...93C}}. Moreover, the results differ according
+to which emission lines are used in the study, since the topology of
+the emitting gas will be different. For instance,
+the \oiii$\lambda$5007 line comes from gas in the interior of an
+\hii{} region, whereas the \sii$\lambda$6731 line comes from the
+vicinity of the ionization front, essentially a two-dimensional
+surface. The suggested mechanisms responsible for the generation and
+maintenance of the turbulent velocities in \hii{} regions include
+photoevaporated flows from globules
+\citep{{1968Ap&SS...1..388D},{1987ApJ...317..686O}} and stellar winds
+\citep{{1997ApJ...487..163M},{2011MNRAS.413..721L}}.
+
+%Observations of kinematics of HII regions, galactic and extragalactic.
+
+In order to construct the structure functions for the velocity fields,
+observations at many points in an \hii{} region are needed. This
+can be achieved either by multiple longslit spectroscopic observations at
+many positions across a nebula
+\citep{{1987ApJ...317..676O},{1987ApJ...315L..55C},{1993ApJ...409..262W}}, or by Fabry-Perot
+interferometry
+\citep{{1985ApJ...288..142R},{1995ApJ...454..316M},{2011MNRAS.413..705L}}. Longslit observations with high velocity resolution have enabled several
+velocity components to be identified for emission lines of metal ions
+for which the thermal widths are small, e.g., \oiii$\lambda$5007. These
+observations have been used to determine the radial velocities of the
+principal components of the emitting gas at hundreds of positions
+within the nebula. Fabry-Perot observations produce datasets of
+thousands of radial velocities, but without the velocity resolution to
+distinguish between different velocity components. Obviously, in order
+to obtain a structure function over a wide range of scales, very high
+quality data with an ample spatial coverage are required. In the case
+of longslit spectra, this is a non-trivial task, not least the
+calibrating of the positions of the slits
+\citep{{2007AJ....133..952G},{2008RMxAA..44..181G}}.
+
+%Theory of turbulence in ISM.
+
+\citet{1949ApJ...110..329C} suggested that turbulence is ubiquitous in
+astrophysics and that it could be analysed statistically via the
+spectrum of the velocity field, which expresses the correlations
+between instantaneous velocity components at all possible pairs of
+points in the medium. 
+Turbulence develops in a fluid when velocity advection is dominant
+over dissipation (high Reynolds number), then
+continuous injection of energy is required in order to maintain the turbulent state. One of the main
+assumptions of the Kolmogorov theory of turbulence is that energy is only injected at large scales
+and is dissipated only at small scales. This implies that the energy cascades from large to small
+scales without dissipation. Another assumption of this theory is that in the range between
+injection and dissipation scales the energy is transferred at a
+constant rate, and this range is
+called the inertial range.
+Turbulence is often described in terms of the energy
+spectrum $E(v)$, and the inertial range is represented by a power-law
+relationship $E(v) \propto k^\beta$, where $k$ is the wave number.
+For incompressible, homogeneous, isotropic, 3D turbulence \citep{1941DoSSR..30..301K},
+we have $\beta = -5/3$, while in the limit of high Mach number,
+shock-dominated turbulence in one dimension \citep{1974Burgers}, the
+power law is $\beta = -2$. It has proved more difficult to obtain
+exact results for the general case of 3D compressible, hydrodynamic
+turbulence. Scaling laws suggest that the original Kolmogorov energy
+spectrum scaling should be preserved even for highly compressible
+turbulence if the density weighted velocity $\rho^{1/3}v$ is taken
+instead of the pure velocity $v$ \citep{{2007ApJ...665..416K},
+  {2010A&A...512A..81F}}. Recent work by \citet{2011PhRvL.107m4501G}
+predicts the relation $E(\rho^{1/3}v) \propto k^{-19/9}$ for
+compressible, isothermal turbulence with compressive driving, with a
+turnover around the sonic scale to $E(\rho^{1/3}v)\propto
+k^{-5/3}$. This has been confirmed by extremely high resolution
+numerical experiments \citep{2013MNRAS.436.1245F}.
+
+Another important prediction of the Kolmogorov theory is the scaling of the structure function of
+any order. The universality of such scaling laws has been tested by detailed
+numerical experiments
+\citep{{2002PhRvE..66b6301P},{2002ApJ...573..678B},{2007ApJ...665..416K},{2013MNRAS.436.1245F}}. 
+Even in numerical experiments of incompressible, homogeneous and isotropic turbulence with
+energy injection at a fixed large scale, it is found that the exponents of the higher order structure
+functions have an anomalous behaviour, which has been interpreted as the result of spatial and/or
+temporal intermittency.
+Intermittency is a sparseness in space and time
+of strong structures associated with the dissipation or injection of
+energy \citep{1994PhRvL..72..336S}. Since astrophysical turbulence driven by real
+physical phenomena is almost certainly intermittent, it is important
+to understand the possible effects of intermittency on the derived
+statistical properties of real \hii{} regions.
+
+%Theory of turbulent statistics 2D vs 3D.
+
+The three-dimensional properties of the density and velocity fields
+that describe the turbulence in the interstellar medium, in this
+case an \hii{} region, must be deduced from the statistical
+properties of the observed quantities. For photoionized gas, the
+observations generally consist of spectra at different positions, from
+which centroid velocities and linewidths can be obtained. For optical
+line emission, the emissivity depends on density, temperature and
+ionization state and therefore an analysis of the emission lines will
+not just be providing information on the turbulent velocity
+fluctuations in the gas. The observations are a two-dimensional
+projection of the three-dimensional properties and 
+much effort has been dedicated to the problem of recovering 3D
+information from 2D data
+\citep{{2000ApJ...537..720L},{2002ApJ...566..276B},{2003ApJ...593..831M},
+  {2004ApJ...604..196B},{2005ApJ...631..320E},{2010MNRAS.405L..56B}}. Generally,
+some simplifying assumptions, such as isothermal gas and statistical isotropy of the
+turbulence, must be made.
+
+%Numerical simulations of HII regions.
+
+Recent modeling of \hii{} regions has addressed the origin of the
+irregular structures, filaments, and globules seen within and around
+the borders in optical images \citep{{1996ApJ...469..171G},
+  {2001MNRAS.327..788W},{2006ApJ...647..397M},
+  {2010MNRAS.403..714M},{2011MNRAS.414.1747A}}. Morphologically, the
+simulated emission-line images are very reminiscent of observed \hii{}
+regions and the global dynamics, as measured by the r.m.s.\ velocity,
+is also similar to observationally derived values
+\citep{{2008RMxAA..44..181G},{2011MNRAS.414.1747A},{2011MNRAS.413..705L}}. The
+internal dynamics of the simulated \hii{} regions is due mainly to the
+interaction of photoevaporated flows from the heads of the filaments
+and clumps, which flow into the interior of the \hii{} region,
+superimposed on the general expansion of the \hii{} region
+\citep{{2006ApJ...647..397M}, {2011MNRAS.413..705L}}. However,
+the dynamics of real \hii{} regions could also be affected at large
+scales by the action of stellar winds from the ionizing star or stars,
+and at small scales by outflows from young, low-mass stars. 
+
+
+%This paper.
+
+In this paper we investigate to what extent our numerical simulations of
+\hii{} regions model observed statistical properties of real \hii{}
+regions. In \S~\ref{sec:nummod} we briefly describe the numerical
+methods used in the radiation-hydrodynamics simulations and in the
+calculation of the simulated emission-line radiation, and how the
+statistical information is obtained from these calculations. In
+\S~\ref{sec:results} we describe our results for the expansion of an
+\hii{} region in a turbulent, clumpy molecular cloud. We discuss these results in
+\S~\ref{sec:discuss}, and comment on the extent to which the
+statistical properties of  the numerical simulations agree with those
+of observed \hii{} regions. In \S~\ref{sec:summary} we summarize and present our conclusions.
+
+
+\section[]{Numerical Model}
+\label{sec:nummod}
+We perform radiation-hydrodynamic simulations of the expansion of
+photoionized regions in a non-uniform initially neutral
+medium. The central ionizing source has an effective temperature of
+37,500~K and an ionizing photon rate of $10^{48.5}$~s$^{-1}$, which
+corresponds approximately to an O7 star.
+
+The simulation takes as an initial condition a clumpy medium with mean
+density $\langle n_0 \rangle= 1000$~cm$^{-3}$, which results from a
+self-gravitating forced turbulence simulation by
+\citet {2005ApJ...630L..49V}. The computational cube represents a
+spatial volume of
+4~pc$^3$ and the initial temperature is 5~K. 
+
+\subsection{Radiation-hydrodynamics Code}
+\label{subsec:rhdcode}
+The radiation-hydrodynamics code used in this paper is the same as
+that used by \citet{2006ApJ...647..397M}. The hydrodynamics is calculated
+using the nonrelativistic Roe solver PPM scheme described in
+\citet{1995A&AS..110..587E} with the addition of a local oscillation filter
+\citep{{2003ApJS..147..187S}} to suppress numerical odd-even decoupling
+behind radiatively cooling shock waves. Heating and cooling in the
+ionized and neutral gas is dealt with in the same manner as described
+in detail by \citet{2009MNRAS.398..157H}. The radiation transport and
+photoionization makes use of the C$^2$-RAY (Conservative-Causal ray)
+code developed by \citet {2006NewA...11..374M}. The calculations are
+all performed on a fixed, uniform Cartesian grid in three dimensions
+with a resolution of $512^3$ cells.
+
+
+\subsection{Simulated Emission Lines}
+\label{subsec:simemiss}
+The emissivity cubes for the H$\alpha$ recombination line and the
+\oiii$\lambda$5007, \nii$\lambda$6584 and \sii$\lambda$6731
+collisionally excited lines are calculated as described in
+\citet{{2011MNRAS.414.1747A}}, with the assumption that the heavy
+element ionization fractions are fixed functions of the hydrogen
+ionization fractions, calibrated with the Cloudy photoionization code.
+
+\subsection{Turbulence Statistics}
+\label{subsec:turbstats}
+The emissivity statistics have contributions from velocity, density,
+temperature and ionization state fluctuations. Obviously, the velocity
+fluctuations are the most dynamically important statistic and spectral
+line data, both real and simulated, can be used to extract statistical
+information for the different contributions. In particular, the
+second-order structure function of the velocity centroids and the
+technique of velocity-channel analysis (VCA; \citealp{2000ApJ...537..720L}) have been widely used.
+
+In this paper, we calculate the second-order structure function
+of the velocity centroids of the simulated emission lines and also apply
+VCA to the corresponding position-position-velocity (PPV)
+datacubes. In addition, we calculate the power spectrum of the velocity field,
+both weighted and unweighted, of the 3D hydrodynamic simulation
+datacube in an attempt to relate the observed statistics to the
+underlying hydrodynamics.
+
+\subsubsection{Power Spectrum}
+
+The power spectrum is a statistical tool that is useful for describing
+the intrinsic properties of, for example, velocity and density fields
+or any other physical property. It is the Fourier
+transform of the auto-correlation function of the physical
+quantity. For example, the N-dimensional auto-correlation function of the
+physical quantity $a$ can be written
+\begin{equation}
+  \xi_N(\boldsymbol{l}) = \langle
+  a(\mathbf{r})a(\mathbf{r}+\boldsymbol{l})\rangle \ ,
+\label{eq:corrfn}
+\end{equation}
+where $\mathbf{r}$ is the spatial position and $\boldsymbol{l}$ is the
+spatial separation. The N-dimensional power spectrum is then
+\begin{equation}
+  p_N(k) = \int e^{i\mathbf{k}\cdot\boldsymbol{l}} \xi_N{\boldsymbol{l}} \,
+  d\boldsymbol{l} \ ,
+\end{equation}
+where $\mathbf{k}  = (k_x,k_y,k_z)$ is the wavenumber, which is related to the scale by
+$k = 2\pi/l$, and the integration is performed over all N-dimensional
+space. The energy spectrum is the angle integral of
+the power spectrum over shells of radius $k = |\mathbf{k} |$, such that $E_N(k) \propto k^{N-1} p_N(k)$.
+
+Often the power spectrum can be represented by a power law $p_3(k)
+\propto k^{n}$. For instance, the velocity field for incompressible,
+homogeneous \citep {1941DoSSR..30..301K}  turbulence has $n = -11/3$,
+while for  shock-dominated  turbulence \citep{1974Burgers}, the 3D
+power-law index is $n = -4$. 
+
+
+\subsubsection{Velocity centroid statistics}
+\label{subsubsec:centroid}
+The use of positional fluctuations in the velocity centroids of
+spectral lines as probes of turbulent gas motions was developed in the
+1950s by, for example, \citet {1958RvMP...30.1035M}, and has been
+applied to observations of molecular emission lines in molecular cloud
+complexes \citep{{1985ApJ...295..479D},{1985ApJ...295..466K}} and to optical emission lines
+in the Orion Nebula, galactic and extragalactic \hii{} regions
+\citep{{1985ApJ...288..142R},{1987ApJ...317..686O},{1988ApJS...67...93C},
+  {2011MNRAS.413..705L}}. 
+
+The plane-of-the-sky velocity centroid map is calculated from the
+first two velocity moments $M_j$ of the simulated line intensity maps
+$I(v_r)$, where
+\begin{equation}
+  M_j = \int_{v_{s1}}^{v_{s2}} v_s^j I(v_s) dv_s \ ,
+\end{equation}
+and $v_s$ is the radial (line-of-sight) velocity, for convenience taken to be
+along one of the principal axes of the 3D data cube. 
+The centroids are then
+$V_c(x,y) = M_1/M_0$, where $(x,y)$ is the projection plane (plane of
+the sky) when the line of sight is along the $z$-axis. The limits of the integration over velocity are 
+$v_{s1}$ and $v_{s2}$, which represent the full range of
+velocities produced by the simulations plus thermal broadening, where the thermal
+width is $v_T = (kT/m_p)^{1/2}$ and $m_p$ is the atomic mass. 
+
+The observed second-order structure function is
+\begin{equation}
+\label{eq:strucfunc}
+  S_2(\boldsymbol{l}) = \frac{\Sigma[V_c(\mathbf{r}) - V_c(\mathbf{r} +
+    \boldsymbol{l})]^2}{\sigma_c^2 N(\boldsymbol{l})} \ ,
+\end{equation}
+where the variance of centroid velocity fluctuations is
+\begin{equation}
+\label{eq:variance}
+\sigma^2_c \equiv \frac{\Sigma [V_c(\mathbf{r}) - \langle V_c \rangle
+  ]^2}{N} \ ,
+\end{equation}
+and $\langle V_c \rangle$ is the mean centroid velocity 
+\begin{equation}
+\label{eq:mean}
+  \langle V_c \rangle \equiv \frac{\Sigma V_c(\mathbf{r})}{N} \ . 
+\end{equation}
+In this definition, $\mathbf{r}$ is the
+two-dimensional position vector in the plane of the sky and
+$\boldsymbol{l}$ is the lag, or separation vector. The summation in
+Equation~\ref{eq:strucfunc} is over all data pairs for each
+separation, $N(\boldsymbol{l})$, while the summations in the centroid
+variation and mean are over the total number of array elements, i.e.,
+pixels in the $(x,y)$-plane.
+
+For homogeneous, incompressible (Kolmogorov) turbulence, the velocity fluctuations
+scale as $l^{1/3}$ and hence the second-order structure function
+scales like $l^{2/3}$. For isotropic velocity fields,  the structure function and the
+auto-correlation function (see Eq.~\ref{eq:corrfn}) have the same scaling
+and differ only by a constant. The structure function is therefore
+related to the power spectrum. If the power-law index of the 3D structure
+function is $m$, then the power-law index of the 3D power spectrum is
+$n = -3 -m$.
+
+\subsubsection{Velocity channel analysis}
+The relationship between the velocity centroids  and the statistics of
+the velocity field is only reliable if the density fluctuations are
+negligible. Velocity channel analysis was developed to extract the
+separate contributions of density and velocity from spectral line data cubes.
+
+This is a technique for analyzing position-position-velocity (PPV) cubes
+developed by \citet{2000ApJ...537..720L}. With this method, spectroscopic observations
+are not reduced to velocity centroids as a function of position on the
+plane of the sky. Instead, the PPV cubes are analyzed in terms of
+velocity channels, or slices, as a function of the velocity resolution
+used. As the width of the velocity slices increases, the relative
+contribution of a velocity fluctuation to the total intensity
+fluctuations decreases, because the contributions from many velocity
+fluctuations will be averaged out in thicker velocity
+slices. A slice is described as \textit{thick} when the dispersion of
+turbulent velocities is less than the velocity slice thickness on the
+turbulence scale studied, otherwise the slice is \textit{thin}
+\citep{{2003MNRAS.342..325E}}. In the thickest velocity channels, we
+obtain only information about the density fluctuations, since the
+velocity information is averaged out. Conversely, the velocity
+fluctuations dominate in thin channels.
+
+Velocity channel analysis (VCA) consists of obtaining the 2D power
+spectrum for each velocity channel and then averaging over all
+velocity channels for each PPV cube. \citet{2003MNRAS.342..325E}
+stress that whether a slice in velocity space is considered
+\textit{thin} or \textit{thick} depends not only on the slice width
+$\delta v = (v_\mathrm{max} - v_\mathrm{min})/N$, where $N$ is the
+number of channels, but also on the scale of the turbulence. For
+power-law statistics, the velocity dispersion scales as $\sigma_r
+\propto r^{m/2}$, where $m$ is the velocity structure function
+index. The criterion for a channel to be considered thin is $\delta v
+< \sigma_r$, hence we do not expect a pure power-law result from the
+averaged 2D power-spectra analysis. This is because the largest
+scales, of the order of the size of the cube, are almost always in the
+\textit{thin} regime. At the smallest scales, numerical dissipation
+plays a r\^ole, and there is an additional deviation from the  power
+law. 
+
+Taking into account the thermal width of the optically thin emission
+line introduces an additional limitation on the resolution that can be
+used to discriminate between the \textit{thick} and \textit{thin}
+regimes. For a fixed velocity resolution, a velocity channel will
+remain \textit{thin} up to wavenumber
+\begin{equation}
+k \leq 2\pi \left[ \frac{1}{\sigma_L^2} \left( \delta v^2 + 2v_T^2
+    \right) \right]^{-1/m} \ ,
+\end{equation} 
+where $\sigma_L$ is the velocity dispersion over the scale $L$,
+equivalent to the size of the computational domain, and $v_T$ is the
+thermal width. The thermal width smears velocity fluctuations on
+smaller scales. 
+
+\subsubsection{Projection Smoothing}
+\label{subsec:projsmooth}
+The effect of projecting a three-dimensional correlation function onto
+a two-dimensional space has been studied by
+\citet{{1951ZA.....30...17V}}, \citet{1958RvMP...30.1035M}, \citet{1987ApJ...317..686O}
+and \citet{2004ApJ...604..196B}, among others. For the velocity field, the two-dimensional case corresponds to
+the emission-line velocity centroid map. 
+
+Previous authors have established
+that for an isotropic, power-law, three-dimensional power spectrum, the
+spectral slope does not change on going from three dimensions to two
+(projected) dimensions, i.e. $\kappa_{2D} = \kappa_{3D}$, where
+$\kappa_{ND}$ is the power spectrum spectral index in $N$ dimensions
+(defined as $p_N(k) \propto k^{-\kappa_{ND}}$, \citealp{{1998A&A...336..697S},{2003ApJ...593..831M},{2003ApJ...595..824B}}). This is because the line-of-sight contribution to
+the line-of-sight velocity has no amplitude on the $k_z = 0$ plane,
+where $z$ is the line-of-sight direction.
+
+The relationship between the power spectrum spectral index and the
+exponent of the second-order structure function for homogeneous
+turbulence is $\kappa_{ND} = m_\mathrm{ND} + N$, where $m_\mathrm{ND}$
+is the slope of the $N$-dimensional second-order structure
+function. For projection from 3 to 2 dimensions, we therefore have
+$m_\mathrm{2D} = m_\mathrm{3D} + 1$, and this is known as
+\textit{projection smoothing}. 
+
+In the case of incompressible, homogeneous (Kolmogorov) turbulence, we
+have $\kappa_{3D} = 11/3$ and $m_\mathrm{3D} = 2/3$, hence the
+relationship $\kappa_{2D} = \kappa_{3D}$ leads to $m_\mathrm{2D} =
+5/3$. For the compressible turbulence \citep{1974Burgers} case, we
+have $\kappa_{3D} = \kappa_{2D} = 4$ and $m_\mathrm{3D} = 1$, leading
+to $m_\mathrm{2D} = 2$.  When the line-of sight depth is small compared
+to the plane-of-the sky size of the emitting region, the distribution
+of emittors is essentially two-dimensional (sheet-like) and we would
+expect $m_\mathrm{2D} \simeq m_\mathrm{3D}$
+\citep{{1987ApJ...317..686O},{2003ApJ...593..831M}}.
+
+In order to compensate for the effects of density inhomogeneities,
+\citet {2004ApJ...604..196B} introduced a correction term $\delta\kappa$
+such that $\kappa_{2D} = \kappa_{3D} + \delta\kappa$, where
+$\delta\kappa$ tends to $-1$ when density fluctuations are
+important. This idea was applied by \citet{2011MNRAS.413..721L}  in an
+effort to use 2D observational statistics to infer the 3D velocity
+field of photoionized gas in giant extragalactic \hii{} regions.
+
+\section[]{Results}
+\label{sec:results}
+\subsection{General Properties}
+\label{subsec:genprop}
+\begin{figure*}
+\centering
+\includegraphics[width=0.45\textwidth]{emission-image-15}~\includegraphics[width=0.45\textwidth]{emission-image-20}\\
+\includegraphics[width=0.45\textwidth]{emission-image-25}~\includegraphics[width=0.45\textwidth]{emission-image-30}
+\caption{Simulated projected emission-line images of an evolving \hii{} region in a
+turbulent molecular cloud. The panels show the \hii{} region at 150,000,
+200,000, 250,000 and 300,000~yrs, from top left to bottom right. The
+physical size of each image is 4~pc on a side and the resolution of
+the simulation is $512^3$ cells. The view is from the negative$-z$
+direction of the computational cube. The colours represent the optical
+emission lines \nii$\lambda 6584$ (red), H$\alpha$ (green), and
+\oiii$\lambda 5007$ (blue), and for these images the effect of dust
+absorption has been included in the radiative transfer during the
+projection onto the plane of the sky. }
+\label{fig:HIIimages}
+\end{figure*}
+
+We begin by considering the morphological appearance of the simulated
+\hii{} regions. Figure~\ref{fig:HIIimages} shows the evolutionary
+sequence from 150,000 to 300,000~years. Each image is a composition of
+the three optical emission lines \nii$\lambda 6584$ (red), H$\alpha$
+(green) and \oiii$\lambda 5007$ (blue), where we have employed the
+classical \textit{Hubble Space Telescope} red-green-blue colour
+scheme. Emission from the dense, neutral zones is negligible and for
+the production of these images we
+also include dust extinction in the radiative transfer for the
+projection to the plane of the sky, with the assumption that the
+dust-to-gas mass ratio is $1 \%$. 
+
+The images show that the ionized gas distribution is not spherical and
+around the corrugated edge of the \hii{} region there are many neutral
+clumps and fingers of gas. This is a consequence of the \hii{} region
+evolving in a clumpy neutral medium. The fingers and clumps at the
+edge of the \hii{} region are the remnants of denser regions in the
+initial turbulent cloud.  We can also see that the different ions are
+important in different regions of the photoionized gas. The
+\oiii$\lambda 5007$ (blue) emission is strongest closer to the
+photoionizing source, while the \nii$\lambda 6584$ (red) emission is
+most prominent around the edge of the \hii{} region and the H$\alpha$ is
+distributed throughout the nebula. Although not shown in
+Figure~\ref{fig:HIIimages}, we also calculate the \sii$\lambda 6716$
+emission, which is important only around the edge of the \hii{} region in
+the vicinity of the ionization front.  This is consistent with the
+phenomenon of ionization stratification \citep{{2006agna.book.....O}}.
+
+The neutral clumps and fingers around the edge of the \hii{} region are
+the source of photoevaporated flows, which flow away from the
+ionization front into the \hii{} region \citep{{2003RMxAC..15..175H}}. These flows
+are mildly supersonic and can reach velocities of up to two or three
+times the sound speed in the ionized gas. They shock against each
+other in the interior of the \hii{} region. Neutral clumps inside the \hii{}
+region are accelerated outwards by the rocket effect in the opposite
+direction to the photoevaporated material flowing off their ionized
+skins. In Figure~\ref{fig:HIIimages} these photoevaporated flows can
+be discerned as shadowy regions ahead of the convex bright cusps that
+mark the position of the ionization front. As the photoevaporated gas
+flows away from the ionization front, the density drops in the
+diverging flow and this is why the flows appear darker than the
+surrounding photoionized gas.
+
+These colliding photoevaporated flows are responsible for the velocity
+dispersion of the ionized gas, which we show in
+Figure~\ref{fig:veldisp}. This figure shows both the velocity
+dispersion of the mass-weighted ionized gas and that of the
+volume-weighted ionized gas. At early times ($t < 10^5$~yrs) the
+volume-weighted velocity dispersion is higher than that of the
+mass-weighted velocity dispersion. This is because the \hii{} region
+breaks out of the dense clump where it is formed after about
+50,000~yrs and a low-density, relatively high velocity champagne flow
+results. After about 100,000~yrs, the main ionization front has just
+about caught up and thereafter the two different velocity dispersions
+show the same behaviour, remaining roughly constant with
+$V_\mathrm{rms} \sim 8$~km~s$^{-1}$. In Figure~\ref{fig:veldisp} we also show the
+r.m.s.\ velocity for the analytical  expansion \citep{1978Spitzer} in a uniform
+medium, where the gas velocity behind the ionization front is one half
+that of the ionization front and the internal velocities are linear
+with radius. In this case, the velocity dispersion falls steadily as a
+function of time, and after 100,000~yrs is less than 2~km~s$^{-1}$. The
+differences between the velocity dispersions in the numerical and analytic
+cases are entirely due to the interaction of the photoevaporated
+flows produced in the simulations described above. In the analytic expansion, the velocities are radial
+away from the central source. In the clumpy medium, the
+photoevaporated flows lead to large non-radial velocities, which increase
+the velocity dispersion in the photionized region.
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{veldisp}
+\caption{Velocity dispersion as a function of time. The black solid
+  line is the velocity dispersion of the mass-weighted ionized gas,
+  the dotted line is the velocity dispersion of the volume-weighted
+  ionized gas, while the thick grey line is the r.m.s.\ velocity of
+  the analytical expansion \citep{1978Spitzer} in a uniform medium of density $n_0$. }
+\label{fig:veldisp}
+\end{figure}
+
+\subsection{Statistical Properties}
+\label{subsec:statprop}
+\subsubsection{Power Spectra}
+\label{sssec:pspec}
+\begin{figure*}
+\centering
+%\includegraphics[width=\textwidth]{ps-all-3k}
+\includegraphics[width=\textwidth]{ps-all-3k-ref}
+\caption{Power spectra of the 3D simulation cube. From top to bottom: ionized gas velocity
+  $v_i$, ionized gas density $d_i$, ionized gas velocity weighted by the cube root
+  of the density $v_i d_i^{1/3}$.  From left to right: 150,000, 200,000, 250,000 and
+  300,000~years. The points represent the calculated power spectra for
+  the numerical simulation  and the solid line is the least-squares fit to
+the data points between limits described in the
+text, represented by the grey rectangle.}
+\label{fig:ps}
+\end{figure*}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{psevol}
+\caption{Time variation of power spectrum gradient for 3D physical
+  quantities. Dashed line: square of ionized density $d_i^2$,
+  dot-dashed line: ionized density $d_i$, short-dashed line: ionized
+  gas velocity $v_i$, dotted line: temperature $T$. Filled circles:
+  H$\alpha$ emissivity in 3D $j(\mathrm{H}\alpha)$, open squares:
+  \oiii$\lambda$5007 emissivity in 3D $j(\mathrm{[OIII]})$.}
+\label{fig:psevol}
+\end{figure}
+\begin{table*}
+\caption{Power-law indices for the 3D velocity, density and weighted
+  velocity spectra.}
+\label{tab:ps}
+\begin{tabular}{cccc}
+\hline
+Time&$n(v_i)$ & $n(d_i)$ & $n(v_i d_i^{1/3})$\\
+\hline
+150,000 &  -3.23 & -3.22 &  -3.17 \\
+200,000 &  -3.06 & -3.12 &  -3.09 \\
+250,000 & -3.14 & -3.19 &  -3.14 \\
+300,000 & -3.16 & -3.21 &  -3.15\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{scross}
+\caption{Sound crossing time as a function of evolution time. The
+  sound crossing time is $\langle R \rangle / c_\mathrm{i}$, where
+  $\langle R \rangle$ is the mean (spherical) radius of the ionized
+  volume and $c_\mathrm{i} = 11$~km~s$^{-1}$ is the sound speed in the
+  photoionized gas. The diagonal grey line has slope of unity. The
+  horizontal dashed line is the sound crossing time for a distance of
+  2~pc, which is the half-side length of the computational box.}
+\label{fig:scross}
+\end{figure}
+
+In Figure~\ref{fig:ps} we show the 3D power spectra of the ionized gas
+velocity, the ionized density, and the ionized velocity weighted by
+the cube root of the density \citep[see,
+e.g.,][]{{2007ApJ...665..416K}}. The power spectra all exhibit a break
+in the power law at about wavenumber $k \sim 32$, equivalent to a
+scale of 16 computational cells and consistent with the numerical
+dissipation scale. We fit power laws between $k = 4$ (corresponding to
+a length scale of one parsec) and $k =32$. For times later than
+200,000~yrs, the power-law fits for a given quantity are essentially
+constant (see Table~\ref{tab:ps} and Fig.~\ref{fig:psevol}). Note that
+here we use $n$ to represent the 3D power spectrum spectral index,
+where $n = -\kappa_{3D}$ and $\kappa_{3D}$ is defined in
+\S~\ref{subsec:projsmooth}. At earlier times, the power laws are
+steeper and evolving. This behaviour mimics, with a delay of about
+50,000~yrs, the velocity dispersion behaviour seen in
+Figure~\ref{fig:veldisp}.
+
+In Figure~\ref{fig:scross} we compare the sound-crossing time of the
+ionized volume with the evolution time of the simulation. During the
+breakout of the \hii{} region from its initial dense clump (between
+about 80,000 and 100,000~yrs), the expansion
+is supersonic and the sound-crossing time exceeds the evolution
+time. This coincides with the peak in the velocity dispersion (see
+Fig.~\ref{fig:veldisp}). After this time, the expansion is subsonic and
+the sound-crossing time becomes
+shorter than the evolution time. A statistically steady state then
+becomes possible for the turbulence within the ionized volume. This
+occurs after about 200,000~yrs (as evidenced in Fig.~\ref{fig:psevol}), which
+corresponds to the evolution time being equal to approximately 1.5~times the
+sound-crossing time.
+
+\subsubsection{Second-order Structure Functions}
+\label{sssec:s2func}
+% \begin{figure*}
+% \centering
+% \includegraphics[width=\textwidth]{sf-all-08}
+% \caption{Second-order structure functions against length scale for
+%   projection onto the
+%   $xy$-plane. From top to bottom:
+%   H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+%   6716$. From left to right: 150,000, 200,000, 250,000 and
+%   300,000~years. The points represent the calculated structure
+%   function for the numerical simulation. The solid line is the
+%   least-squares fit to the data points between limits described in the
+% text, represented by the grey rectangle. The horizontal dotted line at $\log 2$ is included as a
+% reference value.}
+% \label{fig:sfunc}
+% \end{figure*}
+% % \begin{figure*}
+% % \centering
+% % \includegraphics[width=\textwidth]{sf-all-08-xz}
+% % \caption{Same as Fig.~\protect\ref{fig:sfunc} but for a projection onto the $x$-$z$ plane.}
+% % \label{fig:sfuncxz}
+% % \end{figure*}
+%  \begin{figure*}
+%  \centering
+%  \includegraphics[width=\textwidth]{sf-all-08-yz}
+%  \caption{Same as Fig.~\protect\ref{fig:sfunc} but for a projection onto the $yz$-plane.}
+%  \label{fig:sfuncyz}
+%  \end{figure*}
+  \begin{figure*}
+  \centering
+  \includegraphics[width=\textwidth]{sf-time-trends-all}
+  \caption{Evolution of second-order structure function power-law
+    index as a function of time. From top to bottom:   H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+  6716$. From left to right: line of sight along the $z$, $x$ and $y$
+  axes, respectively.}
+  \label{fig:sftrends}
+  \end{figure*}
+\begin{figure*}
+\centering
+\includegraphics[width=0.6\linewidth]{pdf-centroid}
+\caption{Histograms of velocity centroid values for each emission line
+  along different lines of sight. From top to bottom:
+  H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+  6716$. From left to right: line of sight along the $z$, $x$ and $y$
+  axes, respectively. The different line types refer to different
+  times: thick, grey line---150,000~yrs, dashed line---200,000~yrs,
+  short-dashed line---250,000~yrs, continuous black line---300,000~yrs.} 
+\label{fig:histogram}
+\end{figure*}
+We use the procedure described in Section~\ref{subsubsec:centroid} to
+calculate velocity centroid maps for the H$\alpha$, \oiii$\lambda
+5007$, \nii$\lambda 6584$ and also \sii$\lambda 6716$ emission lines
+and then calculate the corresponding second-order structure functions
+according to Equation~\ref{eq:strucfunc}. Typical results are shown in
+Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz} for the four emission lines at the four 
+%Figure~\ref{fig:sfunc} for a line of sight perpendicular to the $xy$-plane for the four emission lines at the four 
+evolutionary times depicted in Figure~\ref{fig:HIIimages}.
+
+If turbulence is present, the second-order structure function should exhibit an
+inertial range over which it is a power law with
+length scale. Accordingly, we perform a least-squares fit to the data
+points. However, it is not immediately clear what the limits for the
+fit should be. At small scales, the lower limit for the inertial range
+should be defined by the scale at which numerical dissipation effects
+cease to be important \citep {2004ApJ...604..196B}. For the present
+simulations, we tested several values and the size scale equivalent to
+8 computational cells proved to be adequate for all emission lines and
+evolution times studied. For the upper limit, we examined the
+projected emission maps and calculated the area occupied by the pixels
+having greater than 6.6\% of the peak intensity. We then took the
+radius of the circle having the same area to be the upper limit for the
+least-squares fit. This procedure appears to work very well, as can be
+seen in Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz}. If a different
+line of sight is chosen, the radius of this circle will be different and needs to be
+calculated self-consistently for every projection.
+
+An alternative criterion for the upper limit was used by \citet
+{2011MNRAS.413..721L} who used the theoretical result for homogeneous
+turbulence that decorrelation of the second-order structure function
+occurs when the auto-correlation function changes sign from positive to
+negative. This corresponds approximately to the scale for which the
+second-order structure function is equal to 2. However, as can be seen
+from Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz}, 
+for many of our emission lines this criterion cannot be used,
+since the structure function nowhere rises above 2.
+
+In Table~\ref{tab:sfunc} we summarize the results for the power-law
+indices and inertial ranges for the fits shown in 
+Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz} and also for a line of sight perpendicular to
+the $xz$-plane. For
+the line of sight along the $z$-axis, in
+general terms, for each emission line, both the power-law index and
+the extent of the inertial range increase with time. The increase in
+the extent of the inertial range is easily understood as being due to
+the expansion of the \hii{} region. The increase in the power-law index
+is not as straightforward to explain and, indeed, an increase in
+power-law index is not seen for the other lines of sight (see Table~\ref{tab:sfunc}). In order to
+understand this behaviour, we produced histograms of the emission-line
+velocity centroid values binned into narrow $<2$~km~s$^{-1}$ bins for the three
+different lines of sight at the four different times. The histograms
+are presented in Figure~\ref{fig:histogram}, from which we see that
+for the $z$-axis line of sight, the values of $V_c$ are not
+distributed symmetrically about the mean value and, in fact, for the
+H$\alpha$ and \oiii$\lambda$5007 emission lines, a
+``wing'' develops for negative values of $V_c$ that extends to more
+negative values as time progresses. This tendency is not seen for the
+$y$- and $x$- axis lines of sight. We attribute this wing to a
+``champagne'' flow towards the observer along the $z$-axis. This flow
+would be perpendicular to the line of sight for observations along the
+other axes.
+
+At the latest time, 300,000~yrs, both the H$\alpha$
+and \oiii$\lambda 5007$ structure functions appear to develop a
+break, which would be better fit by two power
+laws, one below a scale of about 0.3~pc and a steeper one for larger
+scales. However, we have fit just a single power law to both of these
+cases.
+
+
+\begin{table*}
+\caption{Second-order structure function power-law indices $m_\mathrm{2D}$ for four optical emission lines.}
+\label{tab:sfunc}
+\begin{tabular}{cccccc}
+\hline
+Time& Plane & H$\alpha$ & \oiii$\lambda 5007$ &\nii$\lambda 6584$ & \sii$\lambda 6716$  \\
+(yr) & & $m_\mathrm{2D}$  & $m_\mathrm{2D}$ & $m_\mathrm{2D}$ & $m_\mathrm{2D}$ \\
+\hline
+150,000 & $xy$& 0.51 &  0.69 & 0.46 & 0.41 \\
+              & $xz$& 0.60 &  0.77 & 0.54 & 0.44 \\
+              & $yz$& 0.67 &  0.87 & 0.58 & 0.50 \\
+200,000 & $xy$& 0.61 &  0.68 & 0.54 & 0.44 \\
+              & $xz$& 0.51 &  0.78 & 0.44 & 0.37 \\ 
+              & $yz$& 0.60 &  0.70 & 0.56 & 0.47 \\
+250,000 & $xy$& 0.71 &  0.83 & 0.60 & 0.45 \\
+              & $xz$& 0.53 &  0.73 & 0.48 & 0.43 \\ 
+              & $yz$& 0.51 &  0.59 & 0.55 & 0.48 \\
+300,000 & $xy$& 0.79 &  1.02 & 0.66 & 0.43 \\
+              & $xz$& 0.58 &  0.63 & 0.63 & 0.47 \\
+              & $yz$& 0.61 &  0.74 & 0.53 & 0.48  \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsubsection{Velocity Channel Analyis}
+\label{sssec:vca}
+% \begin{figure*}
+% \centering
+% \includegraphics[width=\textwidth]{vca-all-red}
+% \caption{Power spectra of the velocity channels. From top to bottom:
+%   H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+%   6716$. From left to right: 150,000, 200,000, 250,000 and
+%   300,000~years. The upper panel in each figure are for velocities
+%   without thermal broadening, the lower panel is the case with thermal
+%   broadening. The points represent the calculated power spectra for
+%   the numerical simulation: Open squares--thin slice ($n=128$ channels),
+%   crosses--medium slice ($n=32$ channels), filled circles--thick slice
+%   ($n=1$ channel). The dashed line is the
+%   least-squares fit to the data points for the thin slice between limits described in the
+% text represented by the grey rectangle. The solid line is the least-squares fit to
+% the data points for the thick slice.}
+% \label{fig:vca}
+% \end{figure*}
+
+% \begin{table*}
+% \centering
+% \caption{Power-law indices for the velocity channel analysis.}
+% \label{tab:vca}
+% \begin{tabular}{ccccccc}
+% \hline
+% Line & Time & Plane & $\gamma_{\mathrm{vthick}}$ & $\gamma_{\mathrm{thin}}$&  $\gamma_{\mathrm thin}$\\
+% & (yrs) &  & & No Broadening & Broadening \\
+% \hline
+% H$\alpha$ & 150,000  &$xy$& $-2.65$ & $-2.54$ & $-2.67$ \\
+%                   &                &$xz$& $-2.52$ & $-2.49$ & $-2.63$ \\
+%                   &                &$yz$& $-2.66$ & $-2.40$ & $-2.64$ \\
+%                   & 200,000  &$xy$& $-2.63$ & $-2.41$ & $-2.58$\\
+%                   &                &$xz$& $-2.55$ & $-2.35$ & $-2.51$ \\
+%                   &                &$yz$& $-2.49$ & $-2.26$ &  $-2.42$ \\
+%                   & 250,000  &$xy$& $-2.61$ & $-2.31$ & $-2.48$\\
+%                   &                &$xz$& $-2.60$ & $-2.29$ & $-2.45$ \\
+%                   &                &$yz$& $-2.62$ & $-2.29$ & $-2.50$ \\
+%                   & 300,000  &$xy$& $-2.56$ & $-2.23$ & $-2.37$\\
+%                   &                &$xz$& $-2.53$ & $-2.23$ & $-2.39$ \\
+%                   &                &$yz$& $-2.66$ & $-2.35$ & $-2.48$ \\
+% \hline
+% \oiii{}          & 150,000   &$xy$& $-3.58$ & $-2.90$ &  $-3.15$ \\
+% $\lambda$5007 &        &$xz$& $-3.14$ & $-2.73$ &  $-3.01$ \\
+%                   &                &$yz$& $-3.42$ & $-2.51$ &  $-2.71$ \\
+%                   & 200,000  &$xy$& $-3.32$ & $-2.62$ & $-2.84$ \\
+%                   &                &$xz$& $-3.18$ & $-2.55$ & $-2.76$ \\
+%                   &                &$yz$& $-3.26$ & $-2.51$ & $-2.69$ \\
+%                   & 250,000  &$xy$& $-3.37$ & $-2.57$ & $-2.78$ \\
+%                   &                &$xz$& $-3.31$ & $-2.48$ & $-2.69$ \\
+%                   &                &$yz$& $-3.34$ & $-2.45$ & $-2.69$ \\
+%                   & 300,000  &$xy$& $-3.38$ & $-2.46$ & $-2.69$ \\
+%                   &                &$xz$& $-3.39$ & $-2.46$ & $-2.68$ \\
+%                   &                &$yz$& $-3.43$ & $-2.58$ & $-2.79$ \\
+% \hline
+% \nii{}           & 150,000  &$xy$& $-2.41$ & $-2.13$ & $-2.28$ \\
+% $\lambda$6584 &        &$xz$& $-2.38$ & $-2.05$ & $-2.20$ \\
+%                   &                &$yz$& $-2.42$ & $-2.16$ & $-2.30$ \\
+%                  & 200,000 &$xy$& $-2.61$ & $-2.18$ & $-2.36$ \\
+%                   &                &$xz$& $-2.48$ & $-2.17$ & $-2.31$ \\
+%                   &                &$yz$& $-2.44$ & $-2.14$ & $-2.29$ \\
+%                  & 250,000 &$xy$& $-2.42$ & $-2.13$ & $-2.28$ \\
+%                   &                &$xz$& $-2.61$ & $-2.22$ & $-2.39$ \\
+%                   &                &$yz$& $-2.63$ & $-2.22$ & $-2.38$ \\
+%                  & 300,000 &$xy$& $-2.58$ & $-2.20$ & $-2.35$ \\
+%                   &                &$xz$& $-2.52$ & $-2.17$ & $-2.33$ \\
+%                   &                &$yz$& $-2.66$ & $-2.28$ & $-2.45$ \\
+% \hline
+% \sii{}           & 150,000  &$xy$& $-2.13$ & $-1.76$ & $-1.87$ \\
+% $\lambda$6716 &        &$xz$& $-1.96$ & $-1.61$ & $-1.69$ \\
+%                   &                &$yz$& $-2.11$ & $-1.90$ & $-1.96$ \\
+%                   & 200,000  &$xy$& $-2.03$ & $-1.82$ & $-1.89$ \\
+%                   &                &$xz$& $-1.82$ & $-1.69$ & $-1.74$ \\
+%                   &                &$yz$& $-2.04$ & $-1.75$ & $-1.86$ \\
+%                  & 250,000  &$xy$& $-1.84$ & $-1.69$ &  $-1.76$ \\
+%                   &                &$xz$& $-2.19$ & $-1.96$ & $-2.02$ \\
+%                   &                &$yz$& $-1.97$ & $-1.76$ & $-1.80$ \\
+%                  & 300,000  &$xy$& $-1.85$ & $-1.59$ & $-1.66$ \\
+%                   &                &$xz$& $-1.92$ & $-1.64$ & $-1.71$ \\
+%                   &                &$yz$& $-1.96$ & $-1.73$ & $-1.78$ \\
+% \hline
+% \end{tabular}
+% \end{table*}
+  \begin{figure*}
+  \centering
+  \includegraphics[width=\textwidth]{vca-time-trends-all}
+  \caption{Evolution of velocity channel power-law
+    index as a function of time. From top to bottom:   H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+  6716$. From left to right: line of sight along the $z$, $x$ and $y$
+  axes, respectively.}
+  \label{fig:vcatrends}
+  \end{figure*}
+
+Figure~\ref{fig:vca} shows the power spectra resulting from the
+velocity channel analysis. The figure shows the four emission lines at
+four different times. For each emission line, there are two panels:
+the upper panel shows the power spectra for the velocity channels when
+thermal broadening is not taken into account, while the lower panel
+shows the power spectra when thermal broadening is included. In each
+graph, two power spectra are plotted: one representing a very thick velocity
+slice (i.e., encompassing all the emission) and the other averaged
+over thin velocity slices
+of width $\delta v \sim 5$~km~s$^{-1}$.
+Also shown are the least-squares power-law fits to the thin and very
+thick slice spectra  and the range in wavenumber over which the fit is
+calculated. This
+wavenumber range corresponds to the length-scale range used for the
+structure function fits (see \S~\ref{sssec:s2func}).
+The very thick velocity slice is equivalent to the total
+intensity along the line of sight and its power spectrum does not
+vary with the addition of thermal broadening.  The slopes of these
+fits, $\gamma_{\mathrm{vthick}}$ and $\gamma_{\mathrm{thin}}$, are
+given in Table~\ref{tab:vca}.
+
+It is clear that taking thermal broadening into account means that the
+thin velocity slices are not a useful diagnostic, particularly for the
+lighter chemical elements. Indeed, the inclusion of thermal
+broadening makes the thin velocity slices similar to the intermediate
+velocity slices, as is to be expected. For photoionized gas at $T_e= 10^4$~K, the
+FWHM of the H$\alpha$ line is $\sim 22$~km~s$^{-1}$, while that of an
+oxygen line is a quarter of this, $\sim
+5.5$~km~s$^{-1}$. \citet{2000ApJ...537..720L}  
+suggested that the thin velocity slices give information as to the
+velocity fluctuations, since the 2D power spectrum index for thin
+velocity channels is predicted to depend both on the density spectral
+index and on the structure function index, while the for the very thick
+velocity slices the 2D power spectrum index depends only on the density spectral index. However,
+thermal broadening means that the thin slices cannot be interpreted in
+such a simple manner. 
+
+Table~\ref{tab:vca} shows that the slopes of the linear fits to the very
+thick velocity slice power spectra do not vary appreciably with time
+for the H$\alpha$ and \oiii$\lambda$5007 lines. There is more
+variation for the \nii$\lambda$6584 and \sii$\lambda6716$ lines but
+there is no obvious trend with time.
+
+
+\section{Discussion}
+\label{sec:discuss}
+
+\subsection{Characterization of the turbulence from optical emission
+  lines}
+\label{subsec:charac}
+At times later than 150,000~years, our second-order structure function
+results for the H$\alpha$ and \oiii$\lambda$5007
+emission-line velocity centroids strongly suggest the presence of
+turbulence with an inertial range between 1~pc and the numerical
+dissipation scale of about 8 cells (equivalent to 0.0625~pc). The
+\nii$\lambda$6584 and
+\sii$\lambda$6716 structure function results also suggest turbulence, with a smaller upper limit to the inertial range,
+which is consistent with these ions being confined to relatively thin
+layers near the ionization front. However, it is difficult
+to characterize this turbulence since the slope of the structure
+function for a given emission line varies with time in a
+non-predictive manner and also depends on the line of sight. Although
+the results for the $z$-axis line of sight suggest an increase in
+slope with time, an examination of the distributions of the velocity centroids
+(see Fig.~\ref{fig:histogram}) showed that this is due to a champagne-type
+flow in that direction, and other lines of sight do not show a
+definite trend with time.
+
+Different emission lines originate in different volumes of ionized
+gas, and this is reflected in the different slopes for the structure
+functions from different emitters. The H$\alpha$ line is produced
+throughout the volume and is brightest close to the ionization front
+around the bright edges of the photoionized gas. There is therefore a
+wide range of densities associated with the H$\alpha$-emitting
+gas. The emissivity of the H$\alpha$ recombination line depends on the
+square of the density and only weakly on the temperature in the
+photoionized gas \citep[see e.g.,][]{2006agna.book.....O}. Indeed, the
+gradients of the 3D power spectra of the H$\alpha$ emissivity and
+the square of the density are essentially the same. On the other hand,
+the \oiii$\lambda$5007 emission comes from the inner region of the
+\hii{} region, where the density is more uniform. However, the emissivity
+of this collisional line is a more complicated function of
+temperature, and the O$^{++}$ ion is found in the more central regions
+of the \hii{} region, where shocks due to photoevaporated flows cause
+fluctuations in the temperature. A more uniform density distribution
+corresponds to a steeper density power spectrum and, indeed, the
+structure functions, 2D velocity channel power spectra, and 3D power
+spectrum of the \oiii$\lambda$5007 line are all steeper than those
+for the H$\alpha$ recombination line.
+
+The stellar parameters for the simulations presented in this work
+correspond to a relatively hot (37,500~K) O7 star. For these
+parameters, the \nii$\lambda$6584 and \sii$\lambda$6716
+collisionally ionized lines come from regions close to the ionization
+front, where the density variations are strong, and this is reflected
+in the less steep structure function and 2D velocity channel power
+spectra gradients. In particular, the \sii{} emission will come from
+very close to the ionization front where the acceleration of the
+ionized gas is strongest, and as a result the structure function and
+2D velocity channel power-spectra gradients are shallowest for this
+line. Other stellar parameters, e.g., a cooler B0 star or a much
+hotter white dwarf, would produce photoionized regions with 
+different ionization stratifications.
+
+%\textbf{Will's stuff\dots}
+
+\subsubsection{Intrinsic Power Spectra Of Physical Quantities}
+\label{sssec:ips}
+\begin{table*}
+\caption{Power-law indices for the 3D emissivity cube power spectra.}
+\label{tab:psemiss}
+\begin{tabular}{ccccc}
+\hline
+Time&$n(j_{{\mathrm{H}}\alpha})$ & $n(j_{\mathrm{[OIII]}})$ &
+  $n(j_{\mathrm{[NII]}})$ & $n(j_{\mathrm{[SII]}})$ \\
+\hline
+150,000  &  $-3.05$    &    $-3.52$   &     $-2.78$  &    $-2.63$ \\
+200,000  &  $-2.82$    &    $-3.35$   &     $-2.65$  &    $-2.57$ \\
+250,000  &  $-2.89$    &    $-3.29$   &     $-2.69$  &    $-2.57$ \\
+300,000  &  $-2.94$    &    $-3.30$   &     $-2.75$  &    $-2.65$ \\ 
+\hline
+\end{tabular}
+\end{table*}
+Figure~\ref{fig:ps} shows that
+the power spectra of physical quantities are very well approximated
+by power laws over the range from $k = 4$ to 32
+(scales of 1~pc to 0.125~pc).
+In particular, the ionized gas velocity shows
+a power-law slope of \(n = -3.2 \pm 0.1\)
+once the turbulence is fully developed. 
+This is significantly shallower than the Kolmogorov (\(n = -3.667\))
+or Burgers (\(n = -4\)) value,
+indicating more velocity structure at small scales than would be seen
+in a simple turbulent cascade of energy injected at the largest scale.
+As a consequence,
+the turbulent velocity dispersion is relatively insensitive to scale,
+varying as \(\sigma \sim l^{0.5 (-3 - n)} \sim l^{0.1}\). 
+
+One reason for the shallow velocity power spectrum may be that energy
+is injected over a variety of scales.  Furthermore, if the energy
+injection or the energy dissipation is sparsely distributed in space
+and time, which is almost certainly the case regarding the
+photoevaporated flows in our simulated \hii{} regions,
+``intermittent'' velocity fluctuations may be present. The effects of
+intermittency on the Kolmogorov cascade of energy have been studied by
+\citet{1994PhRvL..72..336S}, who associate intermittency related to
+energy dissipation with the presence of filamentary structures, which
+effectively dissipate energy along their long axis. The overall effect
+is to flatten the $p$-th order structure function for $p >3$, while
+the second-order structure function is slightly steepened (0.696 as
+against 2/3). Our simulations indicate much shallower 3D second-order
+structure functions ($m_{3D}$) and the dissipation scales are
+dominated by numerical dissipation. It is possible that intermittent
+injection rather than dissipation is modifying the scaling relations.
+
+
+The density power spectrum has a very similar slope to that of the velocity: \(n = -3.2 \pm 0.1\),
+but of greater relevance
+are the slopes of the emissivities of the different emission lines,
+which are \(n = -3.4 \pm 0.1\) for \oiii{}, 
+\(n = -2.9 \pm 0.1\) for \ha,
+\(n = -2.7 \pm 0.1\) for \nii, and
+\(n = -2.6 \pm 0.1\) for \sii (see also Table~\ref{tab:psemiss}).
+These span the critical value of \(n = -3\)
+that divides ``steep'' from ``shallow'' power spectra.
+\oiii{} has a steep slope,
+indicating that large-scale fluctuations dominate,
+while \nii{} and \sii{} have shallow slopes,
+indicating that small-scale fluctuations dominate. 
+The \ha{} slope is very close to the critical value,
+indicating roughly equal contributions from fluctuations on all size-scales.
+
+It is interesting to study the question of whether
+the known power-law indices of the velocity and emissivity power spectra in our simulations
+can in practice be recovered from observational diagnostics.  
+If this is not the case for a given diagnostic,
+then it would call into question its utility for studying real \hii{} regions.
+In particular, we will concentrate on two commonly used diagnostics:
+the second-order structure function of the line velocity centroids,
+and the power spectra of the surface brightness in isovelocity channel maps
+(Velocity Channel Analysis). 
+
+\subsubsection{Structure Function}
+\label{sssec:strfunc}
+The structure function of the velocity centroids is an observationally attractive diagnostic
+because it is relatively immune to the effects of thermal broadening 
+and poor spectral resolution,
+so long as sufficiently high signal-to-noise spectra are used. 
+However, it has the disadvantage that relating the observed slope 
+to the 3-dimensional velocity statistics depends on the geometry
+of the emitting region, see \S~\ref{subsec:projsmooth}. 
+For transverse separations larger than
+the characteristic line-of-sight depth of the emitting gas,
+the two-dimensional gradient should be equal to the three-dimensional one:
+\[
+m_{\mathrm{2D}} = m_{\mathrm{3D}} = -3 - n,
+\]
+whereas at smaller separations than this, 
+projection smoothing, as described above, means that 
+the two-dimensional gradient is steeper:
+\[
+m_{\mathrm{2D}} = 1 + m_{\mathrm{3D}} = -2 - n.
+\]
+Based on our simulation's velocity power spectrum index of \(n \approx -3.2\), 
+the structure function slope should be \(m_{\mathrm{2D}} = 0.2\) in the large-scale limit
+and \(m_{\mathrm{2D}} = 1.2\) in the small-scale limit. 
+
+In fact, all of the measured slopes lie between these two limits,
+with a systematically increasing value from low to high-ionization lines:
+\(m_{\mathrm{2D}}(\sii) = 0.45 \pm 0.01\), 
+\(m_{\mathrm{2D}}(\nii) = 0.55 \pm 0.02\), 
+\(m_{\mathrm{2D}}(\ha) = 0.60 \pm 0.03\), 
+\(m_{\mathrm{2D}}(\oiii) = 0.75 \pm 0.03\). 
+This is qualitatively consistent with expectations
+because the emission from lower-ionization lines is confined to 
+thin layers near the ionization front, whereas higher ionization emission
+is more distributed over the volume
+and therefore subject to greater projection smoothing.
+
+If the line-of-sight depth were constant over the face of the \hii{} region,
+then the structure function would show a break at that scale,
+but in reality the depth varies from point to point, 
+so the break will be blurred out.
+Instead, the structure function is expected to show negative curvature,
+with the gradient gradually decreasing 
+as one passes from smaller to larger scales. 
+A small such effect is seen in the structure functions 
+derived from our simulations (Fig.~\ref{fig:sfunc} to \ref{fig:sfuncyz}):
+the fit to a power law is generally not so good as in the case of the power spectra,
+with negative residuals at both ends of the fitted range,
+indicative of a negative curvature.  
+That the observed effect is so small is probably due to the fact that
+the distribution of line-of-sight depths strongly overlaps with 
+the limited dynamic range in separations available from our simulations,
+bounded at small scales by numerical dissipation,
+and at large scales by the size of the ionized region.
+
+It is disappointing that none of the measured slopes
+reach either of the limiting cases discussed above.
+All that can be deduced from the structure function is that 
+\(1 + m_{\mathrm{3D}} > m_{\mathrm{2D}}(\oiii)\) 
+and \(m_{\mathrm{3D}} < m_{\mathrm{2D}}(\sii)\), which implies $n = -2.75$ to $-3.45$.
+Although this is a rather wide range of allowed velocity power spectrum slopes,
+it does serve to rule out the Kolmogorov value of \(n = -3.667\). 
+
+A further proviso to the use of the structure function is that
+systematic anisotropic flows can affect the measured slopes
+when the viewing angle is along the direction of the flow.
+Such an effect is seen at later times for our simulation
+when viewed along the \(z\)-axis (Fig.~\ref{fig:sfunc}). 
+In this case, the structure function tends to steepen
+at the large-scale end of our fitting range,
+producing a positive curvature, 
+which is opposite to the more typical case of negative curvature discussed above.
+Such cases may also be identified by the presence of a significant skew
+in the PDF of the line-of-sight velocity (see Fig.~\ref{fig:histogram}).
+
+Note that the additional complication identified by \citet {2004ApJ...604..196B}, 
+whereby correlations between density and velocity fluctuations affect the 
+translation between \(m_{\mathrm{2D}}\) and \(n\), 
+is likely of minor importance in our case.  
+\citet {2007MNRAS.381.1733E} show that this is most important
+for high Mach number turbulence, where \(\delta\rho/\langle \rho \rangle > 1\),
+whereas the transonic turbulence inside our simulated \hii{} regions
+produces more modest density contrasts. 
+\begin{figure*}
+\centering
+\includegraphics[width=\linewidth]{o3-thick-thin}
+ \caption{Surface brightness maps in thick (left) versus thin (right) 
+    velocity slices for the \oiii{} line from our simulation
+    at an age of 300,000~years.  
+    The thick slice covers the full velocity range of the emission line,
+    while the thin slice has a width of 5~km~s$^{-1}$,
+    which is smaller than the turbulent velocity fluctuations,
+    but slightly larger than the thermal broadening for this line.
+    It is apparent that the thin slice shows considerably greater
+    small-scale structure than the thick slice,
+    which is reflected in its shallower power spectrum.
+    The brightness structure in the thick slice is due entirely to
+    the emissivity fluctuations within the \hii{} region, 
+    whereas the additional structure in the thin slice is caused by
+    velocity fluctuations.
+  }
+\label{fig:o3-thick-thin}
+\end{figure*}
+
+\subsubsection{Velocity Channel Analysis}
+\label{sssec:vca2}
+The velocity channel analysis consists of calculating the
+two-dimensional power spectrum of the brightness distribution
+in isovelocity channels of varying thickness.  
+We consider two cases: thick slices,
+which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+to include all the emission in the line,
+and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+Because the velocity spectrum in our simulations is rather shallow (see above),
+the line-of-sight turbulent velocity dispersion \(\delta v\)
+exceeds the width of these thin slices
+over the full range of length scales that we can usefully study,
+from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+  s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
+the \oiii{} brightness in thick and thin slices.
+
+To use thinner slices would not be useful for a variety of reasons.
+First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+that can be achieved with optical spectrographs
+that are optimised for studying extended sources,
+such as Keck HIRES or VLT UVES. 
+Second, thinner slices are increasingly subject to ``shot noise'' 
+due to the finite resolution of the numerical simulations,
+which produces spurious small-scale power, as discussed by 
+\citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
+Third, thermal broadening would smoothe out any structure on 
+scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+
+The procedure for deriving the power-law index
+of the velocity fluctuations from the velocity channels is
+slightly different, depending on whether the power spectrum 
+of the emissivity fluctuations is ``steep'' or ``shallow'' (see above). 
+In the steep case, which applies to \oiii{} in our simulation, 
+the slope of the average power spectrum of the brightness maps
+in the thin isovelocity channels is given by 
+\(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+where \(m_{\mathrm{3D}} = -3 - n = 0.2 \pm 0.1\) for our simulation.
+The derived value from the \oiii{} thin channel maps is 
+\(\gamma_{\mathrm{thin}} = -2.84 \pm 0.11 \),
+which compares very well with the value \(-2.9 \pm 0.05\)
+that is implied by the simulation's value of \(n\). 
+
+In the shallow case, it is the difference in slope
+between the thin and thick slices
+that is predicted to depend on the velocity fluctuations:
+\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
+The derived values are 
+\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.08 \pm 0.04\), 
+\(0.18 \pm 0.04\), and \(0.18 \pm 0.04\)
+for \ha, \nii, and \sii, respectively. 
+These also compare well with the value of \(0.1 \pm 0.05\)
+that is implied by the simulation's value of \(n\). 
+
+The slopes of the power spectra of the thick slices themselves, 
+which are simply the velocity-integrated surface brightness images\footnote{
+  Although for simplicity, extinction is not included.}
+are predicted \citep {2000ApJ...537..720L}
+to be equal to the slopes of the 3D power spectra of their respective emissivities. 
+However, only in the case of \oiii{} do we find this to be the case.
+In the case of the other lines, \(\gamma_{\mathrm{vthick}}\) is shallower than
+the emissivity's spectral index \(n\) by 0.36, 0.19, 0.61 for \ha, \nii, and \sii, respectively. 
+The reason for this discrepancy may be the increasingly ``sheet-like'' morphology
+of the emission in the lower ionization lines. 
+As shown in \S~4.1 of \citet {2003ApJ...593..831M}, 
+one should see a transition from \(\gamma_{\mathrm{vthick}} = n\) to the 
+shallower slope \(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger
+than the line-of-sight depth of the emitting region.
+
+
+\subsection{Comparison with observational results}
+
+Non-thermal linewidths in \hii{} regions have been interpreted as
+evidence for turbulence in the photoionized gas. Galactic \hii{} regions
+generally exhibit subsonic turbulent widths
+\citep{{1985ApJ...288..142R},{1986ApJ...304..767O}}, while giant
+extragalactic \hii{} regions can have supersonic turbulent motions
+\citep{{2004Ap&SS.292..111B},{2011MNRAS.413..705L}}.  The majority of
+observational studies consider only the H$\alpha$ line, but
+\citet{1988AA...198..283O} and \citet{{1988ApJS...67...93C}} examine
+the components of the \oiii$\lambda$5007 line in the Orion Nebula,
+M42, while \citet{1992ApJ...387..229O} and \citet{1993ApJ...409..262W}
+investigate the kinematics of the [S{\sc iii}] and [O{\sc i}] lines of
+this same object.  The giant extragalactic \hii{} region NGC-595 was
+studied by \citet{{2011MNRAS.413..721L}} who analyzed the H$\alpha$,
+\oiii{} and \sii{} kinematics.  The heavier ions have the advantage that
+their emission lines have low thermal broadening compared to the
+H$\alpha$ line.
+
+Observational studies of the spatial scales of velocity fluctuations
+have mostly focused on the structure function of velocity centroids.
+The results are rather disparate, partly because the methodology
+varies considerably between different studies.  For instance, some
+authors attempt to filter out ``ordered'' large-scale motions before
+analysing the fluctuations \citep{1995ApJ...454..316M,
+  2011MNRAS.413..721L}, whereas others analyse the unfiltered
+observations \citep{1992ApJ...387..229O, 1997ApJ...487..163M}.  Also,
+in some cases multiple Gaussian velocity components are fitted to the
+line profiles \citep{1988ApJS...67...93C, 1993ApJ...409..262W}, which
+are then assigned to a small number of velocity ``systems'' that are
+each analysed separately, whereas in most studies the mean velocity of
+the entire line profile is used.
+
+Despite these differences, there are interesting commonalities in the
+results: a rising structure function with \(m_{\mathrm{2D}} =
+0.5\)--\(1.0\) is nearly always found at the smallest scales, which
+transitions to a flat structure function with \(m_{\mathrm{2D}} \sim
+0\) at larger scales.  However, the scale at which the transition
+occurs varies enormously from object to object, from
+\(0.02\)--\(0.2\)~pc in compact ($R = 1$ to 5~pc) Galactic \hii{}
+regions \citep{1987ApJ...317..676O, 1988ApJS...67...93C,
+  1993ApJ...409..262W, 1995ApJ...454..316M}, up to 50~pc in giant (\(R
+\sim 400\)~pc) extragalactic regions \citep{2011MNRAS.413..721L}. We
+comment that the sound-crossing time for a region of size 50~pc is
+about 5~Myr, roughly the same as the estimated age of the NGC~595
+nebula \citep{1990ApJ...364..496D}. For the full extent of NGC~595,
+the sound crossing time is about 40~Myr. It is therefore unlikely that
+the turbulence in such large regions is in a statistically steady
+state unless it is highly supersonic. Indeed,
+\citet{1988AA...198..283O} suggest that in the case of large
+extragalactic \hii{} regions, the large linewidths could be due to
+multiple velocity components, that is, regions of the \hii{} region
+separated by more than a sound-crossing time are kinematically
+distinct.  Such giant \hii{} regions show velocity centroid
+dispersions of \(\sigma_{\mathrm{c}} > 10~\mathrm{km\ s^{-1}}\) on the
+largest scales, which is several times larger than is seen in compact
+single-star regions or in our simulations.  We will therefore not
+consider them further since they are governed by additional physical
+processes, such as powerful stellar winds and the cluster
+gravitational potential, which are beyond the scope of the current
+paper.
+
+
+The explanations that have been offered for the break in the structure
+function slope are also varied.  In the case of compact \hii{}
+regions, it is often taken to indicate the characteristic
+line-of-sight depth of the emission zone \citep{1951ZA.....30...17V,
+  1987ApJ...317..686O}, with projection smoothing steepening the slope
+at the smaller separations (see \S~\ref{subsec:projsmooth} above).
+If that were the case, then the correct three-dimensional structure
+function slope is the flat one: \(m_{\mathrm{3D}} \sim 0\),
+corresponding to a velocity power spectrum slope of \(n = -3\).  This
+interpretation would be broadly consistent with our simulation
+results, which show a very similar velocity power spectrum
+(Fig.~\ref{fig:ps}).  However, our simulated structure functions
+rarely show a clear break in the same way as the observations do,
+although they do show a slight negative curvature in many cases.  This
+is probably because of the very limited useful dynamic range, roughly
+a factor of 10, that the simulations allow between the small scales
+that are affected by numerical diffusion and the large scales, that
+are affected by systematic flows, anisotropies, and edge-effects.
+
+An alternative explanation for the observed break in the structure function is that
+it represents the scale of the largest turbulent eddies
+\citep{1988ApJS...67...93C, 1995ApJ...454..316M}
+and that the fluctuations at larger scales are simply uncorrelated.  
+In such a picture it would still be necessary to postulate a velocity spectrum
+considerably shallower than Kolmogorov in order to explain the small-scale slope. 
+
+
+Based on the discussion of our simulation results above
+(\S~\ref{sssec:vca2}), it seems that Velocity Channel Analysis
+would be a very useful complement to the structure function, since it
+is less affected by uncertainties in projection smoothing and gives a
+more consistent result between different emission lines (at least, for
+our simulations).
+
+In a forthcoming paper, we will present such an analysis of recent
+high-resolution echelle spectroscopy of multiple emission lines in the Orion Nebula
+\citep{2008RMxAA..44..181G, 2008AJ....136.1566O}.
+
+
+\section{Summary}
+\label{sec:summary}
+\begin{enumerate}
+\item We have investigated the statistics of fluctuations in physical
+  conditions within a radiation-hydrodynamic simulation of the
+  evolution of an \hii{} region inside a highly inhomogeneous
+  molecular cloud.  We find that steady-state turbulence,
+  corresponding to time-independent profiles of the 3D power spectra, is
+  only established after about 1.5 sound-crossing times of the \hii{}
+  region. In these simulations, this corresponds to about 200,000
+  years (\S~\ref{sssec:pspec}).
+\item We find a power-law behaviour for the 3D power spectra in the
+  range from about 1 pc down to 0.125 pc, equivalent to 16
+  computational cells. The larger scale can be interpreted as the size
+  of the largest photoevaporated flows, while the smaller scale is
+  about twice the numerical dissipation scale.  The power-spectrum
+  slopes of the velocity and density fluctuations are very similar and
+  always lie in the range \(-3.1 \pm 0.1\).  This is significantly
+  shallower than the slope predicted for the inertial range of either
+  incompressible or compressible turbulence ($-3.667$ to $-4.1$).
+  This suggests that turbulent driving is occuring over all scales in
+  our simulation, unlike the case of classical turbulence where energy is
+  injected only at the largest scales.  The power-spectrum slopes of
+  the emissivities of optical lines are even shallower, increasingly so
+  for lower ionization lines, indicating that the smallest scale
+  fluctuations are dominant (\S~\ref{sssec:ips}).
+\item We investigate in detail the utility of observational
+  diagnostics for inferring the power spectra of emissivity and
+  velocity fluctuations in our simulation.  We find that the
+  traditional velocity centroid structure function technique gives
+  ambivalent results because of the effects of projection smoothing,
+  combined with the fact that the effective line-of-sight depth of the
+  emitting gas does not have a single well-defined value.  In
+  addition, the presence of anisotropic motions such as champagne
+  flows can yield misleading structure function slopes when the
+  simulation is viewed from certain directions (\S~\ref{sssec:strfunc}).
+\item The more recently developed technique of Velocity Channel
+  Analysis is found to offer a more robust diagnostic of the
+  three-dimensional velocity statistics of our simulation.  The slope
+  of the velocity power spectrum can be correctly recovered to a precision
+  of \(\pm 0.1\) from either high or low ionization lines, and with no
+  significant dependence on viewing direction (\S~\ref{sssec:vca2}).
+\end{enumerate}
+
+\section*{Acknowledgments}
+SNSM acknowledges a CONACyT, Mexico student fellowship. SJA would like to thank
+DGAPA-UNAM for financial support through project IN101713. SJA, WJH
+and GM thank Nordita for support during the program Photo-Evaporation
+in Astrophysical Systems.
+
+
+\begin{thebibliography}{}
+\bibitem[\protect\citeauthoryear{Arthur et al.}{2011}]{2011MNRAS.414.1747A} 
+Arthur S.~J., Henney W.~J., Mellema G., de Colle F., V{\'a}zquez-Semadeni 
+E., 2011, MNRAS, 414, 1747 
+
+\bibitem[\protect\citeauthoryear{Beckman \& Rela{\~n}o}{2004}]{2004Ap&SS.292..111B} Beckman J.~E., Rela{\~n}o M., 2004, Ap\&SS, 292, 111 
+
+\bibitem[\protect\citeauthoryear{Boldyrev, Nordlund, 
+\& Padoan}{2002}]{2002ApJ...573..678B} Boldyrev S., Nordlund {\AA}., Padoan P., 2002, ApJ, 573, 678 
+\bibitem[\protect\citeauthoryear{Brunt, Federrath, 
+\& Price}{2010}]{2010MNRAS.405L..56B} Brunt C.~M., Federrath C., Price D.~J., 2010, MNRAS, 405, L56 
+
+\bibitem[\protect\citeauthoryear{Brunt 
+\& Heyer}{2002}]{2002ApJ...566..276B} Brunt C.~M., Heyer M.~H., 2002, ApJ, 566, 276 
+
+\bibitem[\protect\citeauthoryear{Brunt et al.}{2003}]{2003ApJ...595..824B} 
+Brunt C.~M., Heyer M.~H., V{\'a}zquez-Semadeni E., Pichardo B., 2003, ApJ, 
+595, 824 
+
+\bibitem[\protect\citeauthoryear{Brunt 
+\& Mac Low}{2004}]{2004ApJ...604..196B} Brunt C.~M., Mac Low M.-M., 2004, ApJ, 604, 196 
+
+
+\bibitem[\protect\citeauthoryear{Burgers}{1974}]{1974Burgers} Burgers
+  J.~M., 1974, The Nonlinear Diffusion Equation (Dordrecht: Reidel)
+
+\bibitem[\protect\citeauthoryear{Casta\~neda}{1988}]{1988ApJS...67...93C} 
+Casta\~neda H.~O., 1988, ApJS, 67, 93 
+
+\bibitem[\protect\citeauthoryear{Casta\~neda 
+\& O'Dell}{1987}]{1987ApJ...315L..55C} Casta\~neda H.~O., O'Dell C.~R., 1987, ApJ, 315, L55 
+
+\bibitem[\protect\citeauthoryear{Chandrasekhar}{1949}]{1949ApJ...110..329C} 
+Chandrasekhar S., 1949, ApJ, 110, 329 
+
+\bibitem[\protect\citeauthoryear{Dickman 
+\& Kleiner}{1985}]{1985ApJ...295..479D} Dickman R.~L., Kleiner S.~C., 1985, ApJ, 295, 479 
+
+\bibitem[\protect\citeauthoryear{Drissen, Moffat, 
+\& Shara}{1990}]{1990ApJ...364..496D} Drissen L., Moffat A.~F.~J., Shara M.~M., 1990, ApJ, 364, 496 
+
+\bibitem[\protect\citeauthoryear{Dyson}{1968}]{1968Ap&SS...1..388D} Dyson J.~E., 1968, Ap\&SS, 1, 388 
+
+\bibitem[\protect\citeauthoryear{Esquivel 
+\& Lazarian}{2005}]{2005ApJ...631..320E} Esquivel A., Lazarian A., 2005, ApJ, 631, 320 
+
+\bibitem[\protect\citeauthoryear{Esquivel et 
+al.}{2007}]{2007MNRAS.381.1733E} Esquivel A., Lazarian A., Horibe S., Cho 
+J., Ossenkopf V., Stutzki J., 2007, MNRAS, 381, 1733 
+
+\bibitem[\protect\citeauthoryear{Esquivel et al.}{2003}]{2003MNRAS.342..325E} Esquivel A., Lazarian A., Pogosyan D., Cho 
+J., 2003, MNRAS, 342, 325 
+
+\bibitem[\protect\citeauthoryear{Eulderink 
+\& Mellema}{1995}]{1995A&AS..110..587E} Eulderink F., Mellema G.,
+  1995, A\&AS, 110, 587 
+
+\bibitem[\protect\citeauthoryear{Federrath}{2013}]{2013MNRAS.436.1245F} 
+Federrath C., 2013, MNRAS, 436, 1245 
+
+\bibitem[\protect\citeauthoryear{Federrath et 
+al.}{2010}]{2010A&A...512A..81F} Federrath C., Roman-Duval J., Klessen R.~S., Schmidt W., Mac Low M.-M., 2010, A\&A, 512, A81 
+
+\bibitem[\protect\citeauthoryear{Galtier 
+\& Banerjee}{2011}]{2011PhRvL.107m4501G} Galtier S., Banerjee S., 2011, PhRvL, 107, 134501 
+
+\bibitem[\protect\citeauthoryear{Garc{\'{\i}}a-D{\'{\i}}az 
+\& Henney}{2007}]{2007AJ....133..952G} Garc{\'{\i}}a-D{\'{\i}}az M.~T., Henney W.~J., 2007, AJ, 133, 952 
+
+\bibitem[\protect\citeauthoryear{Garc{\'{\i}}a-D{\'{\i}}az et 
+al.}{2008}]{2008RMxAA..44..181G} Garc{\'{\i}}a-D{\'{\i}}az M.~T., Henney 
+W.~J., L{\'o}pez J.~A., Doi T., 2008, RMxAA, 44, 181 
+
+\bibitem[\protect\citeauthoryear{Garc\'{\i}a-Segura 
+\& Franco}{1996}]{1996ApJ...469..171G} Garc\'{\i}a-Segura G., Franco J., 1996, ApJ, 469, 171 
+
+\bibitem[\protect\citeauthoryear{Henney}{2003}]{2003RMxAC..15..175H}
+  Henney W.~J., 2003, RMxAC, 15, 175 
+
+\bibitem[\protect\citeauthoryear{Henney et al.}{2009}]{2009MNRAS.398..157H} 
+Henney W.~J., Arthur S.~J., de Colle F., Mellema G., 2009, MNRAS, 398, 157 
+
+\bibitem[\protect\citeauthoryear{Kleiner 
+\& Dickman}{1985}]{1985ApJ...295..466K} Kleiner S.~C., Dickman R.~L., 1985, ApJ, 295, 466 
+
+\bibitem[\protect\citeauthoryear{Kolmogorov}{1941}]{1941DoSSR..30..301K} 
+Kolmogorov A., 1941, DoSSR, 30, 301 
+
+\bibitem[\protect\citeauthoryear{Kritsuk et al.}{2007}]{2007ApJ...665..416K} Kritsuk A.~G., Norman M.~L., Padoan
+  P., Wagner R., 2007, ApJ, 665, 416 
+
+\bibitem[\protect\citeauthoryear{Lagrois 
+\& Joncas}{2011}]{2011MNRAS.413..721L} Lagrois D., Joncas G., 2011, MNRAS, 413, 721 
+
+\bibitem[\protect\citeauthoryear{Lagrois et 
+al.}{2011}]{2011MNRAS.413..705L} Lagrois D., Joncas G., Drissen L., 
+Arsenault R., 2011, MNRAS, 413, 705 
+
+\bibitem[\protect\citeauthoryear{Lazarian 
+\& Pogosyan}{2000}]{2000ApJ...537..720L} Lazarian A., Pogosyan D., 2000, ApJ, 537, 720 
+
+\bibitem[\protect\citeauthoryear{Mackey 
+\& Lim}{2010}]{2010MNRAS.403..714M} Mackey J., Lim A.~J., 2010, MNRAS, 403, 714 
+
+\bibitem[\protect\citeauthoryear{Medina Tanco et al.}{1997}]{1997ApJ...487..163M} Medina Tanco G.~A., Sabalisck N., 
+Jatenco-Pereira V., Opher R., 1997, ApJ, 487, 163 
+
+
+\bibitem[\protect\citeauthoryear{Mellema et 
+al.}{2006a}]{2006ApJ...647..397M} Mellema G., Arthur S.~J., Henney W.~J., 
+Iliev I.~T., Shapiro P.~R., 2006, ApJ, 647, 397 
+
+\bibitem[\protect\citeauthoryear{Mellema et 
+al.}{2006b}]{2006NewA...11..374M} Mellema G., Iliev I.~T., Alvarez M.~A., 
+Shapiro P.~R., 2006, NewA, 11, 374 
+
+\bibitem[\protect\citeauthoryear{Miville-Desch{\^e}nes, Joncas, 
+\& Durand}{1995}]{1995ApJ...454..316M} Miville-Desch{\^e}nes M.-A., Joncas G., Durand D., 1995, ApJ, 454, 316 
+
+\bibitem[\protect\citeauthoryear{Miville-Desch{\^e}nes, Levrier, 
+\& Falgarone}{2003}]{2003ApJ...593..831M} Miville-Desch{\^e}nes M.-A., Levrier F., Falgarone E., 2003, ApJ, 593, 831 
+
+\bibitem[\protect\citeauthoryear{M{\"u}nch}{1958}]{1958RvMP...30.1035M} 
+M{\"u}nch G., 1958, RvMP, 30, 1035 
+
+\bibitem[\protect\citeauthoryear{O'Dell}{1986}]{1986ApJ...304..767O} O'Dell 
+C.~R., 1986, ApJ, 304, 767 
+
+\bibitem[\protect\citeauthoryear{O'Dell 
+\& Casta\~neda}{1987}]{1987ApJ...317..686O} O'Dell C.~R., Casta\~neda H.~O., 1987, ApJ, 317, 686 
+
+\bibitem[\protect\citeauthoryear{O'Dell 
+\& Henney}{2008}]{2008AJ....136.1566O} O'Dell C.~R., Henney W.~J., 2008, AJ, 136, 1566 
+
+\bibitem[\protect\citeauthoryear{O'Dell 
+\& Townsley}{1988}]{1988AA...198..283O} O'Dell C.~R., Townsley L.~K., 1988, A\&A, 198, 283 
+
+\bibitem[\protect\citeauthoryear{O'Dell, Townsley, 
+\& Casta\~neda}{1987}]{1987ApJ...317..676O} O'Dell C.~R., Townsley
+  L.~K., Casta\~neda H.~O., 1987, ApJ, 317, 676 
+
+\bibitem[\protect\citeauthoryear{O'Dell 
+\& Wen}{1992}]{1992ApJ...387..229O} O'Dell C.~R., Wen Z., 1992, ApJ, 387, 229 
+
+\bibitem[\protect\citeauthoryear{Osterbrock 
+\& Ferland}{2006}]{2006agna.book.....O} Osterbrock D.~E., Ferland
+  G.~J., 2006, Astrophysics of gaseous nebulae and active galactic
+  nuclei, 2nd.~ed.~Sausalito, CA:
+  University Science Books
+
+\bibitem[\protect\citeauthoryear{Porter, Pouquet, 
+\& Woodward}{2002}]{2002PhRvE..66b6301P} Porter D., Pouquet A., Woodward P., 2002, PhRvE, 66, 026301 
+
+\bibitem[\protect\citeauthoryear{Roy 
+\& Joncas}{1985}]{1985ApJ...288..142R} Roy J.-R., Joncas G., 1985, ApJ, 288, 142 
+
+\bibitem[\protect\citeauthoryear{She 
+\& Leveque}{1994}]{1994PhRvL..72..336S} She Z.-S., Leveque E., 1994, PhRvL, 72, 336 
+
+\bibitem[\protect\citeauthoryear{Spitzer}{1978}]{1978Spitzer} Spitzer
+  L., 1978, Physical Processes in the Interstellar Medium (New York: Wiley-Interscience)
+
+\bibitem[\protect\citeauthoryear{Stutzki et 
+al.}{1998}]{1998A&A...336..697S} Stutzki J., Bensch F., Heithausen A., Ossenkopf V., Zielinsky M., 1998, A\&A, 336, 697 
+
+\bibitem[\protect\citeauthoryear{Sutherland, Bisset, 
+\& Bicknell}{2003}]{2003ApJS..147..187S} Sutherland R.~S., Bisset
+  D.~K., Bicknell G.~V., 2003, ApJS, 147, 187 
+
+\bibitem[\protect\citeauthoryear{V{\'a}zquez-Semadeni, Kim, 
+\& Ballesteros-Paredes}{2005}]{2005ApJ...630L..49V} V{\'a}zquez-Semadeni E., Kim J., Ballesteros-Paredes J., 2005, ApJ, 630, L49 
+
+\bibitem[\protect\citeauthoryear{von Hoerner}{1951}]{1951ZA.....30...17V} 
+von Hoerner S., 1951, ZA, 30, 17 
+
+\bibitem[\protect\citeauthoryear{Wen \& O'Dell}{1993}]{1993ApJ...409..262W} Wen Z., O'Dell C.~R., 1993, ApJ, 409, 262 
+
+\bibitem[\protect\citeauthoryear{Williams, Ward-Thompson, 
+\& Whitworth}{2001}]{2001MNRAS.327..788W} Williams R.~J.~R., Ward-Thompson D., Whitworth A.~P., 2001, MNRAS, 327, 788 
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+\appendix
+
+\section[]{Second-order structure functions}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{sf-all-xy-ref}
+\caption{Second-order structure functions against length scale for
+  projection onto the
+  $xy$-plane. From top to bottom:
+  H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+  6716$. From left to right: 150,000, 200,000, 250,000 and
+  300,000~years. The points represent the calculated structure
+  function for the numerical simulation. The solid line is the
+  least-squares fit to the data points between limits described in the
+text, represented by the grey rectangle. The horizontal dotted line at $\log 2$ is included as a
+reference value.}
+\label{fig:sfunc}
+\end{figure*}
+ \begin{figure*}
+ \centering
+ \includegraphics[width=\textwidth]{sf-all-xz-ref}
+ \caption{Same as Fig.~\protect\ref{fig:sfunc} but for a projection onto the $xz$ plane.}
+ \label{fig:sfuncxz}
+ \end{figure*}
+ \begin{figure*}
+ \centering
+ \includegraphics[width=\textwidth]{sf-all-yz-ref}
+ \caption{Same as Fig.~\protect\ref{fig:sfunc} but for a projection onto the $yz$-plane.}
+ \label{fig:sfuncyz}
+ \end{figure*}
+\section[]{Velocity Channel Analysis}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{vca-all-xy}
+\caption{Power spectra of the velocity channels. From top to bottom:
+  H$\alpha$, \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda
+  6716$. From left to right: 150,000, 200,000, 250,000 and
+  300,000~years. The upper panel in each figure are for velocities
+  without thermal broadening, the lower panel is the case with thermal
+  broadening. The points represent the calculated power spectra for
+  the numerical simulation: Crosses--thin slice ($n=32$ channels),
+  filled circles--thick slice
+  ($n=1$ channel). The dashed line is the
+  least-squares fit to the data points for the thin slice between limits described in the
+text represented by the grey rectangle. The solid line is the least-squares fit to
+the data points for the thick slice.}
+\label{fig:vca}
+\end{figure*}
+ \begin{figure*}
+ \centering
+ \includegraphics[width=\textwidth]{vca-all-xz}
+ \caption{Same as Fig.~\protect\ref{fig:vca} but for a projection onto the $xz$ plane.}
+ \label{fig:vcaxz}
+ \end{figure*}
+ \begin{figure*}
+ \centering
+ \includegraphics[width=\textwidth]{vca-all-yz}
+ \caption{Same as Fig.~\protect\ref{fig:vca} but for a projection onto the $yz$-plane.}
+ \label{fig:vcayz}
+ \end{figure*}
+
+
+\label{lastpage}
+
+\end{document}
