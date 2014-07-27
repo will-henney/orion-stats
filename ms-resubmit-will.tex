@@ -644,25 +644,33 @@ Time&$n(v_i)$ & $n(d_i)$ & $n(v_i d_i^{1/3})$\\
 \includegraphics[width=\linewidth]{scross}
 \caption{Sound crossing time as a function of evolution time. The
   sound crossing time is $\langle R \rangle / c_\mathrm{i}$, where
-  $\langle R \rangle$ is the mean (spherical) radius of the ionized
-  volume and $c_\mathrm{i} = 11$~km~s$^{-1}$ is the sound speed in the
-  photoionized gas. The diagonal grey line has slope of unity. The
-  horizontal dashed line is the sound crossing time for a distance of
-  2~pc, which is the half-side length of the computational box.}
+  $\langle R \rangle$ is the radius of an equivalent sphere with
+  volume equal to that of the \hii{} region and $c_\mathrm{i} =
+  11$~km~s$^{-1}$ is the sound speed in the photoionized gas. The
+  diagonal grey line has slope of unity. The horizontal dashed line is
+  the sound crossing time for a distance of 2~pc, which is the
+  half-side length of the computational box.}
 \label{fig:scross}
 \end{figure}
 
 In Figure~\ref{fig:ps} we show the 3D power spectra of the ionized gas
 velocity, the ionized density, and the ionized velocity weighted by
 the cube root of the density \citep[see,
-e.g.,][]{{2007ApJ...665..416K}}. The power spectra all exhibit a break
-in the power law at about wavenumber $k \sim 32$, equivalent to a
-scale of 16 computational cells and consistent with the numerical
-dissipation scale. We fit power laws between $k = 4$ (corresponding to
-a length scale of one parsec) and $k =32$. For times later than
-200,000~yrs, the power-law fits for a given quantity are essentially
-constant (see Table~\ref{tab:ps} and Fig.~\ref{fig:psevol}). Note that
-here we use $n$ to represent the 3D power spectrum spectral index,
+e.g.,][]{{2007ApJ...665..416K}}.  In the following sections we use a
+dimensionless \(k\) that is normalised to the size of our
+computational grid.  Thus \(k = 1\) corresponds to a physical scale of
+\(4\)~pc.  The power spectra all exhibit a break in the power law at
+about wavenumber $k \sim 32$, equivalent to a scale of 16
+computational cells and consistent with the numerical dissipation
+scale. We fit power laws between $k = 4$ (corresponding to a length
+scale of one parsec) and $k =32$. For times later than 200,000~yrs,
+the power-law fits for a given quantity are essentially constant (see
+Table~\ref{tab:ps} and Fig.~\ref{fig:psevol}). Note that here we use
+$n$ to represent the 3D power spectrum spectral index,%
+%
+\footnote{This is to facilitate comparison with the theoretical
+  literature, such as \citet{2000ApJ...537..720L}.}
+%
 where $n = -\kappa_{3D}$ and $\kappa_{3D}$ is defined in
 \S~\ref{subsec:projsmooth}. At earlier times, the power laws are
 steeper and evolving. This behaviour mimics, with a delay of about

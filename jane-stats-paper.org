@@ -82,6 +82,15 @@ This setting is needed so that TABs don't get stripped
 
 #+BEGIN_SRC makefile :tangle will-ms.mk
 MS=will-ms-changes
+WILLFIGS=sf-vs-3d-panels.pdf vca-thin-vs-3d-panels.pdf vca-thick-vs-3d-panels.pdf
+
+all: tar-file-for-jane open-pdf
+
+
+tar-file-for-jane: ms-resubmit-will.tar.gz
+
+ms-resubmit-will.tar.gz: ms-resubmit-will.tex will-replies.org $(WILLFIGS)
+	tar -zcf $@ $^
 
 open-pdf: $(MS).pdf
 	open $(MS).pdf
@@ -95,6 +104,9 @@ $(MS).pdf: $(MS).tex
 make -f will-ms.mk
 #+END_SRC
 
+
+
+**** Package up new changes for Jane
 
 ** Point 8
 #+BEGIN_SRC org :noweb-ref will-replies
@@ -964,9 +976,11 @@ Stats file: [[file:vca-thin-vs-3d-panels.stats]]
 ** Other suggestions
 *** Figure 4
 Plot from an earlier time (50,000 years)
-*** Figure 5
+*** DONE Figure 5
+CLOSED: [2014-07-27 Sun 01:02]
 Caption: R is the radius of an equivalent sphere with volume equal to that of the H II region
-*** TODO Definition of wavenumber, k
+*** DONE Definition of wavenumber, k
+CLOSED: [2014-07-27 Sun 01:03]
 :LOGBOOK:
 - Note taken on [2014-07-26 Sat 17:32] \\
   Need to export this to sec 3.2.1
@@ -975,12 +989,10 @@ Insert after first sentence of 3.2.1
 #+BEGIN_SRC latex
 In the following sections we use a dimensionless \(k\) that is normalised to the size of our computational grid.  Thus \(k = 1\) corresponds to a physical scale of \(4\)~pc. 
 #+END_SRC
-*** Motivate the change from \kappa \to n
+*** DONE Motivate the change from \kappa \to n
+CLOSED: [2014-07-27 Sun 01:07]
 + Also in section 3.2.1
 + Presumably because that is what Lazarian does
-#+BEGIN_SRC latex
-
-#+END_SRC
 ** QUOTE Entire report 
 Date: Mon, 3 Mar 2014 05:17:30 -0500 (EST)
 From: ae@ras.org.uk
