@@ -59,6 +59,8 @@ Points for Will to look at: 8, 11, 12
 <<text-for-412>>
 
 \setcounter{section}{4}\setcounter{subsection}{1}\setcounter{subsubsection}{2}
+\subsubsection{Velocity Channel Analysis}
+\label{sssec:vca2}
 <<text-for-413>>
 
 \appendix
@@ -103,6 +105,7 @@ make -f will-ms.mk
 *** Changes:
 #+BEGIN_SRC org :noweb-ref will-replies
 We have followed the referee's suggestion and replaced the table with a new figure that shows the time evolution of the VCA power law indices.  The detailed graphs of the VCAs have been moved to an appendix.  Also, we have rewritten the text to make clearer that it is only for H alpha that thermal broadening destroys the value of the thin slices. 
+
 #+END_SRC
 
 #+BEGIN_SRC latex :noweb-ref will-new-macros
@@ -185,6 +188,7 @@ turbulence statistics are discussed in \S~\ref{sssec:vca2}.
 **** Parallel changes for the SF section
 #+BEGIN_SRC org :noweb-ref will-replies
 We have made parallel changes to the previous section on the velocity centroid structure functions, moving the numerous graphs of the actual structure functions to an appendix and replacing the table with a graph that shows how the power law indices evolve with time.
+
 #+END_SRC
 
 ***** Text for Appendix A
@@ -331,9 +335,10 @@ the line of sight for observations along the other axes.
 
 
 ** Point 11
-#+BEGIN_QUOTE
-11. In section 4.1.2, what is the implication of ruling out the Kolmogorov value of the turbulence power law?  That is dropped into the discussion without a conclusion being drawn.
-#+END_QUOTE
+#+BEGIN_SRC org :noweb-ref will-replies
+: 11. In section 4.1.2, what is the implication of ruling out the Kolmogorov value of the turbulence power law?  That is dropped into the discussion without a conclusion being drawn.
+
+#+END_SRC
 
 
 *** New tables of structure function slopes
@@ -362,6 +367,7 @@ function slope and the underlying velocity fluctuations.  The exact
 values of the slopes have also changed slightly due to adjustments we
 have made to the power law fitting ranges, but this does not change
 the qualitative conclusions.
+
 #+END_SRC
 
 #+name: text-for-412
@@ -485,14 +491,22 @@ for high Mach number turbulence, where \(\delta\rho/\langle \rho
 
 #+END_SRC
 ** Point 12
-#+BEGIN_QUOTE
-12. The crucial section 4.1.3 is where the VCA is demonstrated to work better than other methods. However, it is curiously anecdotal.  Given that the abstract and conclusion present this as the central point of the paper, use should be made of the vast amount of data presented for the VCA in Figure 9 and Table 3, to make a much more systematic comparison with the actual power spectra known from the 3D model.
-#+END_QUOTE
+#+BEGIN_SRC org :noweb-ref will-replies
+: 12. The crucial section 4.1.3 is where the VCA is demonstrated to work better than other methods. However, it is curiously anecdotal.  Given that the abstract and conclusion present this as the central point of the paper, use should be made of the vast amount of data presented for the VCA in Figure 9 and Table 3, to make a much more systematic comparison with the actual power spectra known from the 3D model.
+
+#+END_SRC
 *** Changes
+#+BEGIN_SRC org :noweb-ref will-replies
+We accept the referee's point that a better job could be made of
+relating the VCA power spectra to the simulation's actual power
+spectra.  To that end, we have added two figures, which illustrate the
+correlations between the VCA and intrinsic power law slopes during the
+evolution of our simulation.
+
+#+END_SRC
+
 #+name: text-for-413
 #+BEGIN_SRC latex
-\subsubsection{Velocity Channel Analysis}
-\label{sssec:vca2}
 The velocity channel analysis consists of calculating the
 two-dimensional power spectrum of the brightness distribution
 in isovelocity channels of varying thickness.  
@@ -521,57 +535,104 @@ which produces spurious small-scale power, as discussed by
 Third, thermal broadening would smoothe out any structure on 
 scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
 
-The procedure for deriving the power-law index
-of the velocity fluctuations from the velocity channels is
-slightly different, depending on whether the power spectrum 
-of the emissivity fluctuations is ``steep'' or ``shallow'' (see above). 
-In the steep case, which applies to \oiii{} in our simulation, 
-the slope of the average power spectrum of the brightness maps
-in the thin isovelocity channels is given by 
-\(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{vca-thin-vs-3d-panels}
+  \caption{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
+    slopes for thin slices, \gammaVCAthin{} or \(\gammaVCAthin -
+    \gammaVCAvthick\), versus slope, \(n\), of the intrinsic velocity
+    power spectrum for each emission line.  The \oiii{} line (upper
+    left panel) has a sufficiently steep emissivity power spectrum
+    that it is the absolute value of \gammaVCAthin{} that is predicted
+    to be related to \(n\), as shown by the diagonal solid line.  The
+    other emission lines have a shallower emissivity power spectrum,
+    such that it is the relative slope between the thin and thick
+    slices, \(\gammaVCAthin - \gammaVCAvthick\) that is predicted to
+    depend on \(n\). }
+  \label{fig:vca-thin-vs-n}
+\end{figure}
+
+Figure~\ref{fig:vca-thin-vs-n} shows the correlations between the
+slope of the velocity fluctuation power spectrum and the VCA slopes
+found in \S~\ref{sssec:vca} above (see Fig.~\ref{fig:vcatrends}).  The
+theoretical procedure \citep{2000ApJ...537..720L} for deriving one
+from the other is slightly different, depending on whether the power
+spectrum of the emissivity fluctuations is ``steep'' or ``shallow''
+(see \S~\label{sec:stats-vca} above).  In the steep case, which
+applies to \oiii{} in our simulation, the slope of the average power
+spectrum of the brightness maps in the thin isovelocity channels is
+given by \(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
 where \(m_{\mathrm{3D}} = -3 - n = 0.2 \pm 0.1\) for our simulation.
-The derived value from the \oiii{} thin channel maps is 
-\(\gamma_{\mathrm{thin}} = -2.84 \pm 0.11 \),
-which compares very well with the value \(-2.9 \pm 0.05\)
-that is implied by the simulation's value of \(n\). 
+The derived value from the \oiii{} thin channel maps for \(t >
+200,000\) is \(\gamma_{\mathrm{thin}} = -2.80 \pm 0.07 \), which
+compares well with the value \(-2.9 \pm 0.05\) that is implied by the
+simulation's value of \(n\).
 
 In the shallow case, it is the difference in slope
 between the thin and thick slices
 that is predicted to depend on the velocity fluctuations:
 \(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
 The derived values are 
-\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.08 \pm 0.04\), 
-\(0.18 \pm 0.04\), and \(0.18 \pm 0.04\)
+\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.07 \pm 0.05\), 
+\(0.19 \pm 0.02\), and \(0.17 \pm 0.02\)
 for \ha, \nii, and \sii, respectively. 
-These also compare well with the value of \(0.1 \pm 0.05\)
-that is implied by the simulation's value of \(n\). 
+These also compare tolerably well with the value of \(0.1 \pm 0.05\)
+that is implied by the simulation's value of \(n\).  
 
-The slopes of the power spectra of the thick slices themselves, 
-which are simply the velocity-integrated surface brightness images\footnote{
-  Although for simplicity, extinction is not included.}
-are predicted \citep {2000ApJ...537..720L}
-to be equal to the slopes of the 3D power spectra of their respective emissivities. 
-However, only in the case of \oiii{} do we find this to be the case.
-In the case of the other lines, \(\gamma_{\mathrm{vthick}}\) is shallower than
-the emissivity's spectral index \(n\) by 0.36, 0.19, 0.61 for \ha, \nii, and \sii, respectively. 
-The reason for this discrepancy may be the increasingly ``sheet-like'' morphology
-of the emission in the lower ionization lines. 
-As shown in \S~4.1 of \citet {2003ApJ...593..831M}, 
-one should see a transition from \(\gamma_{\mathrm{vthick}} = n\) to the 
-shallower slope \(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger
-than the line-of-sight depth of the emitting region.
+Note, however, that the large Doppler width of the \ha{} line means
+that the thin velocity slices are not useful in this case, since the
+thick and thin slices have identical slopes. The fact that this agrees
+with the theoretical prediction is merely a coincidence, due to our
+velocity spectrum having a slope that is close to \(-3\).  For the
+lines from heavier ions, \oiii{}, \nii{} and \sii{}, the difference
+between the thin and thick velocity slices is not erased by thermal
+broadening, but in these three cases there is a consistent difference
+of \(\approx 0.1\) between the measured VCA slope and the
+theoretically expected one.  The origin of this difference is unclear,
+but it is small enough that it is not a significant impediment to the
+application of the VCA method.
+
+The slopes of the power spectra of the thick slices themselves, which
+are simply the velocity-integrated surface brightness images\footnote{
+  Although for simplicity, extinction is not included.}  are predicted
+\citep {2000ApJ...537..720L} to be equal to the slopes of the 3D power
+spectra of their respective emissivities.  The comparison between
+these two quantities is shown in Figure~\ref{fig:vca-thick-vs-n}, from
+which it is clear that only in the case of \oiii{} are the two slopes
+equal.  In the case of the other lines, \(\gamma_{\mathrm{vthick}}\)
+is shallower than the emissivity's spectral index \(n\) by 0.36, 0.19,
+0.61 for \ha, \nii, and \sii, respectively.  The reason for this
+discrepancy is the increasingly ``sheet-like'' morphology of the
+emission in the lower ionization lines.  As shown in \S~4.1 of \citet
+{2003ApJ...593..831M}, one should see a transition from
+\(\gamma_{\mathrm{vthick}} = n\) to the shallower slope
+\(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger than
+the line-of-sight depth of the emitting region.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{vca-thick-vs-3d-panels}
+  \caption{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
+    slopes for thick slices, \gammaVCAvthick{}, versus slope, \(n\),
+    of the intrinsic emissivity power spectrum for each emission line.
+    The theoretical expectations are shown by diagonal lines for the
+    cases where the line-of-sight depth of the emitting region is
+    larger (continuous line) or smaller (dashed line) than the
+    transverse scales that are sampled.  }
+  \label{fig:vca-thick-vs-n}
+\end{figure}
 
 
 #+END_SRC
 *** Plan of action
-+ [-] Do a figure plotting the VCA-derived indices versus the real 3D index.
++ [X] Do a figure plotting the VCA-derived indices versus the real 3D index.
   + [X] Got the VCA index files from Jane
   + [X] Get the 3D index files
   + [X] Munge the data
-  + [-] Make some plots
+  + [X] Make some plots
     + [X] Thick slices
-    + [ ] Thin slices
-+ [ ] Should do the same for the structure functions
+    + [X] Thin slices
++ [X] Should do the same for the structure functions
 **** Structure of the data
 + =Power-Indices/3D/${model}-${ion}-allfit.dat=
   + model :: '04052012_4_sp'
@@ -673,74 +734,77 @@ CLOSED: [2014-07-23 Wed 17:28]
 **** Common functions for graphs
 #+name: power-indices-plot-setup
 #+BEGIN_SRC python
-  from astropy.table import Table
-  from matplotlib import pyplot as plt
-  tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
+from astropy.table import Table
+from matplotlib import pyplot as plt
+tab = Table.read('power-indices-vs-time.tab', format='ascii.tab')
 
-  linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
-              'S': '[S II] 6716', 'N': '[N II] 6583'}
-  color_from_view = {'xy': 'black', 'xz': 'gray', 'yz': 'lightgray'}
-  symbol_from_view = {'xy': 'D', 'xz': 'o', 'yz': '>'}
-  symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
-  markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
-  markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
+linedict = {'O': '[O III] 5007', 'H': 'Ha 6563',
+            'S': '[S II] 6716', 'N': '[N II] 6583'}
+color_from_view = {'xy': 'black', 'xz': 'gray', 'yz': 'lightgray'}
+symbol_from_view = {'xy': 'D', 'xz': 'o', 'yz': '>'}
+symbol_from_ion = {'O': 'o', 'H': 's', 'N': '>', 'S': 'D'}
+markerscale_from_symbol = {'o': 1.0, 's': 0.9, 'D': 0.9, '>': 1.1}
+markerscale_from_view = {'xy': 1.2, 'xz': 1.0, 'yz': 0.8}
 
-  whitebox = {"fill": True, "fc": "white", "ec": "gray", "lw": 0.3, "alpha": 0.85, "boxstyle": "round,pad=0.2"}
-  labelprops = dict(bbox=whitebox, ha='center', va='center', rotation_mode='anchor', fontsize='small')
+whitebox = {"fill": True, "fc": "white", "ec": "gray", "lw": 0.3, "alpha": 0.85, "boxstyle": "round,pad=0.2"}
+labelprops = dict(bbox=whitebox, ha='center', va='center', rotation_mode='anchor', fontsize='small')
 #+END_SRC
 
 
 #+name: power-indices-plot-kwds
 #+BEGIN_SRC python
-  plt_kwds = {
-      "color": "black",
-      "marker": symbol_from_view[view],
-      "linestyle": '-',
-      "markersize": 4.0*markerscale_from_view[view] \
-          ,* markerscale_from_symbol[symbol_from_view[view]] 
-  }
+plt_kwds = {
+    "color": "black",
+    "marker": symbol_from_view[view],
+    "linestyle": '-',
+    "markersize": 4.0*markerscale_from_view[view] \
+        ,* markerscale_from_symbol[symbol_from_view[view]] 
+}
 #+END_SRC
 
 **** Plots for the thick VCAs
 Try and split them up again says Jane - use 4 panels
 
 #+BEGIN_SRC python :return pltfile :results file 
-  <<power-indices-plot-setup>>
+<<power-indices-plot-setup>>
 
-  tcut = 20.0
+tcut = 20.0
 
-  fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
-  plt.setp(axes.flat, aspect=1.0, adjustable='box-forced')
-  kmin, kmax = -4.3, -1.5
+fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+plt.setp(axes.flat, aspect=1.0, adjustable='box-forced')
+kmin, kmax = -4.3, -1.5
 
-  for ion, ax in zip('OHNS', axes.ravel()):
-      k3 = tab['k3_' + ion]
-      m = tab['t'] >= tcut
-      mm = tab['t'] <= tcut
-      ax.plot([kmin, kmax], [kmin, kmax], '-k')
-      ax.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
-      ax.set_xlim(kmin, kmax)
-      ax.set_ylim(kmin, kmax)
-      # ax.vlines(-11./3., -100, 100, alpha=0.2, lw=3)
-      ax.grid()
-      for view in ['xy', 'xz', 'yz']:
-          kthick = tab['kv' + ion + 'T' + view]
-          kthin = tab['kv' + ion + 't' + view]
-          <<power-indices-plot-kwds>>
-          ax.plot(k3[mm], kthick[mm], alpha=0.2, label=None, **plt_kwds)
-          ax.plot(k3[m], kthick[m], alpha=0.6,
-                   label=linedict[ion] + ' ' + view,  **plt_kwds)
-      ax.legend(loc='lower right', fontsize='small', ncol=1)
+x0s = [-2.5, -2.3, -3.3, -3.3]
+for ion, ax, x0 in zip('OHNS', axes.ravel(), x0s):
+    k3 = tab['k3_' + ion]
+    m = tab['t'] >= tcut
+    mm = tab['t'] <= tcut
+    ax.plot([kmin, kmax], [kmin, kmax], '-k')
+    ax.plot([kmin, kmax], [kmin + 1, kmax + 1], '--k')
+    ax.set_xlim(kmin, kmax)
+    ax.set_ylim(kmin, kmax)
+    # ax.vlines(-11./3., -100, 100, alpha=0.2, lw=3)
+    ax.grid()
+    for view in ['xy', 'xz', 'yz']:
+        kthick = tab['kv' + ion + 'T' + view]
+        kthin = tab['kv' + ion + 't' + view]
+        <<power-indices-plot-kwds>>
+        ax.plot(k3[mm], kthick[mm], alpha=0.2, label=None, **plt_kwds)
+        ax.plot(k3[m], kthick[m], alpha=0.6,
+                 label=linedict[ion] + ' ' + view,  **plt_kwds)
+    ax.legend(loc='lower right', fontsize='small', ncol=1)
+    ax.annotate(r'$\gamma_{\mathrm{T}} = n$', (x0, x0),  rotation=45, **labelprops)
+    ax.annotate(r'$\gamma_{\mathrm{T}} = n + 1$', (x0-0.5, x0+0.5),  rotation=45, **labelprops)
 
-  for ax in axes[-1, :]:
-      ax.set_xlabel(r'Power law index of 3D emissivity, $n$')
-  for ax in axes[:, 0]:
-      ax.set_ylabel(r'VCA power law index for thick slice: $\gamma_\mathrm{T}$')
+for ax in axes[-1, :]:
+    ax.set_xlabel(r'Power law index of 3D emissivity, $n$')
+for ax in axes[:, 0]:
+    ax.set_ylabel(r'VCA power law index for thick slice: $\gamma_\mathrm{T}$')
 
-  pltfile = 'vca-thick-vs-3d-panels.pdf'
-  fig.set_size_inches((8.5, 8))
-  fig.tight_layout()
-  plt.savefig(pltfile)
+pltfile = 'vca-thick-vs-3d-panels.pdf'
+fig.set_size_inches((8.5, 8))
+fig.tight_layout()
+plt.savefig(pltfile)
 
 #+END_SRC
 
@@ -750,59 +814,101 @@ Try and split them up again says Jane - use 4 panels
 **** Plot for the thin VCA
 
 #+BEGIN_SRC python :return pltfile :results file 
-  <<power-indices-plot-setup>>
-  tcut = 17.0
+<<power-indices-plot-setup>>
+tcut = 17.0
 
-  fig, axes = plt.subplots(2, 2, sharex=True)
-  plt.setp(axes.flat, aspect=1.0, adjustable='box-forced')
-  kmin, kmax = -3.8+0.01, -2.8-0.01
+fig, axes = plt.subplots(2, 2, sharex=True)
+plt.setp(axes.flat, aspect=1.0, adjustable='box-forced')
+kmin, kmax = -3.8+0.01, -2.8-0.01
+pltfile = 'vca-thin-vs-3d-panels.pdf'
+statsfile = pltfile.replace(".pdf", ".stats")
+f = open(statsfile, "w")
+for ion, ax in zip('OHNS', axes.flat):
+    # if ion == 'H':
+    #     continue
+    k3 = tab['k3_V']
+    m = tab['t'] >= tcut
+    mm = tab['t'] <= tcut
 
-  for ion, ax in zip('OHNS', axes.flat):
-      # if ion == 'H':
-      #     continue
-      k3 = tab['k3_V']
-      m = tab['t'] >= tcut
-      mm = tab['t'] <= tcut
+    if ion in 'O':
+        ax.plot([kmin, kmax], [-4.5 - 0.5*kmin, -4.5 - 0.5*kmax], '-k')
+        ymin, ymax = kmin+0.5, kmax+0.5
+    else:
+        ax.plot([kmin, kmax], [-1.5 - 0.5*kmin, -1.5 - 0.5*kmax], '-k')
+        ymin, ymax = kmin+3.5, kmax+3.5
 
-      if ion in 'O':
-          ax.plot([kmin, kmax], [-4.5 - 0.5*kmin, -4.5 - 0.5*kmax], '-k')
-          ax.set_ylim(kmin+0.5, kmax+0.5)
-      else:
-          ax.plot([kmin, kmax], [-1.5 - 0.5*kmin, -1.5 - 0.5*kmax], '-k')
-          ax.set_ylim(kmin+3.5, kmax+3.5)
+    ax.set_xlim(kmin, kmax)
+    ax.set_ylim(ymin, ymax)
 
-      for view in ['xy', 'xz', 'yz']:
-          kthick = tab['kv' + ion + 'T' + view]
-          kthin = tab['kv' + ion + 't' + view]
-          <<power-indices-plot-kwds>>
-          ax.set_xlim(kmin, kmax)
-          kplot = kthin if ion in 'O' else kthin - kthick
-          ax.plot(k3[mm], kplot[mm], alpha=0.2, label=None, **plt_kwds)
-          ax.plot(k3[m], kplot[m], alpha=0.6,
-                   label=linedict[ion] + ' ' + view,  **plt_kwds)
-      ax.vlines(-11./3., -100, 100, alpha=0.2, lw=3)
-      ax.legend(loc='upper right', fontsize='small', ncol=1)
-      ax.grid()
-       
-  for ax in axes[-1, :]:
-      ax.set_xlabel(r'Power law index of 3D velocity, $n$', fontsize='small')
-  for ax in axes[0, 0], :
-      ax.set_ylabel(r'VCA power law index for thin slice: $\gamma_\mathrm{t}$', fontsize='small')
-  for ax in axes[:, 1]:
-      ax.yaxis.tick_right()
-      ax.yaxis.set_label_position('right')
-  for ax in axes[1, 0], axes[0, 1], axes[1, 1]:
-      ax.set_ylabel(r'Difference between thin and thick slices: $\gamma_\mathrm{t} - \gamma_\mathrm{T}$', fontsize='small')
+    for view in ['xy', 'xz', 'yz']:
+        kthick = tab['kv' + ion + 'T' + view]
+        kthin = tab['kv' + ion + 't' + view]
+        <<power-indices-plot-kwds>>
+        kplot = kthin if ion in 'O' else kthin - kthick
+        ax.plot(k3[mm], kplot[mm], alpha=0.2, label=None, **plt_kwds)
+        ax.plot(k3[m], kplot[m], alpha=0.6,
+                 label=linedict[ion] + ' ' + view,  **plt_kwds)
+        print(ion, view, kplot[m].mean(), '+/-', kplot[m].std(), file=f)
+    ax.vlines(-11./3., -100, 100, alpha=0.2, lw=3)
+    ax.annotate(r'$n = -11/3$', (-11/3, ymax-0.15), rotation="vertical", **labelprops)
+    if ion in 'O':
+        ax.annotate(r'$\gamma_{\mathrm{t}} = -4.5 - 0.5 n$', (-3.5, -4.5 - 0.5*(-3.5)),  rotation=-26.56, **labelprops)
+    else:
+        ax.annotate(r'$\gamma_{\mathrm{t}} - \gamma_{\mathrm{T}}= -1.5 - 0.5 n$', (-3.5, -1.5 - 0.5*(-3.5)),  rotation=-26.56, **labelprops)
+    ax.legend(loc='upper right', fontsize='small', ncol=1)
+    ax.grid()
 
-  pltfile = 'vca-thin-vs-3d-panels.pdf'
-  fig.set_size_inches((9, 8))
-  fig.tight_layout()
-  plt.savefig(pltfile)
+f.close()
+     
+for ax in axes[-1, :]:
+    ax.set_xlabel(r'Power law index of 3D velocity, $n$', fontsize='small')
+for ax in axes[0, 0], :
+    ax.set_ylabel(r'VCA power law index for thin slice: $\gamma_\mathrm{t}$', fontsize='small')
+for ax in axes[:, 1]:
+    ax.yaxis.tick_right()
+    ax.yaxis.set_label_position('right')
+for ax in axes[1, 0], axes[0, 1], axes[1, 1]:
+    ax.set_ylabel(r'Difference between thin and thick slices: $\gamma_\mathrm{t} - \gamma_\mathrm{T}$', fontsize='small')
+
+fig.set_size_inches((9, 8))
+fig.tight_layout()
+plt.savefig(pltfile)
 
 #+END_SRC
 
 #+RESULTS:
 [[file:vca-thin-vs-3d-panels.pdf]]
+
+
+Stats file: [[file:vca-thin-vs-3d-panels.stats]]
+
+|---+----+-----------------+-----------------|
+| O | xy |  -2.80129321429 |  0.055706218749 |
+| O | xz |  -2.80475371429 | 0.0480706121397 |
+| O | yz |  -2.76559464286 | 0.0686794385519 |
+|---+----+-----------------+-----------------|
+|   |    |  -2.80 +/- 0.03 | 0.06 +/- 6.0e-3 |
+|---+----+-----------------+-----------------|
+| H | xy | 0.0819803571429 | 0.0394624680236 |
+| H | xz |        0.044183 | 0.0747720280634 |
+| H | yz | 0.0639607142857 | 0.0224496108507 |
+|---+----+-----------------+-----------------|
+|   |    |   0.07 +/- 0.02 |   0.05 +/- 0.02 |
+|---+----+-----------------+-----------------|
+| N | xy |  0.204757428571 | 0.0115334901465 |
+| N | xz |  0.185447571429 | 0.0237116790745 |
+| N | yz |        0.167199 | 0.0162491793991 |
+|---+----+-----------------+-----------------|
+|   |    | 0.19 +/- 8.7e-3 | 0.02 +/- 3.5e-3 |
+|---+----+-----------------+-----------------|
+| S | xy |  0.205481357143 | 0.0156569303213 |
+| S | xz |  0.158641642857 | 0.0161364420871 |
+| S | yz |         0.15566 | 0.0131721274234 |
+|---+----+-----------------+-----------------|
+|   |    | 0.17 +/- 8.5e-3 | 0.01 +/- 9.2e-4 |
+|---+----+-----------------+-----------------|
+#+TBLFM: @4$3=vmeane(@-II..@-I); f2::@4$4=vmeane(@-II..@-I); f2::@8$3=vmeane(@-II..@-I); f2::@8$4=vmeane(@-II..@-I); f2::@12$3=vmeane(@-II..@-I); f2::@12$4=vmeane(@-II..@-I); f2::@16$3=vmeane(@-II..@-I); f2::@16$4=vmeane(@-II..@-I); f2
+
 
 **** Plots for the structure function
 #+BEGIN_SRC python :return pltfile :results file 
@@ -868,6 +974,12 @@ Caption: R is the radius of an equivalent sphere with volume equal to that of th
 Insert after first sentence of 3.2.1
 #+BEGIN_SRC latex
 In the following sections we use a dimensionless \(k\) that is normalised to the size of our computational grid.  Thus \(k = 1\) corresponds to a physical scale of \(4\)~pc. 
+#+END_SRC
+*** Motivate the change from \kappa \to n
++ Also in section 3.2.1
++ Presumably because that is what Lazarian does
+#+BEGIN_SRC latex
+
 #+END_SRC
 ** QUOTE Entire report 
 Date: Mon, 3 Mar 2014 05:17:30 -0500 (EST)

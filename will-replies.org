@@ -2,7 +2,11 @@
 : 8. The crucial section 3.2.3 on the superiority of the VCA needs work.  It refers to data not presented on the intermediate velocity slices; it uses a pagelong table rather than a figure to present the information needed (as I noted above); and as a result doesn't clearly make the correct that thermal broadening destroys the value of the thin slices. (Is this indeed still true for the heavier, narrower, ions?)
 
 We have followed the referee's suggestion and replaced the table with a new figure that shows the time evolution of the VCA power law indices.  The detailed graphs of the VCAs have been moved to an appendix.  Also, we have rewritten the text to make clearer that it is only for H alpha that thermal broadening destroys the value of the thin slices. 
+
 We have made parallel changes to the previous section on the velocity centroid structure functions, moving the numerous graphs of the actual structure functions to an appendix and replacing the table with a graph that shows how the power law indices evolve with time.
+
+: 11. In section 4.1.2, what is the implication of ruling out the Kolmogorov value of the turbulence power law?  That is dropped into the discussion without a conclusion being drawn.
+
 With respect to the particular question of the deviations from a
 Kolmogorov spectrum, we feel that this is already addressed in the
 previous section 4.1.1, where the second paragraph discusses precisely
@@ -14,3 +18,11 @@ function slope and the underlying velocity fluctuations.  The exact
 values of the slopes have also changed slightly due to adjustments we
 have made to the power law fitting ranges, but this does not change
 the qualitative conclusions.
+
+: 12. The crucial section 4.1.3 is where the VCA is demonstrated to work better than other methods. However, it is curiously anecdotal.  Given that the abstract and conclusion present this as the central point of the paper, use should be made of the vast amount of data presented for the VCA in Figure 9 and Table 3, to make a much more systematic comparison with the actual power spectra known from the 3D model.
+
+We accept the referee's point that a better job could be made of
+relating the VCA power spectra to the simulation's actual power
+spectra.  To that end, we have added two figures, which illustrate the
+correlations between the VCA and intrinsic power law slopes during the
+evolution of our simulation.

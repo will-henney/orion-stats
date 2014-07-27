@@ -279,45 +279,92 @@ which produces spurious small-scale power, as discussed by
 Third, thermal broadening would smoothe out any structure on 
 scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
 
-The procedure for deriving the power-law index
-of the velocity fluctuations from the velocity channels is
-slightly different, depending on whether the power spectrum 
-of the emissivity fluctuations is ``steep'' or ``shallow'' (see above). 
-In the steep case, which applies to \oiii{} in our simulation, 
-the slope of the average power spectrum of the brightness maps
-in the thin isovelocity channels is given by 
-\(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{vca-thin-vs-3d-panels}
+  \caption{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
+    slopes for thin slices, \gammaVCAthin{} or \(\gammaVCAthin -
+    \gammaVCAvthick\), versus slope, \(n\), of the intrinsic velocity
+    power spectrum for each emission line.  The \oiii{} line (upper
+    left panel) has a sufficiently steep emissivity power spectrum
+    that it is the absolute value of \gammaVCAthin{} that is predicted
+    to be related to \(n\), as shown by the diagonal solid line.  The
+    other emission lines have a shallower emissivity power spectrum,
+    such that it is the relative slope between the thin and thick
+    slices, \(\gammaVCAthin - \gammaVCAvthick\) that is predicted to
+    depend on \(n\). }
+  \label{fig:vca-thin-vs-n}
+\end{figure}
+
+Figure~\ref{fig:vca-thin-vs-n} shows the correlations between the
+slope of the velocity fluctuation power spectrum and the VCA slopes
+found in \S~\ref{sssec:vca} above (see Fig.~\ref{fig:vcatrends}).  The
+theoretical procedure \citep{2000ApJ...537..720L} for deriving one
+from the other is slightly different, depending on whether the power
+spectrum of the emissivity fluctuations is ``steep'' or ``shallow''
+(see \S~\label{sec:stats-vca} above).  In the steep case, which
+applies to \oiii{} in our simulation, the slope of the average power
+spectrum of the brightness maps in the thin isovelocity channels is
+given by \(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
 where \(m_{\mathrm{3D}} = -3 - n = 0.2 \pm 0.1\) for our simulation.
-The derived value from the \oiii{} thin channel maps is 
-\(\gamma_{\mathrm{thin}} = -2.84 \pm 0.11 \),
-which compares very well with the value \(-2.9 \pm 0.05\)
-that is implied by the simulation's value of \(n\). 
+The derived value from the \oiii{} thin channel maps for \(t >
+200,000\) is \(\gamma_{\mathrm{thin}} = -2.80 \pm 0.07 \), which
+compares well with the value \(-2.9 \pm 0.05\) that is implied by the
+simulation's value of \(n\).
 
 In the shallow case, it is the difference in slope
 between the thin and thick slices
 that is predicted to depend on the velocity fluctuations:
 \(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
 The derived values are 
-\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.08 \pm 0.04\), 
-\(0.18 \pm 0.04\), and \(0.18 \pm 0.04\)
+\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.07 \pm 0.05\), 
+\(0.19 \pm 0.02\), and \(0.17 \pm 0.02\)
 for \ha, \nii, and \sii, respectively. 
-These also compare well with the value of \(0.1 \pm 0.05\)
-that is implied by the simulation's value of \(n\). 
+These also compare tolerably well with the value of \(0.1 \pm 0.05\)
+that is implied by the simulation's value of \(n\).  
 
-The slopes of the power spectra of the thick slices themselves, 
-which are simply the velocity-integrated surface brightness images\footnote{
-  Although for simplicity, extinction is not included.}
-are predicted \citep {2000ApJ...537..720L}
-to be equal to the slopes of the 3D power spectra of their respective emissivities. 
-However, only in the case of \oiii{} do we find this to be the case.
-In the case of the other lines, \(\gamma_{\mathrm{vthick}}\) is shallower than
-the emissivity's spectral index \(n\) by 0.36, 0.19, 0.61 for \ha, \nii, and \sii, respectively. 
-The reason for this discrepancy may be the increasingly ``sheet-like'' morphology
-of the emission in the lower ionization lines. 
-As shown in \S~4.1 of \citet {2003ApJ...593..831M}, 
-one should see a transition from \(\gamma_{\mathrm{vthick}} = n\) to the 
-shallower slope \(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger
-than the line-of-sight depth of the emitting region.
+Note, however, that the large Doppler width of the \ha{} line means
+that the thin velocity slices are not useful in this case, since the
+thick and thin slices have identical slopes. The fact that this agrees
+with the theoretical prediction is merely a coincidence, due to our
+velocity spectrum having a slope that is close to \(-3\).  For the
+lines from heavier ions, \oiii{}, \nii{} and \sii{}, the difference
+between the thin and thick velocity slices is not erased by thermal
+broadening, but in these three cases there is a consistent difference
+of \(\approx 0.1\) between the measured VCA slope and the
+theoretically expected one.  The origin of this difference is unclear,
+but it is small enough that it is not a significant impediment to the
+application of the VCA method.
+
+The slopes of the power spectra of the thick slices themselves, which
+are simply the velocity-integrated surface brightness images\footnote{
+  Although for simplicity, extinction is not included.}  are predicted
+\citep {2000ApJ...537..720L} to be equal to the slopes of the 3D power
+spectra of their respective emissivities.  The comparison between
+these two quantities is shown in Figure~\ref{fig:vca-thick-vs-n}, from
+which it is clear that only in the case of \oiii{} are the two slopes
+equal.  In the case of the other lines, \(\gamma_{\mathrm{vthick}}\)
+is shallower than the emissivity's spectral index \(n\) by 0.36, 0.19,
+0.61 for \ha, \nii, and \sii, respectively.  The reason for this
+discrepancy is the increasingly ``sheet-like'' morphology of the
+emission in the lower ionization lines.  As shown in \S~4.1 of \citet
+{2003ApJ...593..831M}, one should see a transition from
+\(\gamma_{\mathrm{vthick}} = n\) to the shallower slope
+\(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger than
+the line-of-sight depth of the emitting region.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{vca-thick-vs-3d-panels}
+  \caption{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
+    slopes for thick slices, \gammaVCAvthick{}, versus slope, \(n\),
+    of the intrinsic emissivity power spectrum for each emission line.
+    The theoretical expectations are shown by diagonal lines for the
+    cases where the line-of-sight depth of the emitting region is
+    larger (continuous line) or smaller (dashed line) than the
+    transverse scales that are sampled.  }
+  \label{fig:vca-thick-vs-n}
+\end{figure}
 
 
 
