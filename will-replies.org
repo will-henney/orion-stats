@@ -3,4 +3,14 @@
 
 We have followed the referee's suggestion and replaced the table with a new figure that shows the time evolution of the VCA power law indices.  The detailed graphs of the VCAs have been moved to an appendix.  Also, we have rewritten the text to make clearer that it is only for H alpha that thermal broadening destroys the value of the thin slices. 
 We have made parallel changes to the previous section on the velocity centroid structure functions, moving the numerous graphs of the actual structure functions to an appendix and replacing the table with a graph that shows how the power law indices evolve with time.
-We have made several changes to this section
+With respect to the particular question of the deviations from a
+Kolmogorov spectrum, we feel that this is already addressed in the
+previous section 4.1.1, where the second paragraph discusses precisely
+this point.
+
+We have, however made some additions to this section, including a new
+figure that shows the (lack of) correlation between the structure
+function slope and the underlying velocity fluctuations.  The exact
+values of the slopes have also changed slightly due to adjustments we
+have made to the power law fitting ranges, but this does not change
+the qualitative conclusions.
