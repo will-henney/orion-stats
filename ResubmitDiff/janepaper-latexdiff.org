@@ -1,0 +1,24 @@
+#+name: run-latexdiff
+#+header: :var FILE_A="ms.tex"
+#+header: :var FILE_B="ms-resubmit-will.tex"
+#+header: :var FILE_DIFF="ms-diff.tex"
+#+header: :var OPTIONS="--preamble=wjh-latexdiff-newonly-preamble.tex --append-context2cmd='label' --ignore-warnings --math-markup=1 --allow-spaces --config MINWORDSBLOCK=10"
+#+BEGIN_SRC sh :results file
+  latexdiff $OPTIONS --verbose $FILE_A $FILE_B > $FILE_DIFF
+  echo $FILE_DIFF
+#+END_SRC
+
+#+RESULTS: run-latexdiff
+[[file:ms-diff.tex]]
+
+
+#+BEGIN_SRC latex
+\renewcommand\includegraphics[2][]{}
+#+END_SRC
+
+#+BEGIN_SRC sh
+latexdiff -help 
+#+END_SRC
+
+#+RESULTS:
+

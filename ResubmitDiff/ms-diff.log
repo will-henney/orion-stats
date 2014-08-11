@@ -1,0 +1,553 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 AUG 2014 00:09
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**\input ms-diff.tex
+(./ms-diff.tex (/Users/will/Library/texmf/tex/latex/mnras/mn2e.cls
+Document Class: mn2e 2001/02/06 v2.2 LaTeX2e MN document class
+Document Style `MN' v2.2, released 2001 February 20
+\math@groups=\toks14
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/cmsy/b/n on input line 223.
+\symbmisymbols=\mathgroup4
+\symUPM=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `UPM' in version `bold'
+(Font)                  U/eur/m/n --> U/eur/b/n on input line 260.
+\symAMSa=\mathgroup6
+\SFB@measure=\dimen102
+\realparindent=\skip41
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\@indentskip=\skip42
+\smallindent=\skip43
+\@footindent=\skip44
+\@leftskip=\skip45
+\c@dummy=\count85
+(/usr/local/texlive/2014/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip46
+\bibsep=\skip47
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count86
+)
+\c@table=\count87
+\c@figure=\count88
+\mathindent=\dimen103
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
+\symboldUPM=\mathgroup10
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 137.
+LaTeX Info: Redefining \bm on input line 203.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2014/05/13 v1.1q fixes to LaTeX
+LaTeX Info: Redefining \em on input line 429.
+)
+\c@ionstage=\count90
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box26
+\UL@hyphenbox=\box27
+\UL@skip=\skip48
+\UL@hook=\toks16
+\UL@height=\dimen106
+\UL@pe=\count91
+\UL@pixel=\dimen107
+\ULC@box=\box28
+Package: ulem 2012/05/18
+\ULdepth=\dimen108
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/cancel/cancel.sty
+Package: cancel 2013/04/12 v2.2 Cancel math terms
+)
+(./ms-diff.aux)
+\openout1 = `ms-diff.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+
+(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count92
+\scratchdimen=\dimen109
+\scratchbox=\box29
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen110
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks18
+) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 96.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 96.
+LaTeX Font Info:    Try loading font information for U+eur on input line 96.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/ueur.fd
+File: ueur.fd 2013/01/14 v3.01 Euler Roman
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 96.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 96.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 96.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 96.
+
+Overfull \hbox (31.4295pt too wide) in paragraph at lines 96--96
+[][]  
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 136.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
+
+pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires \pdfminorver
+sion > 4. Object streams disabled now.
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 283.
+ [2]
+[3]
+Underfull \hbox (badness 1412) in paragraph at lines 530--540
+[]\OT1/cmr/m/n/9 In the case of in-com-press-ible, ho-mo-ge-neous (Kol-
+ []
+
+<emission-image-15.png, id=36, 512.91624pt x 512.91624pt>
+File: emission-image-15.png Graphic file (type png)
+
+<use emission-image-15.png>
+Package pdftex.def Info: emission-image-15.png used on input line 555.
+(pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
+
+<emission-image-20.png, id=37, 512.91624pt x 512.91624pt>
+File: emission-image-20.png Graphic file (type png)
+
+<use emission-image-20.png>
+Package pdftex.def Info: emission-image-20.png used on input line 555.
+(pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
+
+<emission-image-25.png, id=38, 512.91624pt x 512.91624pt>
+File: emission-image-25.png Graphic file (type png)
+
+<use emission-image-25.png>
+Package pdftex.def Info: emission-image-25.png used on input line 556.
+(pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
+
+<emission-image-30.png, id=39, 512.91624pt x 512.91624pt>
+File: emission-image-30.png Graphic file (type png)
+
+<use emission-image-30.png>
+Package pdftex.def Info: emission-image-30.png used on input line 556.
+(pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
+ [4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<veldisp3.pdf, id=44, 488.82625pt x 402.50375pt>
+File: veldisp3.pdf Graphic file (type pdf)
+ <use veldisp3.pdf>
+Package pdftex.def Info: veldisp3.pdf used on input line 649.
+(pdftex.def)             Requested size: 240.0pt x 197.62163pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./emission-image-15.png (PNG copy)> <./emission-image-20.png (PNG copy)> <
+./emission-image-25.png (PNG copy)> <./emission-image-30.png (PNG copy)>]
+<ps-all-3k-ref.pdf, id=49, 547.04375pt x 483.8075pt>
+File: ps-all-3k-ref.pdf Graphic file (type pdf)
+ <use ps-all-3k-ref.pdf>
+Package pdftex.def Info: ps-all-3k-ref.pdf used on input line 670.
+(pdftex.def)             Requested size: 504.0pt x 445.74318pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<afkz1.pdf, id=50, 297.11pt x 218.8175pt>
+File: afkz1.pdf Graphic file (type pdf)
+ <use afkz1.pdf>
+Package pdftex.def Info: afkz1.pdf used on input line 684.
+(pdftex.def)             Requested size: 240.0pt x 176.76373pt.
+
+<ef1kmp.pdf, id=51, 297.11pt x 371.3875pt>
+File: ef1kmp.pdf Graphic file (type pdf)
+ <use ef1kmp.pdf>
+Package pdftex.def Info: ef1kmp.pdf used on input line 685.
+(pdftex.def)             Requested size: 240.0pt x 300.01186pt.
+
+<scross.pdf, id=52, 488.82625pt x 397.485pt>
+File: scross.pdf Graphic file (type pdf)
+ <use scross.pdf>
+Package pdftex.def Info: scross.pdf used on input line 754.
+(pdftex.def)             Requested size: 240.0pt x 195.15752pt.
+
+<sf-time-trends-all.pdf, id=53, 533.995pt x 643.40375pt>
+File: sf-time-trends-all.pdf Graphic file (type pdf)
+
+<use sf-time-trends-all.pdf>
+Package pdftex.def Info: sf-time-trends-all.pdf used on input line 816.
+(pdftex.def)             Requested size: 403.20154pt x 485.83069pt.
+
+<pdf-centroid.pdf, id=54, 402.50375pt x 629.35126pt>
+File: pdf-centroid.pdf Graphic file (type pdf)
+ <use pdf-centroid.pdf>
+Package pdftex.def Info: pdf-centroid.pdf used on input line 857.
+(pdftex.def)             Requested size: 302.40308pt x 472.82854pt.
+
+[6 <./veldisp3.pdf>]
+<vca-time-trends-all.pdf, id=63, 534.99875pt x 643.40375pt>
+File: vca-time-trends-all.pdf Graphic file (type pdf)
+
+<use vca-time-trends-all.pdf>
+Package pdftex.def Info: vca-time-trends-all.pdf used on input line 1081.
+(pdftex.def)             Requested size: 403.20154pt x 484.91765pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./ps-all-3k-ref.pdf>]
+Underfull \vbox (badness 1629) has occurred while \output is active []
+
+ [8 <./afkz1.pdf> <./ef1kmp.pdf> <./scross.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./sf-time-trends-all.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./pdf-centroid.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./vca-time-trends-all.pdf>]
+Underfull \hbox (badness 1092) in paragraph at lines 1692--1707
+\OT1/cmr/m/n/9 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 49 \OMS/cmsy/m/n/9 ^^F \OT1/cmr
+/m/n/9 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 03$, $\OML/cmm/m/it/9 m[]\OT1/cmr/m/n/9
+ ([]) = 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 59 \OMS/cmsy/m/n/9 ^^F \OT1/cmr/m/n/9 
+0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 04$, $\OML/cmm/m/it/9 m[]\OT1/cmr/m/n/9 ([[]])
+ =
+ []
+
+<sf-vs-3d-panels.pdf, id=157, 614.295pt x 578.16pt>
+File: sf-vs-3d-panels.pdf Graphic file (type pdf)
+ <use sf-vs-3d-panels.pdf>
+Package pdftex.def Info: sf-vs-3d-panels.pdf used on input line 1761.
+(pdftex.def)             Requested size: 504.0pt x 474.35893pt.
+
+<o3-thick-thin.pdf, id=158, 578.16pt x 289.08pt>
+File: o3-thick-thin.pdf Graphic file (type pdf)
+ <use o3-thick-thin.pdf>
+Package pdftex.def Info: o3-thick-thin.pdf used on input line 1776.
+(pdftex.def)             Requested size: 504.0pt x 252.00041pt.
+
+<vca-thin-vs-3d-panels.pdf, id=159, 650.43pt x 578.16pt>
+File: vca-thin-vs-3d-panels.pdf Graphic file (type pdf)
+
+<use vca-thin-vs-3d-panels.pdf>
+Package pdftex.def Info: vca-thin-vs-3d-panels.pdf used on input line 1826.
+(pdftex.def)             Requested size: 504.0pt x 448.00761pt.
+ [12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <./sf-vs-3d-panels.pdf>] <vca-thick-vs-3d-panels.pdf, id=243, 614.295pt x 
+578.16pt>
+File: vca-thick-vs-3d-panels.pdf Graphic file (type pdf)
+
+<use vca-thick-vs-3d-panels.pdf>
+Package pdftex.def Info: vca-thick-vs-3d-panels.pdf used on input line 1908.
+(pdftex.def)             Requested size: 504.0pt x 474.35893pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <./o3-thick-thin.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15 <./vca-thin-vs-3d-panels.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16 <./vca-thick-vs-3d-panels.pdf>]
+Underfull \hbox (badness 1331) in paragraph at lines 2218--2222
+[]\OT1/cmr/m/n/9 Osterbrock D. E., Fer-land G. J., 2006, As-tro-physics
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2218--2222
+\OT1/cmr/m/n/9 of gaseous neb-u-lae and ac-tive galac-tic nu-clei,
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 2243--2244
+[]\OT1/cmr/m/n/9 V^^Sazquez-Semadeni E., Kim J., Ballesteros-Paredes J.,
+ []
+
+
+Underfull \vbox (badness 3428) has occurred while \output is active []
+
+ [17]
+<sf-all-xy-ref.pdf, id=436, 547.04375pt x 634.37pt>
+File: sf-all-xy-ref.pdf Graphic file (type pdf)
+ <use sf-all-xy-ref.pdf>
+Package pdftex.def Info: sf-all-xy-ref.pdf used on input line 2346.
+(pdftex.def)             Requested size: 504.0pt x 584.45993pt.
+
+<sf-all-xz-ref.pdf, id=437, 547.04375pt x 634.37pt>
+File: sf-all-xz-ref.pdf Graphic file (type pdf)
+ <use sf-all-xz-ref.pdf>
+Package pdftex.def Info: sf-all-xz-ref.pdf used on input line 2360.
+(pdftex.def)             Requested size: 504.0pt x 584.45993pt.
+
+<sf-all-yz-ref.pdf, id=438, 547.04375pt x 634.37pt>
+File: sf-all-yz-ref.pdf Graphic file (type pdf)
+ <use sf-all-yz-ref.pdf>
+Package pdftex.def Info: sf-all-yz-ref.pdf used on input line 2367.
+(pdftex.def)             Requested size: 504.0pt x 584.45993pt.
+
+<auto-yz-15-25-O3.pdf, id=439, 182.6825pt x 334.24875pt>
+File: auto-yz-15-25-O3.pdf Graphic file (type pdf)
+
+<use auto-yz-15-25-O3.pdf>
+Package pdftex.def Info: auto-yz-15-25-O3.pdf used on input line 2374.
+(pdftex.def)             Requested size: 192.00073pt x 351.31325pt.
+ <vca-all-xy.pdf, id=440, 537.00626pt x 623.32875pt>
+File: vca-all-xy.pdf Graphic file (type pdf)
+
+<use vca-all-xy.pdf>
+Package pdftex.def Info: vca-all-xy.pdf used on input line 2421.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ <vca-all-xz.pdf, id=441, 537.00626pt x 623.32875pt>
+File: vca-all-xz.pdf Graphic file (type pdf)
+
+<use vca-all-xz.pdf>
+Package pdftex.def Info: vca-all-xz.pdf used on input line 2438.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ <vca-all-yz.pdf, id=442, 537.00626pt x 623.32875pt>
+File: vca-all-yz.pdf Graphic file (type pdf)
+
+<use vca-all-yz.pdf>
+Package pdftex.def Info: vca-all-yz.pdf used on input line 2444.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./sf-all-xy-ref.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./sf-all-xz-ref.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <./sf-all-yz-ref.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22
+
+
+ <./auto-yz-15-25-O3.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23 <./vca-all-xy.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24 <./vca-all-xz.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [25 <./vca-all-yz.pdf>] (./ms-diff.aux) )
+(\end occurred when \iftrue on line 2447 was incomplete)
+(\end occurred when \iftrue on line 2441 was incomplete)
+(\end occurred when \iftrue on line 2435 was incomplete)
+(\end occurred when \iftrue on line 2371 was incomplete)
+(\end occurred when \iftrue on line 2364 was incomplete)
+(\end occurred when \iftrue on line 2357 was incomplete)
+(\end occurred when \iftrue on line 1917 was incomplete)
+(\end occurred when \iftrue on line 1839 was incomplete)
+(\end occurred when \iftrue on line 1790 was incomplete)
+(\end occurred when \iftrue on line 1764 was incomplete)
+(\end occurred when \iftrue on line 1103 was incomplete)
+(\end occurred when \iftrue on line 867 was incomplete)
+(\end occurred when \iftrue on line 834 was incomplete)
+(\end occurred when \iftrue on line 679 was incomplete)
+(\end occurred when \iftrue on line 568 was incomplete) 
+Here is how much of TeX's memory you used:
+ 3197 strings out of 493117
+ 44414 string characters out of 6135433
+ 122890 words of memory out of 5000000
+ 6578 multiletter control sequences out of 15000+600000
+ 22124 words of font info for 78 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,11n,40p,1161b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmti9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msam10.pfb>
+Output written on ms-diff.pdf (25 pages, 3727854 bytes).
+PDF statistics:
+ 635 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+
