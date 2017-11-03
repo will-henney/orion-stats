@@ -1,2 +1,6 @@
 *~
 bigdata/*.fits
+NewMoments/*.fits
+SacOrion/ORION_Abril15
+NewMoments/ThreeGaussians/*.png
+NewMoments/FourGaussians/*.png

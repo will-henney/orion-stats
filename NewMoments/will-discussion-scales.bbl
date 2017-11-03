@@ -1,0 +1,57 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Bertoldi} \& {McKee}}{{Bertoldi} \&
+  {McKee}}{1990}]{Bertoldi:1990a}
+{Bertoldi} F.,  {McKee} C.~F.,  1990, \apj, \href
+  {http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1990ApJ...354..529B&amp;db_key=AST}
+  {354, 529}
+
+\bibitem[\protect\citeauthoryear{{Brunt}, {Federrath}  \& {Price}}{{Brunt}
+  et~al.}{2010}]{Brunt:2010a}
+{Brunt} C.~M.,  {Federrath} C.,   {Price} D.~J.,  2010, \mn@doi [\mnras]
+  {10.1111/j.1745-3933.2010.00858.x}, \href
+  {http://adsabs.harvard.edu/abs/2010MNRAS.405L..56B} {405, L56}
+
+\bibitem[\protect\citeauthoryear{{Dyson}}{{Dyson}}{1968}]{Dyson:1968a}
+{Dyson} J.~E.,  1968, \mn@doi [\apss] {10.1007/BF00656009}, \href
+  {http://adsabs.harvard.edu/abs/1968Ap%26SS...1..388D} {1, 388}
+
+\bibitem[\protect\citeauthoryear{{Henney}, {Arthur}, {de Colle}  \&
+  {Mellema}}{{Henney} et~al.}{2009}]{Henney:2009b}
+{Henney} W.~J.,  {Arthur} S.~J.,  {de Colle} F.,   {Mellema} G.,  2009, \mn@doi
+  [\mnras] {10.1111/j.1365-2966.2009.15153.x}, \href
+  {http://adsabs.harvard.edu/abs/2009MNRAS.398..157H} {398, 157}
+
+\bibitem[\protect\citeauthoryear{{Konstandin}, {Girichidis}, {Federrath}  \&
+  {Klessen}}{{Konstandin} et~al.}{2012}]{Konstandin:2012a}
+{Konstandin} L.,  {Girichidis} P.,  {Federrath} C.,   {Klessen} R.~S.,  2012,
+  \mn@doi [\apj] {10.1088/0004-637X/761/2/149}, \href
+  {http://adsabs.harvard.edu/abs/2012ApJ...761..149K} {761, 149}
+
+\bibitem[\protect\citeauthoryear{{Konstandin}, {Schmidt}, {Girichidis},
+  {Peters}, {Shetty}  \& {Klessen}}{{Konstandin}
+  et~al.}{2015}]{Konstandin:2015a}
+{Konstandin} L.,  {Schmidt} W.,  {Girichidis} P.,  {Peters} T.,  {Shetty} R.,
+  {Klessen} R.~S.,  2015, preprint, \href
+  {http://adsabs.harvard.edu/abs/2015arXiv150603834K} {} (\mn@eprint {arXiv}
+  {1506.03834})
+
+\makeatother
+\end{thebibliography}

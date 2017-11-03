@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: will-summary.aux
+The style file: mn2e.bst
+Database file #1: BibdeskLibrary-slavoj.bib
+Warning--I didn't find a database entry for "Ballesteros:2011a"
+You've used 9 entries,
+            2938 wiz_defined-function locations,
+            670 strings with 5844 characters,
+and the built_in function-call counts, 4393 in all, are:
+= -- 354
+> -- 357
+< -- 0
++ -- 120
+- -- 114
+* -- 391
+:= -- 836
+add.period$ -- 0
+call.type$ -- 9
+change.case$ -- 72
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 152
+empty$ -- 232
+format.name$ -- 132
+if$ -- 845
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 9
+newline$ -- 31
+num.names$ -- 36
+pop$ -- 66
+preamble$ -- 1
+purify$ -- 72
+quote$ -- 0
+skip$ -- 139
+stack$ -- 0
+substring$ -- 185
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 81
+warning$ -- 0
+while$ -- 38
+width$ -- 0
+write$ -- 92
+(There was 1 warning)

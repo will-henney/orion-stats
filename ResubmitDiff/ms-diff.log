@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 AUG 2014 00:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  14 AUG 2014 23:30
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -245,7 +245,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 283.
  [2]
 [3]
-Underfull \hbox (badness 1412) in paragraph at lines 530--540
+Underfull \hbox (badness 1412) in paragraph at lines 541--551
 []\OT1/cmr/m/n/9 In the case of in-com-press-ible, ho-mo-ge-neous (Kol-
  []
 
@@ -253,113 +253,120 @@ Underfull \hbox (badness 1412) in paragraph at lines 530--540
 File: emission-image-15.png Graphic file (type png)
 
 <use emission-image-15.png>
-Package pdftex.def Info: emission-image-15.png used on input line 555.
+Package pdftex.def Info: emission-image-15.png used on input line 566.
 (pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
 
 <emission-image-20.png, id=37, 512.91624pt x 512.91624pt>
 File: emission-image-20.png Graphic file (type png)
 
 <use emission-image-20.png>
-Package pdftex.def Info: emission-image-20.png used on input line 555.
+Package pdftex.def Info: emission-image-20.png used on input line 566.
 (pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
 
 <emission-image-25.png, id=38, 512.91624pt x 512.91624pt>
 File: emission-image-25.png Graphic file (type png)
 
 <use emission-image-25.png>
-Package pdftex.def Info: emission-image-25.png used on input line 556.
+Package pdftex.def Info: emission-image-25.png used on input line 567.
 (pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
 
 <emission-image-30.png, id=39, 512.91624pt x 512.91624pt>
 File: emission-image-30.png Graphic file (type png)
 
 <use emission-image-30.png>
-Package pdftex.def Info: emission-image-30.png used on input line 556.
+Package pdftex.def Info: emission-image-30.png used on input line 567.
 (pdftex.def)             Requested size: 226.79846pt x 226.7952pt.
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-<veldisp3.pdf, id=44, 488.82625pt x 402.50375pt>
-File: veldisp3.pdf Graphic file (type pdf)
- <use veldisp3.pdf>
-Package pdftex.def Info: veldisp3.pdf used on input line 649.
-(pdftex.def)             Requested size: 240.0pt x 197.62163pt.
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5 <./emission-image-15.png (PNG copy)> <./emission-image-20.png (PNG copy)> <
 ./emission-image-25.png (PNG copy)> <./emission-image-30.png (PNG copy)>]
+<veldisp3.pdf, id=48, 488.82625pt x 402.50375pt>
+File: veldisp3.pdf Graphic file (type pdf)
+ <use veldisp3.pdf>
+Package pdftex.def Info: veldisp3.pdf used on input line 660.
+(pdftex.def)             Requested size: 240.0pt x 197.62163pt.
+
 <ps-all-3k-ref.pdf, id=49, 547.04375pt x 483.8075pt>
 File: ps-all-3k-ref.pdf Graphic file (type pdf)
  <use ps-all-3k-ref.pdf>
-Package pdftex.def Info: ps-all-3k-ref.pdf used on input line 670.
+Package pdftex.def Info: ps-all-3k-ref.pdf used on input line 681.
 (pdftex.def)             Requested size: 504.0pt x 445.74318pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 <afkz1.pdf, id=50, 297.11pt x 218.8175pt>
 File: afkz1.pdf Graphic file (type pdf)
  <use afkz1.pdf>
-Package pdftex.def Info: afkz1.pdf used on input line 684.
+Package pdftex.def Info: afkz1.pdf used on input line 696.
 (pdftex.def)             Requested size: 240.0pt x 176.76373pt.
 
 <ef1kmp.pdf, id=51, 297.11pt x 371.3875pt>
 File: ef1kmp.pdf Graphic file (type pdf)
  <use ef1kmp.pdf>
-Package pdftex.def Info: ef1kmp.pdf used on input line 685.
+Package pdftex.def Info: ef1kmp.pdf used on input line 697.
 (pdftex.def)             Requested size: 240.0pt x 300.01186pt.
 
 <scross.pdf, id=52, 488.82625pt x 397.485pt>
 File: scross.pdf Graphic file (type pdf)
  <use scross.pdf>
-Package pdftex.def Info: scross.pdf used on input line 754.
+Package pdftex.def Info: scross.pdf used on input line 766.
 (pdftex.def)             Requested size: 240.0pt x 195.15752pt.
 
 <sf-time-trends-all.pdf, id=53, 533.995pt x 643.40375pt>
 File: sf-time-trends-all.pdf Graphic file (type pdf)
 
 <use sf-time-trends-all.pdf>
-Package pdftex.def Info: sf-time-trends-all.pdf used on input line 816.
+Package pdftex.def Info: sf-time-trends-all.pdf used on input line 833.
 (pdftex.def)             Requested size: 403.20154pt x 485.83069pt.
 
 <pdf-centroid.pdf, id=54, 402.50375pt x 629.35126pt>
 File: pdf-centroid.pdf Graphic file (type pdf)
  <use pdf-centroid.pdf>
-Package pdftex.def Info: pdf-centroid.pdf used on input line 857.
+Package pdftex.def Info: pdf-centroid.pdf used on input line 874.
 (pdftex.def)             Requested size: 302.40308pt x 472.82854pt.
 
 [6 <./veldisp3.pdf>]
-<vca-time-trends-all.pdf, id=63, 534.99875pt x 643.40375pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<o3-thick-thin.pdf, id=63, 578.16pt x 289.08pt>
+File: o3-thick-thin.pdf Graphic file (type pdf)
+ <use o3-thick-thin.pdf>
+Package pdftex.def Info: o3-thick-thin.pdf used on input line 1103.
+(pdftex.def)             Requested size: 504.0pt x 252.00041pt.
+
+<vca-time-trends-all.pdf, id=64, 534.99875pt x 643.40375pt>
 File: vca-time-trends-all.pdf Graphic file (type pdf)
 
 <use vca-time-trends-all.pdf>
-Package pdftex.def Info: vca-time-trends-all.pdf used on input line 1081.
+Package pdftex.def Info: vca-time-trends-all.pdf used on input line 1136.
 (pdftex.def)             Requested size: 403.20154pt x 484.91765pt.
+ [7 <./ps-all-3k-ref.pdf>]
+Underfull \hbox (badness 1635) in paragraph at lines 1507--1508
+\OT1/cmr/m/n/9 scale power, as dis-cussed by []and
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 1507--1508
+[]\OT1/cmr/m/n/9 . Third,
+ []
+
+[8 <./afkz1.pdf> <./ef1kmp.pdf> <./scross.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./ps-all-3k-ref.pdf>]
-Underfull \vbox (badness 1629) has occurred while \output is active []
 
- [8 <./afkz1.pdf> <./ef1kmp.pdf> <./scross.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9 <./sf-time-trends-all.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [10 <./pdf-centroid.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./vca-time-trends-all.pdf>]
-Underfull \hbox (badness 1092) in paragraph at lines 1692--1707
+ [11 <./o3-thick-thin.pdf>]
+Underfull \hbox (badness 1092) in paragraph at lines 1783--1798
 \OT1/cmr/m/n/9 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 49 \OMS/cmsy/m/n/9 ^^F \OT1/cmr
 /m/n/9 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 03$, $\OML/cmm/m/it/9 m[]\OT1/cmr/m/n/9
  ([]) = 0\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 59 \OMS/cmsy/m/n/9 ^^F \OT1/cmr/m/n/9 
@@ -367,38 +374,40 @@ Underfull \hbox (badness 1092) in paragraph at lines 1692--1707
  =
  []
 
-<sf-vs-3d-panels.pdf, id=157, 614.295pt x 578.16pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12 <./vca-time-trends-all.pdf>] <sf-vs-3d-panels.pdf, id=185, 614.295pt x 578
+.16pt>
 File: sf-vs-3d-panels.pdf Graphic file (type pdf)
- <use sf-vs-3d-panels.pdf>
-Package pdftex.def Info: sf-vs-3d-panels.pdf used on input line 1761.
+
+<use sf-vs-3d-panels.pdf>
+Package pdftex.def Info: sf-vs-3d-panels.pdf used on input line 1852.
 (pdftex.def)             Requested size: 504.0pt x 474.35893pt.
 
-<o3-thick-thin.pdf, id=158, 578.16pt x 289.08pt>
-File: o3-thick-thin.pdf Graphic file (type pdf)
- <use o3-thick-thin.pdf>
-Package pdftex.def Info: o3-thick-thin.pdf used on input line 1776.
-(pdftex.def)             Requested size: 504.0pt x 252.00041pt.
-
-<vca-thin-vs-3d-panels.pdf, id=159, 650.43pt x 578.16pt>
+<vca-thin-vs-3d-panels.pdf, id=186, 650.43pt x 578.16pt>
 File: vca-thin-vs-3d-panels.pdf Graphic file (type pdf)
 
 <use vca-thin-vs-3d-panels.pdf>
-Package pdftex.def Info: vca-thin-vs-3d-panels.pdf used on input line 1826.
+Package pdftex.def Info: vca-thin-vs-3d-panels.pdf used on input line 1919.
 (pdftex.def)             Requested size: 504.0pt x 448.00761pt.
- [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13 <./sf-vs-3d-panels.pdf>] <vca-thick-vs-3d-panels.pdf, id=243, 614.295pt x 
-578.16pt>
+<vca-thick-vs-3d-panels.pdf, id=187, 614.295pt x 578.16pt>
 File: vca-thick-vs-3d-panels.pdf Graphic file (type pdf)
 
 <use vca-thick-vs-3d-panels.pdf>
-Package pdftex.def Info: vca-thick-vs-3d-panels.pdf used on input line 1908.
+Package pdftex.def Info: vca-thick-vs-3d-panels.pdf used on input line 2064.
 (pdftex.def)             Requested size: 504.0pt x 474.35893pt.
+ [13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14 <./o3-thick-thin.pdf>]
+ [14 <./sf-vs-3d-panels.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -407,74 +416,72 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15 <./vca-thin-vs-3d-panels.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [16 <./vca-thick-vs-3d-panels.pdf>]
-Underfull \hbox (badness 1331) in paragraph at lines 2218--2222
+Underfull \hbox (badness 1331) in paragraph at lines 2381--2385
 []\OT1/cmr/m/n/9 Osterbrock D. E., Fer-land G. J., 2006, As-tro-physics
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2218--2222
+Underfull \hbox (badness 10000) in paragraph at lines 2381--2385
 \OT1/cmr/m/n/9 of gaseous neb-u-lae and ac-tive galac-tic nu-clei,
  []
 
-
-Underfull \hbox (badness 1199) in paragraph at lines 2243--2244
+[17]
+Underfull \hbox (badness 1199) in paragraph at lines 2406--2407
 []\OT1/cmr/m/n/9 V^^Sazquez-Semadeni E., Kim J., Ballesteros-Paredes J.,
  []
 
-
-Underfull \vbox (badness 3428) has occurred while \output is active []
-
- [17]
 <sf-all-xy-ref.pdf, id=436, 547.04375pt x 634.37pt>
 File: sf-all-xy-ref.pdf Graphic file (type pdf)
  <use sf-all-xy-ref.pdf>
-Package pdftex.def Info: sf-all-xy-ref.pdf used on input line 2346.
+Package pdftex.def Info: sf-all-xy-ref.pdf used on input line 2509.
 (pdftex.def)             Requested size: 504.0pt x 584.45993pt.
 
 <sf-all-xz-ref.pdf, id=437, 547.04375pt x 634.37pt>
 File: sf-all-xz-ref.pdf Graphic file (type pdf)
  <use sf-all-xz-ref.pdf>
-Package pdftex.def Info: sf-all-xz-ref.pdf used on input line 2360.
+Package pdftex.def Info: sf-all-xz-ref.pdf used on input line 2524.
 (pdftex.def)             Requested size: 504.0pt x 584.45993pt.
 
 <sf-all-yz-ref.pdf, id=438, 547.04375pt x 634.37pt>
 File: sf-all-yz-ref.pdf Graphic file (type pdf)
  <use sf-all-yz-ref.pdf>
-Package pdftex.def Info: sf-all-yz-ref.pdf used on input line 2367.
+Package pdftex.def Info: sf-all-yz-ref.pdf used on input line 2531.
 (pdftex.def)             Requested size: 504.0pt x 584.45993pt.
 
 <auto-yz-15-25-O3.pdf, id=439, 182.6825pt x 334.24875pt>
 File: auto-yz-15-25-O3.pdf Graphic file (type pdf)
 
 <use auto-yz-15-25-O3.pdf>
-Package pdftex.def Info: auto-yz-15-25-O3.pdf used on input line 2374.
+Package pdftex.def Info: auto-yz-15-25-O3.pdf used on input line 2538.
 (pdftex.def)             Requested size: 192.00073pt x 351.31325pt.
- <vca-all-xy.pdf, id=440, 537.00626pt x 623.32875pt>
-File: vca-all-xy.pdf Graphic file (type pdf)
-
-<use vca-all-xy.pdf>
-Package pdftex.def Info: vca-all-xy.pdf used on input line 2421.
-(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
- <vca-all-xz.pdf, id=441, 537.00626pt x 623.32875pt>
-File: vca-all-xz.pdf Graphic file (type pdf)
-
-<use vca-all-xz.pdf>
-Package pdftex.def Info: vca-all-xz.pdf used on input line 2438.
-(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
- <vca-all-yz.pdf, id=442, 537.00626pt x 623.32875pt>
-File: vca-all-yz.pdf Graphic file (type pdf)
-
-<use vca-all-yz.pdf>
-Package pdftex.def Info: vca-all-yz.pdf used on input line 2444.
-(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
  [18]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19 <./sf-all-xy-ref.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [19 <./sf-all-xy-ref.pdf>] <vca-all-xy.pdf, id=459, 537.00626pt x 623.32875pt>
+File: vca-all-xy.pdf Graphic file (type pdf)
 
- [20 <./sf-all-xz-ref.pdf>]
+<use vca-all-xy.pdf>
+Package pdftex.def Info: vca-all-xy.pdf used on input line 2587.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ <vca-all-xz.pdf, id=460, 537.00626pt x 623.32875pt>
+File: vca-all-xz.pdf Graphic file (type pdf)
+
+<use vca-all-xz.pdf>
+Package pdftex.def Info: vca-all-xz.pdf used on input line 2606.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ <vca-all-yz.pdf, id=461, 537.00626pt x 623.32875pt>
+File: vca-all-yz.pdf Graphic file (type pdf)
+
+<use vca-all-yz.pdf>
+Package pdftex.def Info: vca-all-yz.pdf used on input line 2612.
+(pdftex.def)             Requested size: 504.0pt x 585.01602pt.
+ [20
+
+ <./sf-all-xz-ref.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21 <./sf-all-yz-ref.pdf>]
@@ -493,29 +500,29 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25 <./vca-all-yz.pdf>] (./ms-diff.aux) )
-(\end occurred when \iftrue on line 2447 was incomplete)
-(\end occurred when \iftrue on line 2441 was incomplete)
-(\end occurred when \iftrue on line 2435 was incomplete)
-(\end occurred when \iftrue on line 2371 was incomplete)
-(\end occurred when \iftrue on line 2364 was incomplete)
-(\end occurred when \iftrue on line 2357 was incomplete)
-(\end occurred when \iftrue on line 1917 was incomplete)
-(\end occurred when \iftrue on line 1839 was incomplete)
-(\end occurred when \iftrue on line 1790 was incomplete)
-(\end occurred when \iftrue on line 1764 was incomplete)
-(\end occurred when \iftrue on line 1103 was incomplete)
-(\end occurred when \iftrue on line 867 was incomplete)
-(\end occurred when \iftrue on line 834 was incomplete)
-(\end occurred when \iftrue on line 679 was incomplete)
-(\end occurred when \iftrue on line 568 was incomplete) 
+(\end occurred when \iftrue on line 2615 was incomplete)
+(\end occurred when \iftrue on line 2609 was incomplete)
+(\end occurred when \iftrue on line 2603 was incomplete)
+(\end occurred when \iftrue on line 2535 was incomplete)
+(\end occurred when \iftrue on line 2528 was incomplete)
+(\end occurred when \iftrue on line 2521 was incomplete)
+(\end occurred when \iftrue on line 2073 was incomplete)
+(\end occurred when \iftrue on line 1947 was incomplete)
+(\end occurred when \iftrue on line 1855 was incomplete)
+(\end occurred when \iftrue on line 1431 was incomplete)
+(\end occurred when \iftrue on line 1129 was incomplete)
+(\end occurred when \iftrue on line 884 was incomplete)
+(\end occurred when \iftrue on line 851 was incomplete)
+(\end occurred when \iftrue on line 691 was incomplete)
+(\end occurred when \iftrue on line 579 was incomplete) 
 Here is how much of TeX's memory you used:
- 3197 strings out of 493117
- 44414 string characters out of 6135433
- 122890 words of memory out of 5000000
- 6578 multiletter control sequences out of 15000+600000
+ 3200 strings out of 493117
+ 44495 string characters out of 6135433
+ 129183 words of memory out of 5000000
+ 6581 multiletter control sequences out of 15000+600000
  22124 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,40p,1161b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,48p,1516b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/t
@@ -545,7 +552,7 @@ sfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmti9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
 s/symbols/msam10.pfb>
-Output written on ms-diff.pdf (25 pages, 3727854 bytes).
+Output written on ms-diff.pdf (25 pages, 3728507 bytes).
 PDF statistics:
  635 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

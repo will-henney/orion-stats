@@ -1,0 +1,45 @@
+\begin{thebibliography}{9}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Garc{\'{\i}}a-Arredondo}
+  {et~al}\mbox{.}(2001){Garc{\'{\i}}a-Arredondo}, {Henney}, \&
+  {Arthur}}]{Garcia-Arredondo:2001a}
+{Garc{\'{\i}}a-Arredondo} F., {Henney} W.~J., {Arthur} S.~J., 2001, \apj, 561,
+  830
+
+\bibitem[{{G{\"u}del} {et~al}\mbox{.}(2008){G{\"u}del}, {Briggs}, {Montmerle},
+  {Audard}, {Rebull}, \& {Skinner}}]{Gudel:2008a}
+{G{\"u}del} M., {Briggs} K.~R., {Montmerle} T., {Audard} M., {Rebull} L.,
+  {Skinner} S.~L., 2008, Science, 319, 309
+
+\bibitem[{{Henney} {et~al}\mbox{.}(2009){Henney}, {Arthur}, {de Colle}, \&
+  {Mellema}}]{Henney:2009a}
+{Henney} W.~J., {Arthur} S.~J., {de Colle} F., {Mellema} G., 2009, \mnras, 398,
+  157
+
+\bibitem[{{Henney} {et~al}\mbox{.}(2007){Henney}, {O'Dell}, {Zapata},
+  {Garc{\'{\i}}a-D{\'{\i}}az}, {Rodr{\'{\i}}guez}, \&
+  {Robberto}}]{Henney:2007b}
+{Henney} W.~J., {O'Dell} C.~R., {Zapata} L.~A., {Garc{\'{\i}}a-D{\'{\i}}az}
+  M.~T., {Rodr{\'{\i}}guez} L.~F., {Robberto} M., 2007, \aj, 133, 2192
+
+\bibitem[{{Kainulainen} {et~al}\mbox{.}(2016){Kainulainen}, {Stutz}, {Stanke},
+  {Abreu-Vicente}, {Beuther}, {Henning}, {Johnston}, \&
+  {Megeath}}]{Kainulainen:2016a}
+{Kainulainen} J., {Stutz} A.~M., {Stanke} T., {Abreu-Vicente} J., {Beuther} H.,
+  {Henning} T., {Johnston} K.~G., {Megeath} T., 2016, ArXiv e-prints
+
+\bibitem[{{Krumholz} \& {Matzner}(2009)}]{Krumholz:2009a}
+{Krumholz} M.~R., {Matzner} C.~D., 2009, \apj, 703, 1352
+
+\bibitem[{{O'Dell} \& {Yusef-Zadeh}(2000)}]{ODell:2000a}
+{O'Dell} C.~R., {Yusef-Zadeh} F., 2000, \aj, 120, 382
+
+\bibitem[{{Padoan} \& {Nordlund}(2002)}]{Padoan:2002a}
+{Padoan} P., {Nordlund} {\AA}., 2002, \apj, 576, 870
+
+\bibitem[{{Smith} {et~al}\mbox{.}(2007){Smith}, {Bally}, \&
+  {Walawender}}]{Smith:2007a}
+{Smith} N., {Bally} J., {Walawender} J., 2007, \aj, 134, 846
+
+\end{thebibliography}

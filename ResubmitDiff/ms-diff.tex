@@ -1,7 +1,7 @@
 \documentclass[useAMS,usenatbib]{mn2e}
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL ms.tex                 Sun Aug 10 22:40:33 2014
-%DIF ADD ms-resubmit-will.tex   Sun Aug 10 23:42:44 2014
+%DIF ADD ms-resubmit-will.tex   Thu Aug 14 23:12:09 2014
 \pdfminorversion=4
 \usepackage{bm}
 \usepackage{graphicx}
@@ -307,7 +307,9 @@ spatial volume of
 4~pc$^3$ and the initial temperature is 5~K. 
 
 \DIFaddbegin \DIFadd{The radiation-hydrodynamics code used in the present paper does not
-include self gravity. However, on the relatively short timescales of
+include self gravity. However, although the initial conditions would
+be gravitationally unstable in the absence of photoionization heating,
+on the relatively short timescales of
 the simulations ($\sim 3\times10^5$~yrs) this will not be important
 since the global free-fall time of the computational cube is $\sim
 6\times10^5$~yrs. 
@@ -336,7 +338,11 @@ The emissivity cubes for the H$\alpha$ recombination line and the
 collisionally excited lines are calculated as described in
 \citet{{2011MNRAS.414.1747A}}, with the assumption that the heavy
 element ionization fractions are fixed functions of the hydrogen
-ionization fractions, calibrated with the Cloudy photoionization code.
+ionization fractions, calibrated with the Cloudy photoionization code
+\DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{2013RMxAA..49..137F}.
+}%DIFAUXCMD
+}\DIFaddend 
 
 \subsection{Turbulence Statistics}
 \label{subsec:turbstats}
@@ -371,11 +377,16 @@ physical quantity $a$ can be written
 \end{equation}
 where $\mathbf{r}$ is the spatial position and $\boldsymbol{l}$ is the
 spatial separation. The N-dimensional power spectrum is then
-\begin{equation}
+\DIFdelbegin \begin{displaymath}\DIFdel{
   p_N(k) = \int e^{i\mathbf{k}\cdot\boldsymbol{l}} \xi_N{\boldsymbol{l}} \,
   d\boldsymbol{l} \ ,
-\end{equation}
-where $\mathbf{k}  = (k_x,k_y,k_z)$ is the wavenumber, which is related to the scale by
+}\end{displaymath}
+%DIFAUXCMD
+\DIFdelend \DIFaddbegin \begin{equation}\DIFadd{
+  p_N(k) = \int e^{i\mathbf{k}\cdot\boldsymbol{l}} \xi_N(}{\DIFadd{\boldsymbol{l}}}\DIFadd{) \,
+  d\boldsymbol{l} \ ,
+}\end{equation}
+\DIFaddend where $\mathbf{k}  = (k_x,k_y,k_z)$ is the wavenumber, which is related to the scale by
 $k = 2\pi/l$, and the integration is performed over all N-dimensional
 space. The energy spectrum is the angle integral of
 the power spectrum over shells of radius $k = |\mathbf{k} |$, such that $E_N(k) \propto k^{N-1} p_N(k)$.
@@ -512,7 +523,7 @@ the emission-line velocity centroid map.
 
 Previous authors have established
 that for an isotropic, power-law, three-dimensional power spectrum, the
-spectral slope does not change on going from three dimensions to two
+spectral \DIFdelbegin \DIFdel{slope }\DIFdelend \DIFaddbegin \DIFadd{index }\DIFaddend does not change on going from three dimensions to two
 (projected) dimensions, i.e. $\kappa_{2D} = \kappa_{3D}$, where
 $\kappa_{ND}$ is the power spectrum spectral index in $N$ dimensions
 (defined as $p_N(k) \propto k^{-\kappa_{ND}}$, \citealp{{1998A&A...336..697S},{2003ApJ...593..831M},{2003ApJ...595..824B}}). This is because the line-of-sight contribution to
@@ -522,7 +533,7 @@ where $z$ is the line-of-sight direction.
 The relationship between the power spectrum spectral index and the
 exponent of the second-order structure function for homogeneous
 turbulence is $\kappa_{ND} = m_\mathrm{ND} + N$, where $m_\mathrm{ND}$
-is the slope of the $N$-dimensional second-order structure
+is the \DIFdelbegin \DIFdel{slope }\DIFdelend \DIFaddbegin \DIFadd{power-law index }\DIFaddend of the $N$-dimensional second-order structure
 function. For projection from 3 to 2 dimensions, we therefore have
 $m_\mathrm{2D} = m_\mathrm{3D} + 1$, and this is known as
 \textit{projection smoothing}. 
@@ -631,7 +642,7 @@ that of the ionization front and the internal velocities are linear
 with radius. In this case, the velocity dispersion falls steadily as a
 function of time, and after 100,000~yrs is less than 2~km~s$^{-1}$. The
 differences between the velocity dispersions in the numerical and analytic
-cases are entirely due to the interaction of the photoevaporated
+cases are \DIFdelbegin \DIFdel{entirely }\DIFdelend \DIFaddbegin \DIFadd{mainly }\DIFaddend due to the interaction of the photoevaporated
 flows produced in the simulations described above. In the analytic expansion, the velocities are radial
 away from the central source. In the clumpy medium, the
 photoevaporated flows lead to large non-radial velocities, which increase
@@ -674,7 +685,8 @@ dispersion, after 200,000~yrs.
   300,000~years. The points represent the calculated power spectra for
   the numerical simulation  and the solid line is the least-squares fit to
 the data points between limits described in the
-text, represented by the grey rectangle.}
+text, represented by the grey rectangle. \DIFaddbeginFL \DIFaddFL{The index $n$ of each
+power-law fit is indicated in the corresponding panel.}\DIFaddendFL }
 \label{fig:ps}
 \end{figure*}
 \begin{figure}
@@ -683,15 +695,15 @@ text, represented by the grey rectangle.}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \includegraphics[width=\linewidth]{afkz1}\\
 \includegraphics[width=\linewidth]{ef1kmp}
-\DIFaddendFL \caption{Time variation of \DIFdelbeginFL \DIFdelFL{power spectrum gradient for }\DIFdelendFL 3D \DIFaddbeginFL \DIFaddFL{power-spectra gradients. Top panel: 3D }\DIFaddendFL physical
-  quantities. \DIFdelbeginFL \DIFdelFL{Dashed line: square of ionized density $d_i^2$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Solid line---ionized
+\DIFaddendFL \caption{Time variation of \DIFaddbeginFL \DIFaddFL{3D }\DIFaddendFL power \DIFdelbeginFL \DIFdelFL{spectrum gradient for }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{spectra power-law indices. Top panel: }\DIFaddendFL 3D physical
+  quantities\DIFdelbeginFL \DIFdelFL{. Dashed line: square of ionized density $d_i^2$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{; solid line---ionized
   gas velocity $v_i$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{dot-dashed line: ionized }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{dashed line---ionized }\DIFaddendFL density $d_i$, \DIFdelbeginFL \DIFdelFL{short-dashed line: }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{dotted line---square of }\DIFaddendFL ionized \DIFdelbeginFL \DIFdelFL{gas velocity $v_i$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{density $d_i^2$}\DIFaddendFL ,
   \DIFdelbeginFL \DIFdelFL{dotted line: temperature }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{dot-dashed line---temperature }\DIFaddendFL $T$. \DIFdelbeginFL \DIFdelFL{Filled circles}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Bottom panel}\DIFaddendFL : \DIFdelbeginFL \DIFdelFL{H$\alpha$ emissivity in 3D }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{emission-line
-  volume emissivities. Filled circles---}\DIFaddendFL $j(\mathrm{H}\alpha)$, open
+  volume emissivities; filled circles---}\DIFaddendFL $j(\mathrm{H}\alpha)$, open
   \DIFdelbeginFL \DIFdelFL{squares:
   }%DIFDELCMD < \oiii%%%
 \DIFdelFL{$\lambda$5007 emissivity in 3D }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{squares---}\DIFaddendFL $j(\mathrm{[OIII]})$\DIFaddbeginFL \DIFaddFL{, filled
-  triangles---$j(\mathrm{[NII]})$}\DIFaddendFL . \DIFaddbeginFL \DIFaddFL{open diamonds---$j(\mathrm{[SII]})$.}\DIFaddendFL }
+  triangles---$j(\mathrm{[NII]})$, open diamonds---$j(\mathrm{[SII]})$}\DIFaddendFL .}
 \label{fig:psevol}
 \end{figure}
 \DIFdelbegin %DIFDELCMD < \begin{table*}
@@ -784,14 +796,19 @@ $n$ to represent the 3D power spectrum spectral index,%DIF >
 }%DIFAUXCMD
 .}}
 %DIF > 
-\DIFaddend where $n = -\kappa_{3D}$ and $\kappa_{3D}$ is defined in
+\DIFadd{which corresponds to the slope or gradient in log-log space, 
+}\DIFaddend where $n = -\kappa_{3D}$ and $\kappa_{3D}$ is defined in
 \S~\ref{subsec:projsmooth}. At earlier times, the power laws are
-steeper and evolving. This behaviour mimics, with a delay of about
+steeper and evolving. 
+\DIFdelbegin \DIFdel{This behaviour mimics, with a delay of about
 50,000~yrs, the velocity dispersion behaviour seen in
-Figure~\ref{fig:veldisp}. \DIFaddbegin \DIFadd{The flattening-off of the power spectra
+Figure~\ref{fig:veldisp}}\DIFdelend %DIF >  This behaviour mimics, with a delay of about
+%DIF >  50,000~yrs, the velocity dispersion behaviour seen in
+%DIF >  Figure~\ref{fig:veldisp}. 
+%DIF >  The flattening-off 
+\DIFaddbegin \DIFadd{The settling down of the power spectra power-law indices
 corresponds to the time at which the global expansion ceases to be
-important for the internal dynamics (see Fig.~\ref{fig:veldisp}).
-}\DIFaddend 
+important for the internal dynamics (see Fig.~\ref{fig:veldisp})}\DIFaddend .
 
 In Figure~\ref{fig:scross} we compare the sound-crossing time of the
 ionized volume with the evolution time of the simulation. During the
@@ -822,8 +839,8 @@ sound-crossing time.
 \DIFdelendFL \DIFaddbeginFL \oiii{} \DIFaddendFL $\lambda 5007$, \DIFdelbeginFL %DIFDELCMD < \nii%%%
 \DIFdelendFL \DIFaddbeginFL \nii{} \DIFaddendFL $\lambda 6584$, \DIFdelbeginFL %DIFDELCMD < \sii%%%
 \DIFdelendFL \DIFaddbeginFL \sii{} \DIFaddendFL $\lambda
-    6716$. From left to right: \DIFdelbeginFL \DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{line of sight along the $z$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000, 200,000, 250,000 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$x$ }\DIFaddendFL and
-    \DIFdelbeginFL \DIFdelFL{300}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$y$ axes}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000~years}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{respectively}\DIFaddendFL .\DIFdelbeginFL \DIFdelFL{The points represent the calculated structure
+    6716$. From left to right: \DIFdelbeginFL \DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{line of sight along the $z$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000, 200,000, 250,000 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$y$ }\DIFaddendFL and
+    \DIFdelbeginFL \DIFdelFL{300}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$x$ axes}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000~years}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{respectively}\DIFaddendFL .\DIFdelbeginFL \DIFdelFL{The points represent the calculated structure
   function for the numerical simulation. The solid line is the
   least-squares fit to the data points between limits described in the
 text, represented by the grey rectangle. The horizontal dotted line at $\log 2$ is included as a
@@ -858,7 +875,7 @@ reference value.}\DIFdelendFL }
 \caption{Histograms of velocity centroid values for each emission line
   along different lines of sight. From top to bottom: H$\alpha$,
   \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda 6716$. From
-  left to right: line of sight along the $z$, $x$ and $y$ axes,
+  left to right: line of sight along the $z$, \DIFdelbeginFL \DIFdelFL{$x$ and }\DIFdelendFL $y$ \DIFaddbeginFL \DIFaddFL{and $x$ }\DIFaddendFL axes,
   respectively. The different line types refer to different times:
   thick, grey line---150,000~yrs, dashed line---200,000~yrs,
   short-dashed line---250,000~yrs, continuous black
@@ -874,15 +891,17 @@ and then calculate the corresponding second-order structure functions
 according to Equation~\ref{eq:strucfunc}. \DIFdelbegin \DIFdel{Typical results are shown in Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz} for the four emission lines at the four 
 %DIF < Figure~\ref{fig:sfunc} for a line of sight perpendicular to the $xy$-plane for the four emission lines at the four 
 evolutionary times depicted in Figure~\ref{fig:HIIimages}.
-}\DIFdelend \DIFaddbegin \DIFadd{Results for representative
-evolutionary times are shown in Figures~\ref{fig:sfunc} to
-\ref{fig:sfuncyz} of Appendix~\ref{app:sf}, where power law fits to
-the slope (}\mSF\DIFadd{) of the structure function are carried out for the
-inertial range of scales.
-}\DIFaddend 
+}%DIFDELCMD < 
 
-\DIFdelbegin \DIFdel{If turbulence is present, }\DIFdelend \DIFaddbegin \DIFadd{In Figure~\ref{fig:sftrends} we show the evolution of }\mSF{} \DIFadd{with time
-for the different lines and for }\DIFaddend the \DIFdelbegin \DIFdel{second-order structure function should exhibit an
+%DIFDELCMD < %%%
+\DIFdel{If turbulence is present, }\DIFdelend \DIFaddbegin \DIFadd{Results for representative
+evolutionary times are shown in Figures~\ref{fig:sfunc} to
+\ref{fig:sfuncyz} of Appendix~\ref{app:sf}, where fits to the
+power-law index (}\mSF\DIFadd{) of the structure function, which corresponds to
+the slope or gradient in log-log space, are carried out for the
+inertial range of scales. A description of the procedure for
+identifying the inertial range is given in Appendix~\ref{app:sf} and
+illustrated by }\DIFaddend the \DIFdelbegin \DIFdel{second-order structure functionshould exhibit an
 inertial range over which it is a power law with
 length scale. Accordingly, we perform a least-squares fit to
 the data
@@ -896,16 +915,18 @@ simulations, we tested several values and the size scale equivalent to
 8 computational cells proved to be adequate for all emission lines and
 evolution times studied. For the upper limit, we examined the
 projected emission maps and calculated the area occupied by the pixels
-having greater than 6.6\% of the peak intensity.
-We then took the
-radius of the circle having the same area to be the upper limit for the
+having greater than 6.6\% of the peak intensity. We then took the
+radius of the circle having the same area to be the upper limit for
+the
 least-squares fit. This procedure appears to work very well, as can be
-seen in Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz}. If a different
+seen in Figures~\ref{fig:sfunc} and
+\ref{fig:sfuncyz}. If a different
 line of sight is chosen, the radius of this circle will be different and needs to be
 calculated self-consistently for every projection.
-}%DIFDELCMD < 
-%DIFDELCMD < %%%
-\DIFdel{An alternative criterion for the upper limit was used by \mbox{%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{accompanying Figure~\ref{fig:sfauto}.
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{An alternative criterion for the upper limit was used by \mbox{%DIFAUXCMD
 \citet
 {2011MNRAS.413..721L}
 }%DIFAUXCMD
@@ -918,11 +939,13 @@ from Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz},
 for many of our emission lines this criterion cannot be used,
 since the structure function nowhere rises above 2.
 }%DIFDELCMD < 
+
 %DIFDELCMD < %%%
-\DIFdel{In Table~\ref{tab:sfunc} we summarize the results for the power-law
+\DIFdelend In \DIFdelbegin \DIFdel{Table~\ref{tab:sfunc} we summarize the results for the power-law
 indices and inertial ranges for the fits shown in 
 Figures~\ref{fig:sfunc} and \ref{fig:sfuncyz} and also for a line of sight perpendicular to
-the $xz$-plane}\DIFdelend \DIFaddbegin \DIFadd{three principal viewing directions
+the $xz$-plane}\DIFdelend \DIFaddbegin \DIFadd{Figure~\ref{fig:sftrends} we show the evolution of }\mSF{} \DIFadd{with time
+for the different lines and for the three principal viewing directions
 of the simulation cube}\DIFaddend .  For the line of sight along the $z$-axis
 \DIFaddbegin \DIFadd{(first column of Fig.~\ref{fig:sftrends}), one sees for all lines a
 consistent steepening of the structure function graph with time
@@ -1074,382 +1097,437 @@ cases.
 \DIFdelend \subsubsection{Velocity Channel \DIFdelbegin \DIFdel{Analyis}\DIFdelend \DIFaddbegin \DIFadd{Analysis}\DIFaddend }
 \label{sssec:vca}
 \begin{figure*}
-%DIF > % Figure 8 in ms-resubmit.pdf
-\centering
-\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{vca-all-red}
+  \centering
+  \DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{vca-all-red}
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \includegraphics[width=0.8\textwidth]{vca-time-trends-all}
-\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Power spectra }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{ Evolution }\DIFaddendFL of \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL velocity \DIFaddbeginFL \DIFaddFL{channel power-law index as a function
-  of time for thick }\DIFaddendFL channels \DIFaddbeginFL \DIFaddFL{(}\gammaVCAvthick\DIFaddFL{; crosses) and thin
-  channels (}\gammaVCAthin\DIFaddFL{; filled circles)}\DIFaddendFL .  From top to bottom:
-  H$\alpha$, \DIFdelbeginFL %DIFDELCMD < \oiii%%%
-\DIFdelendFL \DIFaddbeginFL \oiii{} \DIFaddendFL $\lambda 5007$, \DIFdelbeginFL %DIFDELCMD < \nii%%%
-\DIFdelendFL \DIFaddbeginFL \nii{} \DIFaddendFL $\lambda 6584$, \DIFdelbeginFL %DIFDELCMD < \sii%%%
-\DIFdelendFL \DIFaddbeginFL \sii{}
-  \DIFaddendFL $\lambda 6716$. From left to right: \DIFdelbeginFL \DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{line of sight along the $z$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000, 200,000, 250,000 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$x$
-  }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{300}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$y$ axes}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000~years}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{respectively}\DIFaddendFL .  \DIFdelbeginFL \DIFdelFL{The upper panel in each figure are for velocities
-  without thermal }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Thermal }\DIFaddendFL broadening \DIFdelbeginFL \DIFdelFL{, the lower panel is the case with thermal
-  broadening. The points represent the calculated power spectra for
-  the numerical simulation: Open squares--thin slice ($n=128$ channels),
-  crosses--medium slice ($n=32$ channels), filled circles--thick slice
-  ($n=1$ channel). The dashed line is the
-  least-squares fit to the data points for the thin slice between limits described }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{was included }\DIFaddendFL in \DIFdelbeginFL \DIFdelFL{the
-text represented by the grey rectangle}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{all
-  cases}\DIFaddendFL .  \DIFdelbeginFL \DIFdelFL{The solid line is the least-squares fit to
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\linewidth]{o3-thick-thin}
+  \DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Power spectra of the velocity channels. From top to bottom:
+  H$\alpha$, }%DIFDELCMD < \oiii%%%
+\DIFdelFL{$\lambda 5007$, }%DIFDELCMD < \nii%%%
+\DIFdelFL{$\lambda 6584$, }%DIFDELCMD < \sii%%%
+\DIFdelFL{$\lambda
+  6716$. From }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Surface brightness maps in thick (}\DIFaddendFL left\DIFdelbeginFL \DIFdelFL{to }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{) versus thin (}\DIFaddendFL right\DIFdelbeginFL \DIFdelFL{: 150,000, 200,000, 250,000 and
+  }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{)
+    velocity slices for the }\oiii{} \DIFaddFL{line from our simulation at an age
+    of }\DIFaddendFL 300,000~years.  The \DIFdelbeginFL \DIFdelFL{upper panel in each figure are for velocities
+  without thermal broadening}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thick slice covers the full velocity range
+    of the emission line}\DIFaddendFL , \DIFaddbeginFL \DIFaddFL{while }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{lower panel }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thin slice has a width of
+    5~km~s$^{-1}$, which }\DIFaddendFL is \DIFaddbeginFL \DIFaddFL{smaller than }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{case with }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{turbulent velocity
+    fluctuations, but slightly larger than the }\DIFaddendFL thermal broadening \DIFaddbeginFL \DIFaddFL{for
+    this line}\DIFaddendFL .  \DIFdelbeginFL \DIFdelFL{The points represent }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{It is apparent that }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{calculated power spectra for
+  }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thin slice shows considerably
+    greater small-scale structure than }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{numerical simulation: Open squares--thin }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thick }\DIFaddendFL slice\DIFdelbeginFL \DIFdelFL{($n=128$ channels)}\DIFdelendFL , \DIFdelbeginFL \DIFdelFL{crosses--medium slice ($n=32$ channels), filled circles--thick slice
+  ($n=1$ channel)}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{which is
+    reflected in its shallower power spectrum}\DIFaddendFL .  The \DIFdelbeginFL \DIFdelFL{dashed line is }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{brightness
+    structure in }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{least-squares fit }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thick slice is due entirely }\DIFaddendFL to the \DIFdelbeginFL \DIFdelFL{data points for }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{emissivity
+    fluctuations within }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{thin slice between limits described }\DIFdelendFL \DIFaddbeginFL \hii{} \DIFaddFL{region, whereas the additional
+    structure }\DIFaddendFL in the \DIFdelbeginFL \DIFdelFL{text represented }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{thin slice is caused }\DIFaddendFL by \DIFdelbeginFL \DIFdelFL{the grey rectangle}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{velocity fluctuations}\DIFaddendFL .  \DIFdelbeginFL \DIFdelFL{The solid line is the least-squares fit to
 the data points for the thick slice.}\DIFdelendFL }
-\DIFdelbeginFL %DIFDELCMD < \label{fig:vca}
+  \DIFdelbeginFL %DIFDELCMD < \label{fig:vca}
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \label{fig:vcatrends}
+\DIFdelendFL \DIFaddbeginFL \label{fig:o3-thick-thin}
 \DIFaddendFL \end{figure*}
 
 \DIFdelbegin %DIFDELCMD < \begin{table*}
-%DIFDELCMD < \centering
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdel{Power-law indices for the velocity channel analysis.}}
-%DIFAUXCMD
+\DIFdelend \DIFaddbegin \begin{figure*}
+%DIF > % Figure 8 in ms-resubmit.pdf
+\DIFaddendFL \centering
+\DIFaddbeginFL \includegraphics[width=0.8\textwidth]{vca-time-trends-all}
+\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Power-law indices for the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{ Evolution of }\DIFaddendFL velocity channel \DIFdelbeginFL \DIFdelFL{analysis}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{power-law index as a function
+  of time for thick channels (}\gammaVCAvthick\DIFaddFL{; crosses) and thin
+  channels (}\gammaVCAthin\DIFaddFL{; filled circles)}\DIFaddendFL .  \DIFdelbeginFL %DIFDELCMD < }
 %DIFDELCMD < \label{tab:vca}
 %DIFDELCMD < \begin{tabular}{ccccccc}
 %DIFDELCMD < \hline
 %DIFDELCMD < %%%
-\DIFdel{Line }%DIFDELCMD < & %%%
-\DIFdel{Time }%DIFDELCMD < & %%%
-\DIFdel{Plane }%DIFDELCMD < & %%%
-\DIFdel{$\gamma_{\mathrm{vthick}}$ }%DIFDELCMD < & %%%
-\DIFdel{$\gamma_{\mathrm{thin}}$}%DIFDELCMD < &  %%%
-\DIFdel{$\gamma_{\mathrm thin}$}%DIFDELCMD < \\
+\DIFdelFL{Line }%DIFDELCMD < & %%%
+\DIFdelFL{Time }%DIFDELCMD < & %%%
+\DIFdelFL{Plane }%DIFDELCMD < & %%%
+\DIFdelFL{$\gamma_{\mathrm{vthick}}$ }%DIFDELCMD < & %%%
+\DIFdelFL{$\gamma_{\mathrm{thin}}$}%DIFDELCMD < &  %%%
+\DIFdelFL{$\gamma_{\mathrm thin}$}%DIFDELCMD < \\
 %DIFDELCMD < & %%%
-\DIFdel{(yrs) }%DIFDELCMD < &  & & %%%
-\DIFdel{No Broadening }%DIFDELCMD < & %%%
-\DIFdel{Broadening }%DIFDELCMD < \\
+\DIFdelFL{(yrs) }%DIFDELCMD < &  & & %%%
+\DIFdelFL{No Broadening }%DIFDELCMD < & %%%
+\DIFdelFL{Broadening }%DIFDELCMD < \\
 %DIFDELCMD < \hline
 %DIFDELCMD < %%%
-\DIFdel{H$\alpha$ }%DIFDELCMD < & %%%
-\DIFdel{150,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.65$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.54$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.67$ }%DIFDELCMD < \\
+\DIFdelendFL \DIFaddbeginFL \DIFaddFL{From top to bottom:
+  }\DIFaddendFL H$\alpha$\DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{150}\DIFdelendFL , \DIFdelbeginFL \DIFdelFL{000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.65$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.54$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.67$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.52$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.49$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.63$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.52$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.49$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.63$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.66$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.40$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.64$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.66$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.40$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.64$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{200,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.63$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.41$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.58$}%DIFDELCMD < \\
+\DIFdelFL{200,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.63$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.41$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.58$}%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.55$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.35$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.51$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.55$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.35$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.51$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.49$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.26$ }%DIFDELCMD < &  %%%
-\DIFdel{$-2.42$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.49$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.26$ }%DIFDELCMD < &  %%%
+\DIFdelFL{$-2.42$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{250,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.61$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.31$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.48$}%DIFDELCMD < \\
+\DIFdelFL{250,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.61$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.31$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.48$}%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.60$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.29$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.45$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.60$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.29$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.45$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.62$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.29$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.50$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.62$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.29$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.50$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{300,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.56$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.23$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.37$}%DIFDELCMD < \\
+\DIFdelFL{300,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.56$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.23$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.37$}%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.53$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.23$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.39$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.53$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.23$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.39$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.66$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.35$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.48$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.66$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.35$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.48$ }%DIFDELCMD < \\
 %DIFDELCMD < \hline
-%DIFDELCMD < \oiii{}          & %%%
-\DIFdel{150,000   }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-3.58$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.90$ }%DIFDELCMD < &  %%%
-\DIFdel{$-3.15$ }%DIFDELCMD < \\
 %DIFDELCMD < %%%
-\DIFdel{$\lambda$5007 }%DIFDELCMD < &        &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.14$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.73$ }%DIFDELCMD < &  %%%
-\DIFdel{$-3.01$ }%DIFDELCMD < \\
+\DIFdelendFL \oiii{} \DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\lambda 5007$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000   }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.58$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.90$ }%DIFDELCMD < &  %%%
+\DIFdelFL{$-3.15$ }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{$\lambda$5007 }%DIFDELCMD < &        &%%%
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.14$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.73$ }%DIFDELCMD < &  %%%
+\DIFdelFL{$-3.01$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.42$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.51$ }%DIFDELCMD < &  %%%
-\DIFdel{$-2.71$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.42$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.51$ }%DIFDELCMD < &  %%%
+\DIFdelFL{$-2.71$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{200,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-3.32$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.62$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.84$ }%DIFDELCMD < \\
+\DIFdelFL{200,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.32$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.62$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.84$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.18$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.55$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.76$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.18$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.55$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.76$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.26$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.51$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.69$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.26$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.51$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.69$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{250,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-3.37$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.57$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.78$ }%DIFDELCMD < \\
+\DIFdelFL{250,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.37$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.57$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.78$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.31$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.48$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.69$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.31$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.48$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.69$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.34$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.45$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.69$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.34$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.45$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.69$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{300,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-3.38$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.46$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.69$ }%DIFDELCMD < \\
+\DIFdelFL{300,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.38$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.46$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.69$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.39$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.46$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.68$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.39$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.46$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.68$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-3.43$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.58$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.79$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-3.43$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.58$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.79$ }%DIFDELCMD < \\
 %DIFDELCMD < \hline
-%DIFDELCMD < \nii{}           & %%%
-\DIFdel{150,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.41$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.13$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.28$ }%DIFDELCMD < \\
 %DIFDELCMD < %%%
-\DIFdel{$\lambda$6584 }%DIFDELCMD < &        &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.38$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.05$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.20$ }%DIFDELCMD < \\
+\DIFdelendFL \nii{} \DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\lambda 6584$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.41$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.13$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.28$ }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{$\lambda$6584 }%DIFDELCMD < &        &%%%
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.38$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.05$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.20$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.42$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.16$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.30$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.42$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.16$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.30$ }%DIFDELCMD < \\
 %DIFDELCMD <                  & %%%
-\DIFdel{200,000 }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.61$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.18$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.36$ }%DIFDELCMD < \\
+\DIFdelFL{200,000 }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.61$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.18$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.36$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.48$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.17$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.31$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.48$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.17$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.31$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.44$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.14$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.29$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.44$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.14$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.29$ }%DIFDELCMD < \\
 %DIFDELCMD <                  & %%%
-\DIFdel{250,000 }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.42$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.13$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.28$ }%DIFDELCMD < \\
+\DIFdelFL{250,000 }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.42$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.13$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.28$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.61$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.22$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.39$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.61$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.22$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.39$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.63$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.22$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.38$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.63$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.22$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.38$ }%DIFDELCMD < \\
 %DIFDELCMD <                  & %%%
-\DIFdel{300,000 }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.58$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.20$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.35$ }%DIFDELCMD < \\
+\DIFdelFL{300,000 }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.58$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.20$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.35$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.52$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.17$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.33$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.52$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.17$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.33$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.66$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.28$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.45$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.66$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.28$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.45$ }%DIFDELCMD < \\
 %DIFDELCMD < \hline
-%DIFDELCMD < \sii{}           & %%%
-\DIFdel{150,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.13$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.76$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.87$ }%DIFDELCMD < \\
 %DIFDELCMD < %%%
-\DIFdel{$\lambda$6716 }%DIFDELCMD < &        &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-1.96$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.61$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.69$ }%DIFDELCMD < \\
+\DIFdelendFL \sii{}
+  \DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{150}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\lambda 6716$. From left to right: line of sight along the $z$}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.13$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.76$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.87$ }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{$\lambda$6716 }%DIFDELCMD < &        &%%%
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.96$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.61$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.69$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.11$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.90$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.96$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.11$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.90$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.96$ }%DIFDELCMD < \\
 %DIFDELCMD <                   & %%%
-\DIFdel{200,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-2.03$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.82$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.89$ }%DIFDELCMD < \\
+\DIFdelFL{200}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$y$
+  and $x$ axes}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.03$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.82$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.89$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-1.82$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.69$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.74$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.82$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.69$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.74$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.04$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.75$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.86$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.04$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.75$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.86$ }%DIFDELCMD < \\
 %DIFDELCMD <                  & %%%
-\DIFdel{250,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-1.84$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.69$ }%DIFDELCMD < &  %%%
-\DIFdel{$-1.76$ }%DIFDELCMD < \\
+\DIFdelFL{250,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.84$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.69$ }%DIFDELCMD < &  %%%
+\DIFdelFL{$-1.76$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-2.19$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.96$ }%DIFDELCMD < & %%%
-\DIFdel{$-2.02$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-2.19$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.96$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-2.02$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-1.97$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.76$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.80$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.97$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.76$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.80$ }%DIFDELCMD < \\
 %DIFDELCMD <                  & %%%
-\DIFdel{300,000  }%DIFDELCMD < &%%%
-\DIFdel{$xy$}%DIFDELCMD < & %%%
-\DIFdel{$-1.85$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.59$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.66$ }%DIFDELCMD < \\
+\DIFdelFL{300,000  }%DIFDELCMD < &%%%
+\DIFdelFL{$xy$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.85$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.59$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.66$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$xz$}%DIFDELCMD < & %%%
-\DIFdel{$-1.92$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.64$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.71$ }%DIFDELCMD < \\
+\DIFdelFL{$xz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.92$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.64$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.71$ }%DIFDELCMD < \\
 %DIFDELCMD <                   &                &%%%
-\DIFdel{$yz$}%DIFDELCMD < & %%%
-\DIFdel{$-1.96$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.73$ }%DIFDELCMD < & %%%
-\DIFdel{$-1.78$ }%DIFDELCMD < \\
+\DIFdelFL{$yz$}%DIFDELCMD < & %%%
+\DIFdelFL{$-1.96$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.73$ }%DIFDELCMD < & %%%
+\DIFdelFL{$-1.78$ }%DIFDELCMD < \\
 %DIFDELCMD < \hline
 %DIFDELCMD < \end{tabular}
 %DIFDELCMD < \end{table*}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Figure~\ref{fig:vca} shows the power spectra resulting from the
-velocity channel analysis. The figure shows the four emission lines at
+\DIFdelendFL \DIFaddbeginFL \DIFaddFL{respectively.  Thermal broadening was included in all
+  cases.  }}
+\label{fig:vcatrends}
+\end{figure*}
+\DIFaddend 
+
+\DIFdelbegin \DIFdel{Figure~\ref{fig:vca} shows the power spectra resulting from the
+velocity channel analysis . The figure shows the
+four emission lines at
 four different times. For each emission line, there are two panels:
 the upper panel shows the power spectra for the velocity channels when
 thermal broadening is not taken into account, while the lower panel
-shows the power spectra when thermal broadening is included. In each
+shows the power spectra when thermal broadening is included.  
+In each
 graph, two power spectra are plotted: one representing a very thick velocity
-slice (i.e., encompassing all the emission) and the other averaged
-over thin velocity slices
-of width $\delta v \sim 5$~km~s$^{-1}$.
+slice (i.e.,
+encompassing all the emission ) and the other averaged
+over thin velocity slicesof width $\delta v \sim 5$~km~s$^{-1}$. 
 Also shown are the least-squares power-law fits to the thin and very
-thick slice spectra  and the range in wavenumber over which the fit is
-calculated. This
+thick slice spectra  and the range in wavenumber over which the fit is calculated. This
 wavenumber range corresponds to the length-scale range used for the
-structure function fits (see \S~\ref{sssec:s2func}) .
+structure function fits (see \S~\ref{sssec:s2func}).
 The very thick velocity slice is equivalent to the total
 intensity along the line of sight and its power spectrum does not
-vary with the addition of thermal broadening.  The slopes of these fits, $\gamma_{\mathrm{vthick}}$ and $\gamma_{\mathrm{thin}}$, are given in Table~\ref{tab:vca}.  }%DIFDELCMD < 
+vary with the addition of thermal broadening.  The slopes of these
+fits,
+$\gamma_{\mathrm{vthick}}$ and $\gamma_{\mathrm{thin}}$, are
+given in Table~\ref{tab:vca}. }\DIFdelend \DIFaddbegin \DIFadd{The velocity channel analysis consists of calculating the
+two-dimensional power spectrum of the brightness distribution
+in isovelocity channels of varying thickness.  
+We consider two cases: thick slices,
+which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+to include all the emission in the line,
+and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+Because the velocity spectrum in our simulations is rather shallow (see above),
+the line-of-sight turbulent velocity dispersion \(\delta v\)
+exceeds the width of these thin slices
+over the full range of length scales that we can usefully study,
+from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+  s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
+the }\oiii{} \DIFadd{brightness in thick and thin slices.
+}\DIFaddend 
 
-%DIFDELCMD < %%%
-\DIFdel{It is clear that taking thermal broadening into account means that the
-thin velocity slices are not a useful diagnostic, particularly for the lighter chemical elements. Indeed, the inclusion of thermal
+\DIFdelbegin \DIFdel{It is clear that taking thermal broadening into account means that the thin velocity slicesare not a useful diagnostic, particularly for the
+lighter chemical elements.
+Indeed, the inclusion of thermal
 broadening makes the thin velocity slices similar to the intermediate
 velocity slices, as is to be expected. For photoionized gas at $T_e= 10^4$~K, the
 FWHM of the H$\alpha$ line is $\sim 22$~km~s$^{-1}$, while that of an
-oxygen line is a quarter of this, $\sim
-5.5$~km~s$^{-1}$.  \mbox{%DIFAUXCMD
+oxygen line is a quarter of this,
+$\sim
+5.5$~km~s$^{-1}$. 
+\mbox{%DIFAUXCMD
 \citet{2000ApJ...537..720L}
 }%DIFAUXCMD
 suggested that the thin velocity slices give information as to the
 velocity fluctuations, since the 2D power spectrum index for thin
 velocity channels is predicted to depend both on the density spectral
-index and on the structure function index, while the for }\DIFdelend \DIFaddbegin \DIFadd{Figure~\ref{fig:vcatrends} shows the evolution with time of }\DIFaddend the \DIFdelbegin \DIFdel{very thick
-velocity slices the 2D power spectrum index depends only on the density spectral index. However, thermal broadening means that the thin slices cannot be interpreted in
-such a simple manner. 
-}%DIFDELCMD < 
-%DIFDELCMD < %%%
-\DIFdel{Table~\ref{tab:vca} shows that the slopes of the linear fits to the very
-thick velocity slice power spectra do not vary appreciably with time
-for the H$\alpha$ }\DIFdelend \DIFaddbegin \DIFadd{VCA
-slope from thin and thick channels (shown by filled circle and cross
+index and on the structure function index,
+while the for the very thick
+velocity slices the 2D powerspectrum index depends only on the density spectral index.
+However, thermal broadening means that the thin slices cannot be interpreted in
+such a simple manner}\DIFdelend \DIFaddbegin \DIFadd{To use thinner slices would not be useful for a variety of reasons.
+First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+that can be achieved with optical spectrographs
+that are optimised for studying extended sources,
+such as Keck HIRES or VLT UVES. 
+Second, thinner slices are increasingly subject to ``shot noise'' 
+due to the finite resolution of the numerical simulations,
+which produces spurious small-scale power, as discussed by 
+\mbox{%DIFAUXCMD
+\citet {2003MNRAS.342..325E}
+}%DIFAUXCMD
+and \mbox{%DIFAUXCMD
+\citet {2003ApJ...593..831M}
+}%DIFAUXCMD
+.
+Third, thermal broadening would smoothe out any structure on 
+scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions}\DIFaddend .
+
+\DIFdelbegin \DIFdel{Table~\ref{tab:vca} shows that the slopes of the linear fits to the very
+thick velocity slice power spectra do not vary appreciably with time for the H$\alpha$ }\DIFdelend \DIFaddbegin \DIFadd{Figure~\ref{fig:vcatrends} shows the evolution with time of the VCA
+power-law indices from thin (}\gammaVCAthin{}\DIFadd{) and thick (}\gammaVCAvthick{}\DIFadd{) channels (shown by filled circle and cross
 symbols, respectively) for different ions and for different viewing
-directions.  The individual VCA power spectra from which these slopes
+directions.  The individual VCA power spectra from which these
+power-law indices, which correspond to the slope or gradient in log-log space,
 were extracted are presented in Appendix~\ref{app:vca}.  It can be
 seen that both }\gammaVCAthin{} \DIFaddend and \DIFdelbegin %DIFDELCMD < \oiii%%%
-\DIFdel{$\lambda$5007 lines.  There is more
-variation for }\DIFdelend \DIFaddbegin \gammaVCAvthick{} \DIFadd{are remarkably
-stable with time during the latter part of }\DIFaddend the \DIFdelbegin %DIFDELCMD < \nii%%%
-\DIFdel{$\lambda$6584 and }%DIFDELCMD < \sii%%%
-\DIFdel{$\lambda6716$ lines but
-there is no obvious trend with time}\DIFdelend \DIFaddbegin \DIFadd{evolution (\(t >
+\DIFdel{$\lambda$5007 lines. There is more
+variation for the }%DIFDELCMD < \nii%%%
+\DIFdel{$\lambda$6584 }\DIFdelend \DIFaddbegin \gammaVCAvthick{} \DIFadd{are remarkably
+stable with time during the latter part of the evolution (\(t >
 200,000\)~years).  Although thermal broadening means that there is no
-clear distinction between }\gammaVCAthin{} \DIFadd{and }\gammaVCAvthick{} \DIFadd{for
+clear distinction between }\gammaVCAthin{} \DIFaddend and \DIFdelbegin %DIFDELCMD < \sii%%%
+\DIFdel{$\lambda6716$ lines but
+there is no
+obvious trend with time.  }\DIFdelend \DIFaddbegin \gammaVCAvthick{} \DIFadd{for
 the H\(\alpha\) line, the two values are clearly distinguished for the
 heavier ions, with the thin slices showing a significantly shallower
 slope, especially for }\oiii{}\DIFadd{.  The implications for diagnosing
-turbulence statistics are discussed in \S~\ref{sssec:vca2}}\DIFaddend .
+turbulence statistics are discussed in \S~\ref{sssec:vca2}.
+}\DIFaddend 
 
 
 
@@ -1470,10 +1548,10 @@ which is consistent with these ions being confined to relatively thin
 layers near the ionization front. However, it is difficult
 to characterize this turbulence since the slope of the structure
 function for a given emission line varies with time in a
-non-predictive manner and also depends on the line of sight. Although
+\DIFdelbegin \DIFdel{non-predictive }\DIFdelend \DIFaddbegin \DIFadd{unpredictable }\DIFaddend manner and also depends on the line of sight. Although
 the results for the $z$-axis line of sight suggest an increase in
 slope with time, an examination of the distributions of the velocity centroids
-(see Fig.~\ref{fig:histogram}) showed that this is due to a champagne-type
+(see Fig.~\ref{fig:histogram}) \DIFdelbegin \DIFdel{showed }\DIFdelend \DIFaddbegin \DIFadd{shows }\DIFaddend that this is due to a champagne-type
 flow in that direction, and other lines of sight do not show a
 definite trend with time.
 
@@ -1487,13 +1565,26 @@ gas. The emissivity of the H$\alpha$ recombination line depends on the
 square of the density and only weakly on the temperature in the
 photoionized gas \citep[see e.g.,][]{2006agna.book.....O}. Indeed, the
 gradients of the 3D power spectra of the H$\alpha$ emissivity and
-the square of the density are essentially the same. On the other hand,
-the \oiii$\lambda$5007 emission comes from the inner region of the
-\hii{} region, where the density is more uniform. However, the emissivity
+the square of the density are essentially the same. 
+\DIFdelbegin \DIFdel{On the other hand,
+the }\DIFdelend %DIF >  On the other hand,
+%DIF >  the \oiii$\lambda$5007 emission comes from the inner region of the
+%DIF >  \hii{} region, where the density is more uniform. However, the emissivity
+%DIF >  of this collisional line is a more complicated function of
+%DIF >  temperature, and the O$^{++}$ ion is found in the more central regions
+%DIF >  of the \hii{} region, where shocks due to photoevaporated flows cause
+%DIF >  fluctuations in the temperature. 
+\DIFaddbegin \DIFadd{On the other hand, the emissivity of the }\DIFaddend \oiii$\lambda$5007
+\DIFdelbegin \DIFdel{emission comes from the inner region of the
+}%DIFDELCMD < \hii{} %%%
+\DIFdel{region, where the density is more uniform. However, the emissivity
 of this collisional line is a more complicated function of
 temperature, and the O$^{++}$ ion is found in the more central regions
-of the \hii{} region, where shocks due to photoevaporated flows cause
-fluctuations in the temperature. A more uniform density distribution
+}\DIFdelend \DIFaddbegin \DIFadd{collisional line depends more strongly on temperature. This line
+originates in the interior }\DIFaddend of the \hii{} region, where \DIFdelbegin \DIFdel{shocks due to }\DIFdelend \DIFaddbegin \DIFadd{the density is
+more uniform but weak shocks due to the collision of }\DIFaddend photoevaporated
+flows cause fluctuations in the temperature.
+A more uniform density distribution
 corresponds to a steeper density power spectrum and, indeed, the
 structure functions, 2D velocity channel power spectra, and 3D power
 spectrum of the \oiii$\lambda$5007 line are all steeper than those
@@ -1771,29 +1862,97 @@ case.  \citet {2007MNRAS.381.1733E} show that this is most important
 for high Mach number turbulence, where \(\delta\rho/\langle \rho
 \rangle > 1\), whereas the transonic turbulence inside our simulated
 \hii{} regions produces more modest density contrasts.
-\begin{figure*}
-  \centering
-  \includegraphics[width=\linewidth]{o3-thick-thin}
-  \caption{Surface brightness maps in thick (left) versus thin (right)
-    velocity slices for the \oiii{} line from our simulation at an age
-    of 300,000~years.  The thick slice covers the full velocity range
-    of the emission line, while the thin slice has a width of
-    5~km~s$^{-1}$, which is smaller than the turbulent velocity
-    fluctuations, but slightly larger than the thermal broadening for
-    this line.  It is apparent that the thin slice shows considerably
-    greater small-scale structure than the thick slice, which is
-    reflected in its shallower power spectrum.  The brightness
-    structure in the thick slice is due entirely to the emissivity
-    fluctuations within the \hii{} region, whereas the additional
-    structure in the thin slice is caused by velocity fluctuations.  }
-  \label{fig:o3-thick-thin}
-\end{figure*}
+%DIF >  \begin{figure*}
+%DIF >    \centering
+%DIF >    \includegraphics[width=\linewidth]{o3-thick-thin}
+%DIF >    \caption{Surface brightness maps in thick (left) versus thin (right)
+%DIF >      velocity slices for the \oiii{} line from our simulation at an age
+%DIF >      of 300,000~years.  The thick slice covers the full velocity range
+%DIF >      of the emission line, while the thin slice has a width of
+%DIF >      5~km~s$^{-1}$, which is smaller than the turbulent velocity
+%DIF >      fluctuations, but slightly larger than the thermal broadening for
+%DIF >      this line.  It is apparent that the thin slice shows considerably
+%DIF >      greater small-scale structure than the thick slice, which is
+%DIF >      reflected in its shallower power spectrum.  The brightness
+%DIF >      structure in the thick slice is due entirely to the emissivity
+%DIF >      fluctuations within the \hii{} region, whereas the additional
+%DIF >      structure in the thin slice is caused by velocity fluctuations.  }
+%DIF >    \label{fig:o3-thick-thin}
+%DIF >  \end{figure*}
+\DIFaddbegin 
 
 
-\subsubsection{Velocity Channel Analysis}
+\subsubsection{\DIFadd{Velocity Channel Analysis}}
 \label{sssec:vca2}
-The velocity channel analysis consists of calculating the
-two-dimensional power spectrum of the brightness distribution
+%DIF >  The velocity channel analysis consists of calculating the
+%DIF >  two-dimensional power spectrum of the brightness distribution
+%DIF >  in isovelocity channels of varying thickness.  
+%DIF >  We consider two cases: thick slices,
+%DIF >  which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+%DIF >  to include all the emission in the line,
+%DIF >  and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+%DIF >  Because the velocity spectrum in our simulations is rather shallow (see above),
+%DIF >  the line-of-sight turbulent velocity dispersion \(\delta v\)
+%DIF >  exceeds the width of these thin slices
+%DIF >  over the full range of length scales that we can usefully study,
+%DIF >  from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+%DIF >  to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+%DIF >    s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
+%DIF >  the \oiii{} brightness in thick and thin slices.
+
+%DIF >  To use thinner slices would not be useful for a variety of reasons.
+%DIF >  First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+%DIF >  that can be achieved with optical spectrographs
+%DIF >  that are optimised for studying extended sources,
+%DIF >  such as Keck HIRES or VLT UVES. 
+%DIF >  Second, thinner slices are increasingly subject to ``shot noise'' 
+%DIF >  due to the finite resolution of the numerical simulations,
+%DIF >  which produces spurious small-scale power, as discussed by 
+%DIF >  \citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
+%DIF >  Third, thermal broadening would smoothe out any structure on 
+%DIF >  scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+
+\DIFaddend \begin{figure*}
+  \centering
+  \DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\linewidth]{o3-thick-thin}
+%DIFDELCMD <  %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\linewidth]{vca-thin-vs-3d-panels}
+  \DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Surface brightness maps in thick (left) versus }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
+    slopes for }\DIFaddendFL thin \DIFdelbeginFL \DIFdelFL{(right) 
+    velocity }\DIFdelendFL slices\DIFdelbeginFL \DIFdelFL{for the }%DIFDELCMD < \oiii{} %%%
+\DIFdelFL{line from our simulation
+    at an age of 300}\DIFdelendFL , \DIFdelbeginFL \DIFdelFL{000~years.  
+    The thick slice covers the full velocity range }\DIFdelendFL \DIFaddbeginFL \gammaVCAthin{} \DIFaddFL{or \(\gammaVCAthin -
+    \gammaVCAvthick\), versus slope, \(n\), }\DIFaddendFL of the \DIFaddbeginFL \DIFaddFL{intrinsic velocity
+    power spectrum for each }\DIFaddendFL emission line\DIFdelbeginFL \DIFdelFL{,
+    while the thin slice }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{.  The }\oiii{} \DIFaddFL{line (upper
+    left panel) }\DIFaddendFL has a \DIFdelbeginFL \DIFdelFL{width of 5~km~s$^{-1}$,
+    which }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{sufficiently steep emissivity power spectrum
+    that it }\DIFaddendFL is \DIFdelbeginFL \DIFdelFL{smaller than }\DIFdelendFL the \DIFdelbeginFL \DIFdelFL{turbulent velocity fluctuations}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{absolute value of }\gammaVCAthin{} \DIFaddFL{that is predicted
+    to be related to \(n\)}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{but slightly larger than }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{as shown by }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{thermal broadening for this }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{diagonal solid }\DIFaddendFL line.  \DIFdelbeginFL \DIFdelFL{It is apparent that the thin slice shows considerably greater
+    small-scale structure than the thick slice,
+    which is reflected in its }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{The
+    other emission lines have a }\DIFaddendFL shallower \DIFaddbeginFL \DIFaddFL{emissivity }\DIFaddendFL power spectrum\DIFdelbeginFL \DIFdelFL{.
+    The brightness structure in the thick slice }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{,
+    such that it }\DIFaddendFL is \DIFdelbeginFL \DIFdelFL{due entirely to
+    }\DIFdelendFL the \DIFdelbeginFL \DIFdelFL{emissivity fluctuations within }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{relative slope between }\DIFaddendFL the \DIFdelbeginFL %DIFDELCMD < \hii{} %%%
+\DIFdelFL{region, 
+    whereas the additional structure in the }\DIFdelendFL thin \DIFdelbeginFL \DIFdelFL{slice }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{and thick
+    slices, \(\gammaVCAthin - \gammaVCAvthick\) that }\DIFaddendFL is \DIFdelbeginFL \DIFdelFL{caused by
+    velocity fluctuations}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{predicted to
+    depend on \(n\)}\DIFaddendFL . }
+  \DIFdelbeginFL %DIFDELCMD < \label{fig:o3-thick-thin}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \label{fig:vca-thin-vs-n}
+\DIFaddendFL \end{figure*}
+
+\DIFdelbegin \subsubsection{\DIFdel{Velocity Channel Analysis}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{sssec:vca2}
+%DIFDELCMD < %%%
+\DIFdel{The velocity channel analysis consists of calculating the two-dimensional power spectrum of the
+brightness distribution
 in isovelocity channels of varying thickness.  
 We consider two cases: thick slices,
 which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
@@ -1803,12 +1962,14 @@ Because the velocity spectrum in our simulations is rather shallow (see above),
 the line-of-sight turbulent velocity dispersion \(\delta v\)
 exceeds the width of these thin slices
 over the full range of length scales that we can usefully study,
-from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
-to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
-  s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
-the \oiii{} brightness in thick and thin slices.
+from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+  s^{-1}}\)).  Figure~\ref{fig:o3-thick-thin} shows typical examples of
+the }%DIFDELCMD < \oiii{} %%%
+\DIFdel{brightness in thick and thin slices.
+}%DIFDELCMD < 
 
-To use thinner slices would not be useful for a variety of reasons.
+%DIFDELCMD < %%%
+\DIFdel{To use thinner slices would not be useful for a variety of reasons.
 First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
 that can be achieved with optical spectrographs
 that are optimised for studying extended sources,
@@ -1816,30 +1977,22 @@ such as Keck HIRES or VLT UVES.
 Second, thinner slices are increasingly subject to ``shot noise'' 
 due to the finite resolution of the numerical simulations,
 which produces spurious small-scale power, as discussed by 
-\citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
+\mbox{%DIFAUXCMD
+\citet {2003MNRAS.342..325E}
+}%DIFAUXCMD
+and \mbox{%DIFAUXCMD
+\citet {2003ApJ...593..831M}
+}%DIFAUXCMD
+.
 Third, thermal broadening would smoothe out any structure on 
 scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+}%DIFDELCMD < 
 
-\DIFdelbegin \DIFdel{The procedure for deriving the power-law index
-of the velocity fluctuations from the velocity channels }\DIFdelend \DIFaddbegin \begin{figure*}
-  \centering
-  \includegraphics[width=\linewidth]{vca-thin-vs-3d-panels}
-  \caption{\DIFaddFL{As Fig.~\ref{fig:sf-vs-n}, but showing VCA power spectrum
-    slopes for thin slices, }\gammaVCAthin{} \DIFaddFL{or \(\gammaVCAthin -
-    \gammaVCAvthick\), versus slope, \(n\), of the intrinsic velocity
-    power spectrum for each emission line.  The }\oiii{} \DIFaddFL{line (upper
-    left panel) has a sufficiently steep emissivity power spectrum
-    that it is the absolute value of }\gammaVCAthin{} \DIFaddFL{that is predicted
-    to be related to \(n\), as shown by the diagonal solid line.  The
-    other emission lines have a shallower emissivity power spectrum,
-    such that it is the relative slope between the thin and thick
-    slices, \(\gammaVCAthin - \gammaVCAvthick\) that is predicted to
-    depend on \(n\). }}
-  \label{fig:vca-thin-vs-n}
-\end{figure*}
-
-\DIFadd{Figure~\ref{fig:vca-thin-vs-n} shows the correlations between the
-slope of the velocity fluctuation power spectrum and the VCA slopes
+%DIFDELCMD < %%%
+\DIFdel{The
+procedure for deriving }\DIFdelend \DIFaddbegin \DIFadd{Figure~\ref{fig:vca-thin-vs-n} shows the correlations between the
+slope of }\DIFaddend the \DIFdelbegin \DIFdel{power-law index
+of the velocity fluctuations from the velocity channels }\DIFdelend \DIFaddbegin \DIFadd{velocity fluctuation power spectrum and the VCA slopes
 found in \S~\ref{sssec:vca} above (see Fig.~\ref{fig:vcatrends}).  The
 theoretical procedure \mbox{%DIFAUXCMD
 \citep{2000ApJ...537..720L}
@@ -1850,23 +2003,25 @@ spectrum of the emissivity fluctuations is ``steep'' or ``shallow''
 (see \DIFaddbegin \DIFadd{\S~\ref{sec:stats-vca} }\DIFaddend above).  In the steep case, which
 applies to \oiii{} in our simulation, the slope of the average power
 spectrum of the brightness maps in the thin isovelocity channels is
-given by \(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+given by \DIFdelbegin \DIFdel{\(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\)}\DIFdelend \DIFaddbegin \DIFadd{\(\gammaVCAthin{} = -3 + \frac12 m_{\mathrm{3D}}\)}\DIFaddend ,
 where \(m_{\mathrm{3D}} = -3 - n = 0.2 \pm 0.1\) for our simulation.
 The derived value from the \oiii{} thin channel maps \DIFdelbegin \DIFdel{is 
 \(\gamma_{\mathrm{thin}} = -2.84 \pm 0.11 \), which
 compares very }\DIFdelend \DIFaddbegin \DIFadd{for \(t >
-200,000\) is \(\gamma_{\mathrm{thin}} = -2.80 \pm 0.07 \), which
+200,000\) is \(\gammaVCAthin{} = -2.80 \pm 0.07 \), which
 compares }\DIFaddend well with the value \(-2.9 \pm 0.05\) that is implied by the
 simulation's value of \(n\).
 
 In the shallow case, it is the difference in slope
 between the thin and thick slices
 that is predicted to depend on the velocity fluctuations:
-\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
+\DIFdelbegin \DIFdel{\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
 The derived values are 
-\DIFdelbegin \DIFdel{\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.08 \pm 0.04\), 
+\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.08 \pm 0.04\), 
 \(0.18 \pm 0.04\), and \(0.18 \pm 0.04\)
-}\DIFdelend \DIFaddbegin \DIFadd{\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.07 \pm 0.05\), 
+}\DIFdelend \DIFaddbegin \DIFadd{\(\gammaVCAthin{} - \gammaVCAvthick{} = \frac12 m_{\mathrm{3D}}\). 
+The derived values are 
+\(\gammaVCAthin{} - \gammaVCAvthick{} = 0.07 \pm 0.05\), 
 \(0.19 \pm 0.02\), and \(0.17 \pm 0.02\)
 }\DIFaddend for \ha, \nii, and \sii, respectively. 
 These also compare \DIFaddbegin \DIFadd{tolerably }\DIFaddend well with the value of \(0.1 \pm 0.05\)
@@ -1892,15 +2047,16 @@ are simply the velocity-integrated surface brightness images\footnote{
 \citep {2000ApJ...537..720L} to be equal to the slopes of the 3D power
 spectra of their respective emissivities.  \DIFdelbegin \DIFdel{However, }\DIFdelend \DIFaddbegin \DIFadd{The comparison between
 these two quantities is shown in Figure~\ref{fig:vca-thick-vs-n}, from
-which it is clear that }\DIFaddend only in the case of \oiii{} \DIFdelbegin \DIFdel{do we find this to be the case}\DIFdelend \DIFaddbegin \DIFadd{are the two slopes
-equal}\DIFaddend .  In the case of the other lines, \(\gamma_{\mathrm{vthick}}\)
-is shallower than the emissivity's spectral index \(n\) by 0.36, 0.19,
+which it is clear that }\DIFaddend only in the case of \oiii{} \DIFdelbegin \DIFdel{do we find this to be the case.  In the case of the other lines, \(\gamma_{\mathrm{vthick}}\) }\DIFdelend \DIFaddbegin \DIFadd{are the two slopes
+equal.  In the case of the other lines, }\gammaVCAvthick{}
+\DIFaddend is shallower than the emissivity's spectral index \(n\) by 0.36, 0.19,
 0.61 for \ha, \nii, and \sii, respectively.  The reason for this
 discrepancy \DIFdelbegin \DIFdel{may be }\DIFdelend \DIFaddbegin \DIFadd{is }\DIFaddend the increasingly ``sheet-like'' morphology of the
 emission in the lower ionization lines.  As shown in \S~4.1 of \citet
 {2003ApJ...593..831M}, one should see a transition from
-\(\gamma_{\mathrm{vthick}} = n\) to the shallower slope
-\(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger than
+\DIFdelbegin \DIFdel{\(\gamma_{\mathrm{vthick}} = n\) to the shallower slope
+\(\gamma_{\mathrm{vthick}} = n + 1\) }\DIFdelend \DIFaddbegin \DIFadd{\(\gammaVCAvthick{} = n\) to the shallower slope
+\(\gammaVCAvthick{} = n + 1\) }\DIFaddend at transverse scales larger than
 the line-of-sight depth of the emitting region.
 
 \DIFaddbegin \begin{figure*}
@@ -1968,8 +2124,11 @@ the turbulence in such large regions is in a statistically steady
 state unless it is highly supersonic. Indeed,
 \citet{1988AA...198..283O} suggest that in the case of large
 extragalactic \hii{} regions, the large linewidths could be due to
-multiple velocity components, that is, regions of the \hii{} region
-separated by more than a sound-crossing time are kinematically
+multiple velocity components, that is, \DIFdelbegin \DIFdel{regions }\DIFdelend \DIFaddbegin \DIFadd{parts }\DIFaddend of the \hii{} region
+\DIFdelbegin \DIFdel{separated by more than a sound-crossing time }\DIFdelend \DIFaddbegin \DIFadd{with separation greater than the distance a sound wave could travel
+within  the current lifetime of the object
+%DIF > separated by more than  a sound-crossing time 
+}\DIFaddend are kinematically
 distinct.  Such giant \hii{} regions show velocity centroid
 dispersions of \(\sigma_{\mathrm{c}} > 10~\mathrm{km\ s^{-1}}\) on the
 largest scales, which is several times larger than is seen in compact
@@ -2133,7 +2292,11 @@ Federrath C., 2013, MNRAS, 436, 1245
 \bibitem[\protect\citeauthoryear{Federrath et 
 al.}{2010}]{2010A&A...512A..81F} Federrath C., Roman-Duval J., Klessen R.~S., Schmidt W., Mac Low M.-M., 2010, A\&A, 512, A81 
 
-\bibitem[\protect\citeauthoryear{Galtier 
+\DIFaddbegin \bibitem[\protect\citeauthoryear{\DIFadd{Ferland et al.}}{2013}]{2013RMxAA..49..137F} 
+\DIFadd{Ferland G.~J., Porter, R. L., van
+  Hoof, P. A. M., et al., 2013, RMxAA, 49, 137}
+
+\DIFaddend \bibitem[\protect\citeauthoryear{Galtier 
 \& Banerjee}{2011}]{2011PhRvL.107m4501G} Galtier S., Banerjee S., 2011, PhRvL, 107, 134501 
 
 \bibitem[\protect\citeauthoryear{Garc{\'{\i}}a-D{\'{\i}}az 
@@ -2352,7 +2515,8 @@ procedure to determine the upper length scale for the power-law fit.
     numerical simulation. The solid line is the least-squares fit to
     the data points between limits described in the text, represented
     by the grey rectangle. The horizontal dotted line at $\log 2$ is
-    included as a reference value.}}
+    included as a reference value. The index $m_\mathrm{2D}$ of each power-law fit
+   is indicated in the corresponding panel.}}
 \label{fig:sfunc}
 \end{figure*}
 \begin{figure*}
@@ -2390,7 +2554,9 @@ panel with the broadening effects included.  In each graph, two power
 spectra are plotted: one representing a very thick velocity slice
 (i.e., encompassing all the emission) and the other averaged over thin
 velocity slices of width $\delta v \sim 5$~km~s$^{-1}$.  Also shown
-are the least-squares power-law fits to the thin and very thick slice
+are the on each panel are the power-law indices obtained from
+least-squares power-law fits to the thin (}\gammaVCAthin{}\DIFadd{) and very
+thick slice (}\gammaVCAvthick{}\DIFadd{)
 spectra and the range in wavenumber over which the fit is
 calculated. This wavenumber range corresponds to the length-scale
 range used for the structure function fits (see
@@ -2430,7 +2596,9 @@ Fig~\ref{fig:vcatrends} and discussed in \S~\ref{sssec:vca}.
   ($n=1$ channel). The dashed line is the
   least-squares fit to the data points for the thin slice between limits described in the
 text represented by the grey rectangle. The solid line is the least-squares fit to
-the data points for the thick slice.}}
+the data points for the thick slice. The indices }\gammaVCAthin{} \DIFaddFL{(thin
+slice) and }\gammaVCAvthick{} \DIFaddFL{(thick slice) of each power-law fit
+   are indicated in the corresponding panels.}}
 \label{fig:vca}
 \end{figure*}
  \begin{figure*}

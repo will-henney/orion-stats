@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: will-discussion-widths.aux
+The style file: mn2e.bst
+Database file #1: BibdeskLibrary-slavoj.bib
+You've used 14 entries,
+            2938 wiz_defined-function locations,
+            709 strings with 6547 characters,
+and the built_in function-call counts, 5989 in all, are:
+= -- 495
+> -- 397
+< -- 0
++ -- 135
+- -- 129
+* -- 493
+:= -- 1156
+add.period$ -- 0
+call.type$ -- 14
+change.case$ -- 96
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 231
+empty$ -- 365
+format.name$ -- 143
+if$ -- 1156
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 14
+newline$ -- 46
+num.names$ -- 56
+pop$ -- 81
+preamble$ -- 1
+purify$ -- 96
+quote$ -- 0
+skip$ -- 214
+stack$ -- 0
+substring$ -- 294
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 126
+warning$ -- 0
+while$ -- 64
+width$ -- 0
+write$ -- 143

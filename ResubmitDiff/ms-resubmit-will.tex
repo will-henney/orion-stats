@@ -265,7 +265,9 @@ spatial volume of
 4~pc$^3$ and the initial temperature is 5~K. 
 
 The radiation-hydrodynamics code used in the present paper does not
-include self gravity. However, on the relatively short timescales of
+include self gravity. However, although the initial conditions would
+be gravitationally unstable in the absence of photoionization heating,
+on the relatively short timescales of
 the simulations ($\sim 3\times10^5$~yrs) this will not be important
 since the global free-fall time of the computational cube is $\sim
 6\times10^5$~yrs. 
@@ -293,7 +295,8 @@ The emissivity cubes for the H$\alpha$ recombination line and the
 collisionally excited lines are calculated as described in
 \citet{{2011MNRAS.414.1747A}}, with the assumption that the heavy
 element ionization fractions are fixed functions of the hydrogen
-ionization fractions, calibrated with the Cloudy photoionization code.
+ionization fractions, calibrated with the Cloudy photoionization code
+\citep{2013RMxAA..49..137F}. 
 
 \subsection{Turbulence Statistics}
 \label{subsec:turbstats}
@@ -329,7 +332,7 @@ physical quantity $a$ can be written
 where $\mathbf{r}$ is the spatial position and $\boldsymbol{l}$ is the
 spatial separation. The N-dimensional power spectrum is then
 \begin{equation}
-  p_N(k) = \int e^{i\mathbf{k}\cdot\boldsymbol{l}} \xi_N{\boldsymbol{l}} \,
+  p_N(k) = \int e^{i\mathbf{k}\cdot\boldsymbol{l}} \xi_N({\boldsymbol{l}}) \,
   d\boldsymbol{l} \ ,
 \end{equation}
 where $\mathbf{k}  = (k_x,k_y,k_z)$ is the wavenumber, which is related to the scale by
@@ -469,7 +472,7 @@ the emission-line velocity centroid map.
 
 Previous authors have established
 that for an isotropic, power-law, three-dimensional power spectrum, the
-spectral slope does not change on going from three dimensions to two
+spectral index does not change on going from three dimensions to two
 (projected) dimensions, i.e. $\kappa_{2D} = \kappa_{3D}$, where
 $\kappa_{ND}$ is the power spectrum spectral index in $N$ dimensions
 (defined as $p_N(k) \propto k^{-\kappa_{ND}}$, \citealp{{1998A&A...336..697S},{2003ApJ...593..831M},{2003ApJ...595..824B}}). This is because the line-of-sight contribution to
@@ -479,7 +482,7 @@ where $z$ is the line-of-sight direction.
 The relationship between the power spectrum spectral index and the
 exponent of the second-order structure function for homogeneous
 turbulence is $\kappa_{ND} = m_\mathrm{ND} + N$, where $m_\mathrm{ND}$
-is the slope of the $N$-dimensional second-order structure
+is the power-law index of the $N$-dimensional second-order structure
 function. For projection from 3 to 2 dimensions, we therefore have
 $m_\mathrm{2D} = m_\mathrm{3D} + 1$, and this is known as
 \textit{projection smoothing}. 
@@ -586,7 +589,7 @@ that of the ionization front and the internal velocities are linear
 with radius. In this case, the velocity dispersion falls steadily as a
 function of time, and after 100,000~yrs is less than 2~km~s$^{-1}$. The
 differences between the velocity dispersions in the numerical and analytic
-cases are entirely due to the interaction of the photoevaporated
+cases are mainly due to the interaction of the photoevaporated
 flows produced in the simulations described above. In the analytic expansion, the velocities are radial
 away from the central source. In the clumpy medium, the
 photoevaporated flows lead to large non-radial velocities, which increase
@@ -624,20 +627,21 @@ dispersion, after 200,000~yrs.
   300,000~years. The points represent the calculated power spectra for
   the numerical simulation  and the solid line is the least-squares fit to
 the data points between limits described in the
-text, represented by the grey rectangle.}
+text, represented by the grey rectangle. The index $n$ of each
+power-law fit is indicated in the corresponding panel.}
 \label{fig:ps}
 \end{figure*}
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{afkz1}\\
 \includegraphics[width=\linewidth]{ef1kmp}
-\caption{Time variation of 3D power-spectra gradients. Top panel: 3D physical
-  quantities. Solid line---ionized
+\caption{Time variation of 3D power spectra power-law indices. Top panel: 3D physical
+  quantities; solid line---ionized
   gas velocity $v_i$, dashed line---ionized density $d_i$, dotted line---square of ionized density $d_i^2$,
   dot-dashed line---temperature $T$. Bottom panel: emission-line
-  volume emissivities. Filled circles---$j(\mathrm{H}\alpha)$, open
+  volume emissivities; filled circles---$j(\mathrm{H}\alpha)$, open
   squares---$j(\mathrm{[OIII]})$, filled
-  triangles---$j(\mathrm{[NII]})$. open diamonds---$j(\mathrm{[SII]})$.}
+  triangles---$j(\mathrm{[NII]})$, open diamonds---$j(\mathrm{[SII]})$.}
 \label{fig:psevol}
 \end{figure}
 % \begin{table*}
@@ -686,11 +690,15 @@ $n$ to represent the 3D power spectrum spectral index,%
 \footnote{This is to facilitate comparison with the theoretical
   literature, such as \citet{2000ApJ...537..720L}.}
 %
+which corresponds to the slope or gradient in log-log space, 
 where $n = -\kappa_{3D}$ and $\kappa_{3D}$ is defined in
 \S~\ref{subsec:projsmooth}. At earlier times, the power laws are
-steeper and evolving. This behaviour mimics, with a delay of about
-50,000~yrs, the velocity dispersion behaviour seen in
-Figure~\ref{fig:veldisp}. The flattening-off of the power spectra
+steeper and evolving. 
+% This behaviour mimics, with a delay of about
+% 50,000~yrs, the velocity dispersion behaviour seen in
+% Figure~\ref{fig:veldisp}. 
+% The flattening-off 
+The settling down of the power spectra power-law indices
 corresponds to the time at which the global expansion ceases to be
 important for the internal dynamics (see Fig.~\ref{fig:veldisp}).
 
@@ -716,8 +724,8 @@ sound-crossing time.
   \caption{Evolution of second-order structure function power-law
     index, \mSF, as a function of time. From top to bottom: H$\alpha$,
     \oiii{} $\lambda 5007$, \nii{} $\lambda 6584$, \sii{} $\lambda
-    6716$. From left to right: line of sight along the $z$, $x$ and
-    $y$ axes, respectively.}
+    6716$. From left to right: line of sight along the $z$, $y$ and
+    $x$ axes, respectively.}
   \label{fig:sftrends}
 \end{figure*}
 
@@ -727,7 +735,7 @@ sound-crossing time.
 \caption{Histograms of velocity centroid values for each emission line
   along different lines of sight. From top to bottom: H$\alpha$,
   \oiii$\lambda 5007$, \nii$\lambda 6584$, \sii$\lambda 6716$. From
-  left to right: line of sight along the $z$, $x$ and $y$ axes,
+  left to right: line of sight along the $z$, $y$ and $x$ axes,
   respectively. The different line types refer to different times:
   thick, grey line---150,000~yrs, dashed line---200,000~yrs,
   short-dashed line---250,000~yrs, continuous black
@@ -741,9 +749,12 @@ calculate velocity centroid maps for the H$\alpha$, \oiii$\lambda
 and then calculate the corresponding second-order structure functions
 according to Equation~\ref{eq:strucfunc}. Results for representative
 evolutionary times are shown in Figures~\ref{fig:sfunc} to
-\ref{fig:sfuncyz} of Appendix~\ref{app:sf}, where power law fits to
-the slope (\mSF) of the structure function are carried out for the
-inertial range of scales.
+\ref{fig:sfuncyz} of Appendix~\ref{app:sf}, where fits to the
+power-law index (\mSF) of the structure function, which corresponds to
+the slope or gradient in log-log space, are carried out for the
+inertial range of scales. A description of the procedure for
+identifying the inertial range is given in Appendix~\ref{app:sf} and
+illustrated by the accompanying Figure~\ref{fig:sfauto}.
 
 In Figure~\ref{fig:sftrends} we show the evolution of \mSF{} with time
 for the different lines and for the three principal viewing directions
@@ -776,6 +787,24 @@ the line of sight for observations along the other axes.
 \subsubsection{Velocity Channel Analysis}
 \label{sssec:vca}
 \begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{o3-thick-thin}
+  \caption{Surface brightness maps in thick (left) versus thin (right)
+    velocity slices for the \oiii{} line from our simulation at an age
+    of 300,000~years.  The thick slice covers the full velocity range
+    of the emission line, while the thin slice has a width of
+    5~km~s$^{-1}$, which is smaller than the turbulent velocity
+    fluctuations, but slightly larger than the thermal broadening for
+    this line.  It is apparent that the thin slice shows considerably
+    greater small-scale structure than the thick slice, which is
+    reflected in its shallower power spectrum.  The brightness
+    structure in the thick slice is due entirely to the emissivity
+    fluctuations within the \hii{} region, whereas the additional
+    structure in the thin slice is caused by velocity fluctuations.  }
+  \label{fig:o3-thick-thin}
+\end{figure*}
+
+\begin{figure*}
 %% Figure 8 in ms-resubmit.pdf
 \centering
 \includegraphics[width=0.8\textwidth]{vca-time-trends-all}
@@ -783,16 +812,45 @@ the line of sight for observations along the other axes.
   of time for thick channels (\gammaVCAvthick; crosses) and thin
   channels (\gammaVCAthin; filled circles).  From top to bottom:
   H$\alpha$, \oiii{} $\lambda 5007$, \nii{} $\lambda 6584$, \sii{}
-  $\lambda 6716$. From left to right: line of sight along the $z$, $x$
-  and $y$ axes, respectively.  Thermal broadening was included in all
+  $\lambda 6716$. From left to right: line of sight along the $z$, $y$
+  and $x$ axes, respectively.  Thermal broadening was included in all
   cases.  }
 \label{fig:vcatrends}
 \end{figure*}
 
+The velocity channel analysis consists of calculating the
+two-dimensional power spectrum of the brightness distribution
+in isovelocity channels of varying thickness.  
+We consider two cases: thick slices,
+which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+to include all the emission in the line,
+and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+Because the velocity spectrum in our simulations is rather shallow (see above),
+the line-of-sight turbulent velocity dispersion \(\delta v\)
+exceeds the width of these thin slices
+over the full range of length scales that we can usefully study,
+from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+  s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
+the \oiii{} brightness in thick and thin slices.
+
+To use thinner slices would not be useful for a variety of reasons.
+First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+that can be achieved with optical spectrographs
+that are optimised for studying extended sources,
+such as Keck HIRES or VLT UVES. 
+Second, thinner slices are increasingly subject to ``shot noise'' 
+due to the finite resolution of the numerical simulations,
+which produces spurious small-scale power, as discussed by 
+\citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
+Third, thermal broadening would smoothe out any structure on 
+scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+
 Figure~\ref{fig:vcatrends} shows the evolution with time of the VCA
-slope from thin and thick channels (shown by filled circle and cross
+power-law indices from thin (\gammaVCAthin{}) and thick (\gammaVCAvthick{}) channels (shown by filled circle and cross
 symbols, respectively) for different ions and for different viewing
-directions.  The individual VCA power spectra from which these slopes
+directions.  The individual VCA power spectra from which these
+power-law indices, which correspond to the slope or gradient in log-log space,
 were extracted are presented in Appendix~\ref{app:vca}.  It can be
 seen that both \gammaVCAthin{} and \gammaVCAvthick{} are remarkably
 stable with time during the latter part of the evolution (\(t >
@@ -822,10 +880,10 @@ which is consistent with these ions being confined to relatively thin
 layers near the ionization front. However, it is difficult
 to characterize this turbulence since the slope of the structure
 function for a given emission line varies with time in a
-non-predictive manner and also depends on the line of sight. Although
+unpredictable manner and also depends on the line of sight. Although
 the results for the $z$-axis line of sight suggest an increase in
 slope with time, an examination of the distributions of the velocity centroids
-(see Fig.~\ref{fig:histogram}) showed that this is due to a champagne-type
+(see Fig.~\ref{fig:histogram}) shows that this is due to a champagne-type
 flow in that direction, and other lines of sight do not show a
 definite trend with time.
 
@@ -839,13 +897,20 @@ gas. The emissivity of the H$\alpha$ recombination line depends on the
 square of the density and only weakly on the temperature in the
 photoionized gas \citep[see e.g.,][]{2006agna.book.....O}. Indeed, the
 gradients of the 3D power spectra of the H$\alpha$ emissivity and
-the square of the density are essentially the same. On the other hand,
-the \oiii$\lambda$5007 emission comes from the inner region of the
-\hii{} region, where the density is more uniform. However, the emissivity
-of this collisional line is a more complicated function of
-temperature, and the O$^{++}$ ion is found in the more central regions
-of the \hii{} region, where shocks due to photoevaporated flows cause
-fluctuations in the temperature. A more uniform density distribution
+the square of the density are essentially the same. 
+% On the other hand,
+% the \oiii$\lambda$5007 emission comes from the inner region of the
+% \hii{} region, where the density is more uniform. However, the emissivity
+% of this collisional line is a more complicated function of
+% temperature, and the O$^{++}$ ion is found in the more central regions
+% of the \hii{} region, where shocks due to photoevaporated flows cause
+% fluctuations in the temperature. 
+On the other hand, the emissivity of the \oiii$\lambda$5007
+collisional line depends more strongly on temperature. This line
+originates in the interior of the \hii{} region, where the density is
+more uniform but weak shocks due to the collision of photoevaporated
+flows cause fluctuations in the temperature.
+A more uniform density distribution
 corresponds to a steeper density power spectrum and, indeed, the
 structure functions, 2D velocity channel power spectra, and 3D power
 spectrum of the \oiii$\lambda$5007 line are all steeper than those
@@ -1052,54 +1117,54 @@ case.  \citet {2007MNRAS.381.1733E} show that this is most important
 for high Mach number turbulence, where \(\delta\rho/\langle \rho
 \rangle > 1\), whereas the transonic turbulence inside our simulated
 \hii{} regions produces more modest density contrasts.
-\begin{figure*}
-  \centering
-  \includegraphics[width=\linewidth]{o3-thick-thin}
-  \caption{Surface brightness maps in thick (left) versus thin (right)
-    velocity slices for the \oiii{} line from our simulation at an age
-    of 300,000~years.  The thick slice covers the full velocity range
-    of the emission line, while the thin slice has a width of
-    5~km~s$^{-1}$, which is smaller than the turbulent velocity
-    fluctuations, but slightly larger than the thermal broadening for
-    this line.  It is apparent that the thin slice shows considerably
-    greater small-scale structure than the thick slice, which is
-    reflected in its shallower power spectrum.  The brightness
-    structure in the thick slice is due entirely to the emissivity
-    fluctuations within the \hii{} region, whereas the additional
-    structure in the thin slice is caused by velocity fluctuations.  }
-  \label{fig:o3-thick-thin}
-\end{figure*}
+% \begin{figure*}
+%   \centering
+%   \includegraphics[width=\linewidth]{o3-thick-thin}
+%   \caption{Surface brightness maps in thick (left) versus thin (right)
+%     velocity slices for the \oiii{} line from our simulation at an age
+%     of 300,000~years.  The thick slice covers the full velocity range
+%     of the emission line, while the thin slice has a width of
+%     5~km~s$^{-1}$, which is smaller than the turbulent velocity
+%     fluctuations, but slightly larger than the thermal broadening for
+%     this line.  It is apparent that the thin slice shows considerably
+%     greater small-scale structure than the thick slice, which is
+%     reflected in its shallower power spectrum.  The brightness
+%     structure in the thick slice is due entirely to the emissivity
+%     fluctuations within the \hii{} region, whereas the additional
+%     structure in the thin slice is caused by velocity fluctuations.  }
+%   \label{fig:o3-thick-thin}
+% \end{figure*}
 
 
 \subsubsection{Velocity Channel Analysis}
 \label{sssec:vca2}
-The velocity channel analysis consists of calculating the
-two-dimensional power spectrum of the brightness distribution
-in isovelocity channels of varying thickness.  
-We consider two cases: thick slices,
-which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
-to include all the emission in the line,
-and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
-Because the velocity spectrum in our simulations is rather shallow (see above),
-the line-of-sight turbulent velocity dispersion \(\delta v\)
-exceeds the width of these thin slices
-over the full range of length scales that we can usefully study,
-from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
-to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
-  s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
-the \oiii{} brightness in thick and thin slices.
+% The velocity channel analysis consists of calculating the
+% two-dimensional power spectrum of the brightness distribution
+% in isovelocity channels of varying thickness.  
+% We consider two cases: thick slices,
+% which are wide enough (\(\sim 100~\mathrm{km\ s^{-1}}\))
+% to include all the emission in the line,
+% and thin slices, with width \(5~\mathrm{km\ s^{-1}}\). 
+% Because the velocity spectrum in our simulations is rather shallow (see above),
+% the line-of-sight turbulent velocity dispersion \(\delta v\)
+% exceeds the width of these thin slices
+% over the full range of length scales that we can usefully study,
+% from \(0.1\)~pc (\(\delta v \approx 8~\mathrm{km\ s^{-1}}\))
+% to \(1\)~pc (\(\delta v \approx 10~\mathrm{km\
+%   s^{-1}}\)). Figure~\ref{fig:o3-thick-thin} shows typical examples of
+% the \oiii{} brightness in thick and thin slices.
 
-To use thinner slices would not be useful for a variety of reasons.
-First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
-that can be achieved with optical spectrographs
-that are optimised for studying extended sources,
-such as Keck HIRES or VLT UVES. 
-Second, thinner slices are increasingly subject to ``shot noise'' 
-due to the finite resolution of the numerical simulations,
-which produces spurious small-scale power, as discussed by 
-\citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
-Third, thermal broadening would smoothe out any structure on 
-scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
+% To use thinner slices would not be useful for a variety of reasons.
+% First, \(5~\mathrm{km\ s^{-1}}\) corresponds to the highest resolution 
+% that can be achieved with optical spectrographs
+% that are optimised for studying extended sources,
+% such as Keck HIRES or VLT UVES. 
+% Second, thinner slices are increasingly subject to ``shot noise'' 
+% due to the finite resolution of the numerical simulations,
+% which produces spurious small-scale power, as discussed by 
+% \citet {2003MNRAS.342..325E} and \citet {2003ApJ...593..831M}.
+% Third, thermal broadening would smoothe out any structure on 
+% scales \(< 5~\mathrm{km\ s^{-1}}\) for all but the heaviest ions.
 
 \begin{figure*}
   \centering
@@ -1127,19 +1192,19 @@ spectrum of the emissivity fluctuations is ``steep'' or ``shallow''
 (see \S~\ref{sec:stats-vca} above).  In the steep case, which
 applies to \oiii{} in our simulation, the slope of the average power
 spectrum of the brightness maps in the thin isovelocity channels is
-given by \(\gamma_{\mathrm{thin}} = -3 + \frac12 m_{\mathrm{3D}}\),
+given by \(\gammaVCAthin{} = -3 + \frac12 m_{\mathrm{3D}}\),
 where \(m_{\mathrm{3D}} = -3 - n = 0.2 \pm 0.1\) for our simulation.
 The derived value from the \oiii{} thin channel maps for \(t >
-200,000\) is \(\gamma_{\mathrm{thin}} = -2.80 \pm 0.07 \), which
+200,000\) is \(\gammaVCAthin{} = -2.80 \pm 0.07 \), which
 compares well with the value \(-2.9 \pm 0.05\) that is implied by the
 simulation's value of \(n\).
 
 In the shallow case, it is the difference in slope
 between the thin and thick slices
 that is predicted to depend on the velocity fluctuations:
-\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = \frac12 m_{\mathrm{3D}}\). 
+\(\gammaVCAthin{} - \gammaVCAvthick{} = \frac12 m_{\mathrm{3D}}\). 
 The derived values are 
-\(\gamma_{\mathrm{thin}} - \gamma_{\mathrm{vthick}} = 0.07 \pm 0.05\), 
+\(\gammaVCAthin{} - \gammaVCAvthick{} = 0.07 \pm 0.05\), 
 \(0.19 \pm 0.02\), and \(0.17 \pm 0.02\)
 for \ha, \nii, and \sii, respectively. 
 These also compare tolerably well with the value of \(0.1 \pm 0.05\)
@@ -1165,14 +1230,14 @@ are simply the velocity-integrated surface brightness images\footnote{
 spectra of their respective emissivities.  The comparison between
 these two quantities is shown in Figure~\ref{fig:vca-thick-vs-n}, from
 which it is clear that only in the case of \oiii{} are the two slopes
-equal.  In the case of the other lines, \(\gamma_{\mathrm{vthick}}\)
+equal.  In the case of the other lines, \gammaVCAvthick{}
 is shallower than the emissivity's spectral index \(n\) by 0.36, 0.19,
 0.61 for \ha, \nii, and \sii, respectively.  The reason for this
 discrepancy is the increasingly ``sheet-like'' morphology of the
 emission in the lower ionization lines.  As shown in \S~4.1 of \citet
 {2003ApJ...593..831M}, one should see a transition from
-\(\gamma_{\mathrm{vthick}} = n\) to the shallower slope
-\(\gamma_{\mathrm{vthick}} = n + 1\) at transverse scales larger than
+\(\gammaVCAvthick{} = n\) to the shallower slope
+\(\gammaVCAvthick{} = n + 1\) at transverse scales larger than
 the line-of-sight depth of the emitting region.
 
 \begin{figure*}
@@ -1240,8 +1305,11 @@ the turbulence in such large regions is in a statistically steady
 state unless it is highly supersonic. Indeed,
 \citet{1988AA...198..283O} suggest that in the case of large
 extragalactic \hii{} regions, the large linewidths could be due to
-multiple velocity components, that is, regions of the \hii{} region
-separated by more than a sound-crossing time are kinematically
+multiple velocity components, that is, parts of the \hii{} region
+with separation greater than the distance a sound wave could travel
+within  the current lifetime of the object
+%separated by more than  a sound-crossing time 
+are kinematically
 distinct.  Such giant \hii{} regions show velocity centroid
 dispersions of \(\sigma_{\mathrm{c}} > 10~\mathrm{km\ s^{-1}}\) on the
 largest scales, which is several times larger than is seen in compact
@@ -1404,6 +1472,10 @@ Federrath C., 2013, MNRAS, 436, 1245
 
 \bibitem[\protect\citeauthoryear{Federrath et 
 al.}{2010}]{2010A&A...512A..81F} Federrath C., Roman-Duval J., Klessen R.~S., Schmidt W., Mac Low M.-M., 2010, A\&A, 512, A81 
+
+\bibitem[\protect\citeauthoryear{Ferland et
+    al.}{2013}]{2013RMxAA..49..137F} Ferland G.~J., Porter, R. L., van
+  Hoof, P. A. M., et al., 2013, RMxAA, 49, 137 
 
 \bibitem[\protect\citeauthoryear{Galtier 
 \& Banerjee}{2011}]{2011PhRvL.107m4501G} Galtier S., Banerjee S., 2011, PhRvL, 107, 134501 
@@ -1612,7 +1684,8 @@ procedure to determine the upper length scale for the power-law fit.
     numerical simulation. The solid line is the least-squares fit to
     the data points between limits described in the text, represented
     by the grey rectangle. The horizontal dotted line at $\log 2$ is
-    included as a reference value.}
+    included as a reference value. The index $m_\mathrm{2D}$ of each power-law fit
+   is indicated in the corresponding panel.}
 \label{fig:sfunc}
 \end{figure*}
 \begin{figure*}
@@ -1650,7 +1723,9 @@ panel with the broadening effects included.  In each graph, two power
 spectra are plotted: one representing a very thick velocity slice
 (i.e., encompassing all the emission) and the other averaged over thin
 velocity slices of width $\delta v \sim 5$~km~s$^{-1}$.  Also shown
-are the least-squares power-law fits to the thin and very thick slice
+are the on each panel are the power-law indices obtained from
+least-squares power-law fits to the thin (\gammaVCAthin{}) and very
+thick slice (\gammaVCAvthick{})
 spectra and the range in wavenumber over which the fit is
 calculated. This wavenumber range corresponds to the length-scale
 range used for the structure function fits (see
@@ -1687,7 +1762,9 @@ Fig~\ref{fig:vcatrends} and discussed in \S~\ref{sssec:vca}.
   ($n=1$ channel). The dashed line is the
   least-squares fit to the data points for the thin slice between limits described in the
 text represented by the grey rectangle. The solid line is the least-squares fit to
-the data points for the thick slice.}
+the data points for the thick slice. The indices \gammaVCAthin{} (thin
+slice) and \gammaVCAvthick{} (thick slice) of each power-law fit
+   are indicated in the corresponding panels.}
 \label{fig:vca}
 \end{figure*}
  \begin{figure*}
