@@ -1,0 +1,40 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Arthur}, {Henney}, {Mellema}, {de Colle}  \&
+  {V{\'a}zquez-Semadeni}}{{Arthur} et~al.}{2011}]{Arthur:2011a}
+{Arthur} S.~J.,  {Henney} W.~J.,  {Mellema} G.,  {de Colle} F.,
+  {V{\'a}zquez-Semadeni} E.,  2011, \mnras, 414, 1747
+
+\bibitem[\protect\citeauthoryear{{Arthur}, {Medina}  \& {Henney}}{{Arthur}
+  et~al.}{2016}]{Arthur:2016a}
+{Arthur} S.~J.,  {Medina} S.-N.~X.,   {Henney} W.~J.,  2016, \mnras, 463, 2864
+
+\bibitem[\protect\citeauthoryear{{Medina}, {Arthur}, {Henney}, {Mellema}  \&
+  {Gazol}}{{Medina} et~al.}{2014}]{Medina:2014a}
+{Medina} S.-N.~X.,  {Arthur} S.~J.,  {Henney} W.~J.,  {Mellema} G.,   {Gazol}
+  A.,  2014, \mnras, 445, 1797
+
+\bibitem[\protect\citeauthoryear{{Mellema}, {Arthur}, {Henney}, {Iliev}  \&
+  {Shapiro}}{{Mellema} et~al.}{2006}]{Mellema:2006a}
+{Mellema} G.,  {Arthur} S.~J.,  {Henney} W.~J.,  {Iliev} I.~T.,   {Shapiro}
+  P.~R.,  2006, \apj, 647, 397
+
+\makeatother
+\end{thebibliography}
