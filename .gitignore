@@ -4,3 +4,6 @@ NewMoments/*.fits
 SacOrion/ORION_Abril15
 NewMoments/ThreeGaussians/*.png
 NewMoments/FourGaussians/*.png
+*.log
+/TomReview2017/Synthetic_observations___Elsevier (18).pdf
+.dropbox
